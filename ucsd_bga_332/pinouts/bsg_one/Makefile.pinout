@@ -1,0 +1,5 @@
+ifeq ($(BSG_PACKAGING_DIR),)
+$(error BSG_PACKAGING_DIR must be defined to use Makefile.pinout)
+
+
+BSG_PINOUT_SYNOPSYS_INCLUDES=+incdir+$(BSG_PACKAGING_DIR)/ucsd_bga_332/pinouts/bsg_one +incdir+$(BSG_PACKING_DIR)/
