@@ -1,0 +1,24 @@
+ifeq ($(BSG_PACKAGING_DIR),)
+$(error BSG_PACKAGING_DIR must be defined to use Makefile.pinout)
+endif
+
+ifeq ($(BSG_PINOUT),)
+$(error BSG_PINOUT) must be defined to use Makefile.pinout)
+endif
+
+ifeq ($(BSG_PACKAGE),)
+$(error BSG_PACKAGE) must be defined to use Makefile.pinout)
+endif
+
+ifeq ($(BSG_FOUNDRY),)
+$(error BSG_FOUNDRY must be defined to use Makefile.pinout)
+endif
+
+# BSG_PACKAGE=ucsd_bga_332 or ucsc_ucsd_bga_xxx
+# BSG_PINOUT=bsg_one or ucsc_ucsd_one
+# BSG_FOUNDRY=tsmc_250 gf28 or portable
+
+BSG_PACKAGING_VERILOG_INCLUDES=$(BSG_PACKAGING_DIR)/$(BSG_PACKAGE)/pinouts/$(BSG_PINOUT)/verilog/ $(BSG_PACKAGING_DIR)/common/verilog/ $(BSG_PACKAGING_DIR)/common/foundry/$(BSG_FOUNDRY)/verilog/
+
+BSG_PACKAGING_SYNOPSYS_INCLUDES=$(foreach x,$(BSG_PACKAGING_VERILOG_INCLUDES),+incdir+$(x))
+
