@@ -6,6 +6,10 @@ ifeq ($(BSG_PINOUT),)
 $(error BSG_PINOUT) must be defined to use Makefile.pinout)
 endif
 
+ifeq ($(BSG_PACKAGE),)
+$(error BSG_PACKAGE) must be defined to use Makefile.pinout)
+endif
+
 ifeq ($(BSG_FOUNDRY),)
 $(error BSG_FOUNDRY must be defined to use Makefile.pinout)
 endif
