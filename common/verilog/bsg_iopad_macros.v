@@ -1,7 +1,7 @@
 // MBT 9-22-14
 //
 // **********************************************************************
-// BEGIN TOP LEVEL I/O MACROS : BSG ONE (VERILOG; NOT REAL)
+// BEGIN TOP LEVEL I/O MACROS : (VERILOG; NOT REAL)
 //
 // these macros define the PAD instantiations for general I/Os
 // when we actually don't want to bother instantiating real pads
@@ -32,5 +32,5 @@
 
 //
 //
-// END TOP LEVEL I/O MACROS (250 nm)
+// END TOP LEVEL I/O MACROS: (VERILOG; NOT REAL)
 // **********************************************************************
