@@ -6,7 +6,9 @@ It does not necessarily say anything about the whether those pins
 are inputs or outputs, and it could change based on the use of the package.
 
 We call a package combined with this information a "pinout". This 
-directory is for holding pinout-specific information.
+directory is for holding pinout-specific files.
+
+Currently, we just have the bsg_one pinout.
 
 
 
