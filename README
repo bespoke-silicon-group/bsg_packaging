@@ -1,0 +1,9 @@
+In this directory are a bunch of subdirectories, one for each unique package.
+
+Currently there are two packages:
+
+gf
+ucsd_bga_332
+
+There is also the common directory, which contains files for constructing padrings, 
+including portability files for each process (e.g. tsmc 250) being targeted.
