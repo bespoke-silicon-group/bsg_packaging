@@ -22,51 +22,89 @@
 
 //module
 // bsg_one
-  ( input   p_PLL_CLK_i
-    , input  p_reset_i
+(
+ // *******************************************************************
+ // all "100-ohm impedance-controlled-in-package" differential pairs
+ //
 
-    , input  [3:0] p_sdi_sclk_i
-    , input  [3:0] p_sdi_sclk_ex_i
-    , input  [3:0] p_sdi_ncmd_i
-    , output [3:0] p_sdi_token_o
-    , output [3:0] p_sdi_tkn_ex_o
+ , input  p_clk_0_p_i    , input  p_clk_0_n_i
+ , input  p_clk_1_p_i    , input  p_clk_1_n_i
 
-    , input  [7:0] p_sdi_A_data_i, input [7:0] p_sdi_B_data_i
-    , input  [7:0] p_sdi_C_data_i, input [7:0] p_sdi_D_data_i
+ , input  p_SMA_in_p_i   , input  p_SMA_in_n_i
+ , output p_SMA_out_p_o  , output p_SMA_out_n_o
 
-    , output [3:0] p_sdo_sclk_o
-    , output [3:0] p_sdo_sclk_ex_o
-    , output [3:0] p_sdo_ncmd_o
-    , input  [3:0] p_sdo_token_i
-    , input  [3:0] p_sdo_tkn_ex_i
+ // *******************************************************************
+ // ultra-shielded "50-ohm impedance-controlled-in-package" clock for PLL
+ , input   p_PLL_CLK_i
 
-    , output [7:0] p_sdo_A_data_o, output [7:0] p_sdo_B_data_o
-    , output [7:0] p_sdo_C_data_o, output [7:0] p_sdo_D_data_o
+ // *******************************************************************
+ // all "50-ohm impedance-controlled-in-package" signals starting here
+ // these are length matched within 1.55 mm length and
+ // .76 mm bond wire length.
 
-    // fixme: some of these will switch directions
-    // for the real chip
-    , input [7:0] p_misc_L_i, input [7:0] p_misc_R_i
+ // input clocks for input channels D,C,B,A
+ , input  [3:0] p_sdi_sclk_i
 
-    , input  p_misc_T_0_i     , input p_misc_T_1_i, input p_misc_T_2_i
-    , output p_sdo_A_data_8_o , output p_sdo_C_data_8_o
+ // input valids for input channels D,C,B,A
+ , input  [3:0] p_sdi_ncmd_i
 
-    , input  p_clk_0_p_i    , input  p_clk_0_n_i
-    , input  p_clk_1_p_i    , input  p_clk_1_n_i
-    , input  p_SMA_in_p_i   , input  p_SMA_in_n_i
-    , output p_SMA_out_p_o  , output p_SMA_out_n_o
+ // input datas for input channels D,C,B,A
+ , input  [7:0] p_sdi_A_data_i, input [7:0] p_sdi_B_data_i
+ , input  [7:0] p_sdi_C_data_i, input [7:0] p_sdi_D_data_i
 
-    , input  p_JTAG_TMS_i
-    , input  p_JTAG_TDI_i
-    , input  p_JTAG_TCK_i
-    , input  p_JTAG_TRST_i
-    , output p_JTAG_TDO_o
+ // output tokens for input channels D,C,B,A
+ , output [3:0] p_sdi_token_o
 
-    , input  p_PLL_VDD_i
-    , input  p_PLL_VSS_i
-    , input  p_PLL_V33_i
-    , input  p_PLL_VZZ_i
-    );
+ // output clocks for output channels D,C,B,A
+ , output [3:0] p_sdo_sclk_o
 
+ // output valids for output channels
+ , output [3:0] p_sdo_ncmd_o
+
+ // output data for out channels
+ , output [7:0] p_sdo_A_data_o, output [7:0] p_sdo_B_data_o
+ , output [7:0] p_sdo_C_data_o, output [7:0] p_sdo_D_data_o
+
+ // extra output datas
+ , output p_sdo_A_data_8_o , output p_sdo_C_data_8_o
+
+ // input tokens for output channels
+ , input  [3:0] p_sdo_token_i
+
+ // spare clocks, length matched to channels
+ , input  [3:0] p_sdi_sclk_ex_i
+ , output [3:0] p_sdo_sclk_ex_o
+
+ // spare tokens for input and output channels
+ , output [3:0] p_sdi_tkn_ex_o
+ , input  [3:0] p_sdo_tkn_ex_i
+
+ // *******************************************************************
+ // all "50-ohm impedance-controlled-in-package", starting here
+ // but are next to clock or token signals
+ // and are not length-matched
+
+ , input  p_misc_T_0_i, input p_misc_T_1_i, input p_misc_T_2_i
+ , input [7:0] p_misc_L_i, input [7:0] p_misc_R_i
+ , input  p_reset_i
+
+ // for JTAG, or other purposes
+ , input  p_JTAG_TMS_i
+ , input  p_JTAG_TDI_i
+ , input  p_JTAG_TCK_i
+ , input  p_JTAG_TRST_i
+ , output p_JTAG_TDO_o
+
+ // *******************************************************************
+ // all "not impedance controlled in package", starting here
+ // for powering PLL or can be used for low frequency debug signals
+ // NOTE: Driver selected by XTC macro must be updated according to use.
+
+ , input  p_PLL_VDD_i
+ , input  p_PLL_VSS_i
+ , input  p_PLL_V33_i
+ , input  p_PLL_VZZ_i
+ );
 
    // note this is a usually the primary clock for the system
    `XTC_IN (PLL_CLK);
