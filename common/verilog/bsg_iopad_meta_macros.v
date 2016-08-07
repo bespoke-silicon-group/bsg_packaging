@@ -6,6 +6,10 @@
                           `XTC_IN_V(name,0); `XTC_IN_V(name,1); `XTC_IN_V(name,2); `XTC_IN_V(name,3); \
                           `XTC_IN_V(name,4); `XTC_IN_V(name,5); `XTC_IN_V(name,6); `XTC_IN_V(name,7)
 
+`define XTC_IN_V60(name)  wire [6:0] name``_i_int; \
+                          `XTC_IN_V(name,0); `XTC_IN_V(name,1); `XTC_IN_V(name,2); `XTC_IN_V(name,3); \
+                          `XTC_IN_V(name,4); `XTC_IN_V(name,5); `XTC_IN_V(name,6);
+
 `define XTC_OUT_V70(name) wire [7:0] name``_o_int; \
                           wire [7:0] name``_oen = '0; \
                           `XTC_OUT_V(name,0); `XTC_OUT_V(name,1); `XTC_OUT_V(name,2); `XTC_OUT_V(name,3); \
