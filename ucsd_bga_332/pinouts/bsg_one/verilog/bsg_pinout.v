@@ -27,7 +27,7 @@
  // all "100-ohm impedance-controlled-in-package" differential pairs
  //
 
- , input  p_clk_0_p_i    , input  p_clk_0_n_i
+ input  p_clk_0_p_i    , input  p_clk_0_n_i
  , input  p_clk_1_p_i    , input  p_clk_1_n_i
 
  , input  p_SMA_in_p_i   , input  p_SMA_in_n_i
