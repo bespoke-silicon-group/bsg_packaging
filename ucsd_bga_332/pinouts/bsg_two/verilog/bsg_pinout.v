@@ -27,7 +27,7 @@
  // all "100-ohm impedance-controlled-in-package" differential pairs
  //
 
- , input  p_clk_0_p_i    , input  p_clk_0_n_i
+   input  p_clk_0_p_i    , input  p_clk_0_n_i
  , input  p_clk_1_p_i    , input  p_clk_1_n_i
 
  , input  p_SMA_in_p_i   , input  p_SMA_in_n_i
@@ -86,10 +86,17 @@
 
  , input  p_misc_T_0_i, input p_misc_T_1_i, input p_misc_T_2_i
 
+ , input  p_misc_L_7_i, input  p_misc_R_7_i
+ , input  p_misc_L_6_i, input  p_misc_R_6_i
+ , input  p_misc_L_5_i, input  p_misc_R_5_i
+ , input  p_misc_L_4_i, input  p_misc_R_4_i
+
  // L3 and R3 are output pads because it works with the pad ring
  , output p_misc_L_3_o, output p_misc_R_3_o
 
- , input [6:0] p_misc_L7654210_i, input [7:0] p_misc_R7654210_i
+ , input  p_misc_L_2_i, input  p_misc_R_2_i
+ , input  p_misc_L_1_i, input  p_misc_R_1_i
+ , input  p_misc_L_0_i, input  p_misc_R_0_i
 
  , input  p_reset_i
 
@@ -105,10 +112,10 @@
  // for powering PLL or can be used for low frequency debug signals
  // NOTE: Driver selected by XTC macro must be updated according to use.
 
- , input  p_PLL_VDD_i
- , input  p_PLL_VSS_i
- , input  p_PLL_V33_i
- , input  p_PLL_VZZ_i
+// , input  p_PLL_VDD_i
+// , input  p_PLL_VSS_i
+// , input  p_PLL_V33_i
+// , input  p_PLL_VZZ_i
  );
 
 `ifndef BSG_PAD_INPUT_PULLDOWN
@@ -172,8 +179,23 @@ BSG_PAD_DISABLE should be defined!
 
     // node L3 and R3 have been chosen as outputs
 
-   `BSG_IO_IN_V60 (misc_L7654210,  `BSG_PAD_INPUT_PULLDOWN);
-   `BSG_IO_IN_V60 (misc_R7654210,  `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_L_7, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_L_6, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_L_5, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_L_4, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_L_2, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_OUT(misc_L_3,`BSG_PAD_OUTPUT_SLOW);
+   `BSG_IO_IN (misc_L_1, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_L_0, `BSG_PAD_INPUT_PULLDOWN);
+
+   `BSG_IO_IN (misc_R_7, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_R_6, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_R_5, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_R_4, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_OUT(misc_R_3,`BSG_PAD_OUTPUT_SLOW);
+   `BSG_IO_IN (misc_R_2, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_R_1, `BSG_PAD_INPUT_PULLDOWN);
+   `BSG_IO_IN (misc_R_0, `BSG_PAD_INPUT_PULLDOWN);
 
    // note these are not part of the vector as bit number is in name.
    `BSG_IO_IN (misc_T_0,`BSG_PAD_INPUT_PULLDOWN);
@@ -184,22 +206,21 @@ BSG_PAD_DISABLE should be defined!
    `BSG_IO_OUT(sdo_A_data_8,`BSG_PAD_OUTPUT_A);
    `BSG_IO_OUT(sdo_C_data_8,`BSG_PAD_OUTPUT_C);
 
-   `BSG_IO_OUT(misc_L_3,`BSG_PAD_OUTPUT_SLOW);
-   `BSG_IO_OUT(misc_R_3,`BSG_PAD_OUTPUT_SLOW);
-
    // differential pairs
-   `BSG_IO_IN_DIFF_DISABLE (clk_0, `BSG_PAD_DISABLE)
-   `BSG_IO_IN_DIFF_DISABLE (clk_1, `BSG_PAD_DISABLE)
-   `BSG_IO_IN_DIFF_DISABLE (SMA_in,`BSG_PAD_PISABLE)
+   `BSG_IO_IN_DIFF_DISABLE (clk_0, `BSG_PAD_DISABLE);
+   `BSG_IO_IN_DIFF_DISABLE (clk_1, `BSG_PAD_DISABLE);
+   `BSG_IO_IN_DIFF_DISABLE (SMA_in,`BSG_PAD_DISABLE);
+
 
     // these are routed as 100 ohms to SMA connector
     // they do not have a differential termination resistor
     // on-board, so they can be driven with normal outputs
     // and used for debug.
 
-   `BSG_IO_OUT(SMA_out_p,`BSG_PAD_OUTPUT_SLOW)
-   `BSG_IO_OUT(SMA_out_n,`BSG_PAD_OUTPUT_SLOW)
+   `BSG_IO_OUT(SMA_out_p,`BSG_PAD_OUTPUT_SLOW);
+   `BSG_IO_OUT(SMA_out_n,`BSG_PAD_OUTPUT_SLOW);
 
+   // Lutag inputs
    `BSG_IO_IN(JTAG_TMS, `BSG_PAD_INPUT_PULLDOWN);
    `BSG_IO_IN(JTAG_TDI, `BSG_PAD_INPUT_PULLDOWN);
    `BSG_IO_IN(JTAG_TCK, `BSG_PAD_INPUT_PULLDOWN);
