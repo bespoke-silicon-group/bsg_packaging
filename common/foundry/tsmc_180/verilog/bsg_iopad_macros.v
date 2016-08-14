@@ -8,12 +8,6 @@
 //
 
 
-// this is used to disable a differential input signal
-// even though this is an input
-// we employ an output pad and tri-state (OEN=1) the output
-// we are trying to avoid the case of having an input
-// pad with 1.2 LVDS voltage that creates short-circuit current in a 3.3V LVCMOS pad
-// cell.
 
 
 `ifdef BSG_OUTPUTS_NEED_ENABLES
@@ -21,6 +15,13 @@
 `else
 `define BSG_OUTPUT_ENABLE
 `endif
+
+// this is used to disable a differential input signal
+// even though this is an input
+// we employ an output pad and tri-state (OEN=1) the output
+// we are trying to avoid the case of having an input
+// pad with 1.2 LVDS voltage that creates short-circuit current in a 3.3V LVCMOS pad
+// cell.
 
 `define BSG_IO_IN_DISABLE(name,padtype)                           \
 padtype name``_i (.PAD(p_``name``_i), .OEN(1'b1), .I(1'b0))

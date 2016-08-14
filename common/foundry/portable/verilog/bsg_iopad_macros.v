@@ -10,6 +10,7 @@
 // as the interfaces for the I/O macros change across generations.
 //
 
+// eventually XTC will go away
 
 // PDIDGZ foo_i (.PAD(p_foo_i), .C(foo_i_int));
 `define XTC_IN(name)                    wire name``_i_int = p_``name``_i
@@ -26,6 +27,18 @@
 
 `define XTC_OUT_A(pre,suffix,letter,num) assign p_``pre``_``suffix``_o[num] = pre``_``suffix``_o_int[num]
 
+
+`define BSG_IO_IN_DISABLE(name,padtype) wire name``_i_int = 0 & p_``name``_i
+`define BSG_IO_IN_DIFF_DISABLE(name,padtype) \
+    `BSG_IO_IN_DISABLE(name``_p,padtype);    \
+    `BSG_IO_IN_DISABLE(name``_n,padtype)
+
+`define BSG_IO_IN(name,padtype) `XTC_IN(name)
+`define BSG_IO_IN_A(pre,suffix,letter,index,padtype) `XTC_IN_A(pre,suffix,letter,index)
+`define BSG_IO_IN_V(name,index,padtype) `XTC_IN_V(name,index)
+`define BSG_IO_OUT(name,padtype) `XTC_OUT(name)
+`define BSG_IO_OUT_V(name,index,padtype) `XTC_OUT_V(name,index)
+`define BSG_IO_OUT_A(pre,suffix,letter,num,padtype) `XTC_OUT_A(pre,suffix,letter,num)
 
 // shared macros
 `include "bsg_iopad_meta_macros.v"
