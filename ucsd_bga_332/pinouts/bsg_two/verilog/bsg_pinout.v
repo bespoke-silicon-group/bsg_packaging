@@ -155,7 +155,9 @@ BSG_PAD_DISABLE should be defined!
    `BSG_IO_IN_ABCD (sdi,ncmd,    `BSG_PAD_INPUT_PULLDOWN);
 
    `BSG_IO_OUT_ABCD(sdi,token,   `BSG_PAD_OUTPUT_A,    `BSG_PAD_OUTPUT_B,    `BSG_PAD_OUTPUT_C,    `BSG_PAD_OUTPUT_D   );
-   `BSG_IO_OUT_ABCD(sdi,tkn_ex,  `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW);
+
+   // sdi_tkn_ex[3] needs a fast pad because it is the clock test output
+   `BSG_IO_OUT_ABCD(sdi,tkn_ex,  `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_FAST);
 
    `BSG_IO_IN_V70 (sdi_A_data, `BSG_PAD_INPUT_PULLDOWN);
    `BSG_IO_IN_V70 (sdi_B_data, `BSG_PAD_INPUT_PULLDOWN);
