@@ -1,0 +1,15 @@
+This script is used to help generate the tcl files found in ../tcl. This script takes in a csv
+file where each line is the following:
+
+    Pad Name, Center Coordinate (in um), Chip Side [top, bottom, left, right]
+
+The script will take that csv file and create a list of 'set_pin_physcal_constraints' tcl commands
+which go in ../tcl/pin_pad_physical_constraints.tcl. It will also spit out long lines with all the
+filler cells it inserted between pads to make sure their centers lined up. This line are supposed
+to go into ../tcl/physical_only_cells_creation_file.tcl. You will need to change the <PAD FILLER #>
+at the end of each one of these lines with the correct pad fille name for your process.
+
+At the top of the script, in the section labeled 'USER VARIABLES' you can set the width of the
+various pads as well as the die coordinates. You can also rotate the pads clock wise and generate
+a new CSV after rotation.
+
