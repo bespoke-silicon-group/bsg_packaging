@@ -4,8 +4,8 @@ import sys
 PAD_WIDTH = 30
 PAD_HEIGHT = 185
 
-DIE_LL = 204.8
-DIE_UR = 4795.2
+DIE_LL = 173
+DIE_UR = 5000-173
 
 def print_constraint(side, name, fid=None):
     print('set_pad_physical_constraints -side %d -pad_name %s' % (side, name), file=fid)
