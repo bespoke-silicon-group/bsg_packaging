@@ -290,6 +290,7 @@ set_pad_physical_constraints -side 1 -pad_name sdo_C_sclk_o
 set_pad_physical_constraints -side 1 -pad_name VDD_B_5
 set_pad_physical_constraints -side 1 -pad_name JTAG_TDI_i
 set_pad_physical_constraints -side 1 -pad_name VSS_B_5
+set_pad_physical_constraints -side 1 -pad_name BREAKER_B_0
 set_pad_physical_constraints -side 1 -pad_name PLL_VDD_i
 set_pad_physical_constraints -side 1 -pad_name V33_B_5
 set_pad_physical_constraints -side 1 -pad_name PLL_VSS_i
@@ -299,6 +300,7 @@ set_pad_physical_constraints -side 1 -pad_name VDD_B_6
 set_pad_physical_constraints -side 1 -pad_name PLL_V33_i
 set_pad_physical_constraints -side 1 -pad_name VSS_B_6
 set_pad_physical_constraints -side 1 -pad_name PLL_VZZ_i
+set_pad_physical_constraints -side 1 -pad_name BREAKER_B_1
 set_pad_physical_constraints -side 1 -pad_name VDD_B_7
 set_pad_physical_constraints -side 1 -pad_name JTAG_TCK_i
 set_pad_physical_constraints -side 1 -pad_name VSS_B_7
