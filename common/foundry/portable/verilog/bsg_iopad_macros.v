@@ -46,6 +46,9 @@ assign p_``name``_o = name``_o_int;
 `define BSG_IO_TIEHI_VEC(name,width) assign name = { width  {1'b1} };
 `define BSG_IO_TIELO_VEC(name,width) assign name = { width  {1'b0} };
 
+`define BSG_IO_TIELO_VEC_ONE(name,item) assign name[item] = 1'b0;
+`define BSG_IO_TIEHI_VEC_ONE(name,item) assign name[item] = 1'b1;
+
 
 
 // shared macros
