@@ -4,5 +4,6 @@ create_cell {VZZ_L_0 VZZ_L_1 VZZ_L_2 VZZ_L_3 VZZ_L_4 VZZ_L_5 VZZ_L_6 VZZ_R_0 VZZ
 create_cell {V33_L_0 V33_L_1 V33_L_2 V33_L_3 V33_L_4 V33_L_5 V33_L_6 V33_R_0 V33_R_1 V33_R_2 V33_R_3 V33_R_4 V33_R_5 V33_R_6 V33_T_0 V33_T_1 V33_T_2 V33_T_3 V33_T_4 V33_T_5 V33_T_6 V33_T_7 V33_T_8 V33_T_9 V33_T_10 V33_B_1 V33_B_2 V33_B_3 V33_B_4 V33_B_5 V33_B_6 V33_B_7 V33_B_8 V33_B_9 V33_B_10} PVDD2DGZ
 create_cell {V33_B_0 PLL_V33_i} PVDD2POC
 create_cell {BREAKER_B_0 BREAKER_B_1} PRCUT
-create_cell {VDD_B_6 VSS_B_6} PDDDGZ
+create_cell {VSS_B_6} PVSS1DGZ
+create_cell {VDD_B_6} PVDD1DGZ
 create_cell {corner_ul corner_ur corner_lr corner_ll} PCORNER
