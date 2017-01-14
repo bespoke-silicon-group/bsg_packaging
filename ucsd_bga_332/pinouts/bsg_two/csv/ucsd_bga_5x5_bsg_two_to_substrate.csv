@@ -82,8 +82,8 @@ Die#,Subs#,Net Name,Pad Name,Side,Length,Bond Angle,Die X,Die Y,Subs X,Subs Y,Co
 81,81,VSS,VSS_L_16,Left,1.391087704,47.76786982,-2.465,-1.68,-3.4,-2.71,
 82,82,V33,V33_L_6,Left,3.338622183,44.85668531,-2.465,-1.805,-4.83166,-4.15985,
 83,83,VSS,VZZ_L_6,Left,1.332938483,45.45592496,-2.465,-1.93,-3.4,-2.88,
-84,84,VSS,VZZ_B_0,Bottom,1.451318366,49.89114574,-1.825,-2.465,-3.06,-3.4,These two in yellow seem to have been swapped
-85,85,V33,V33_B_0,Bottom,3.487726268,48.77463621,-1.95,-2.465,-4.4482,-4.76349,These two in yellow seem to have been swapped
+84,84,VSS,VZZ_B_0,Bottom,1.451318366,49.89114574,-1.825,-2.465,-2.96,-3.4,These two in yellow seem to have been swapped
+85,85,V33,V33_B_0,Bottom,3.487726268,48.77463621,-1.95,-2.465,-4.6482,-4.76349,These two in yellow seem to have been swapped
 86,86,VDD,VDD_B_0,Bottom,2.47883837,48.55793216,-1.7,-2.465,-3.5582,-4.10565,
 87,87,VSS,VSS_B_0,Bottom,1.443684522,49.63546343,-1.62,-2.465,-2.72,-3.4,
 88,88,V33,V33_B_1,Bottom,3.511232237,47.45625326,-1.54,-2.465,-4.12694,-4.83913,
