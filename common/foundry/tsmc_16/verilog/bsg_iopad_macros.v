@@ -129,6 +129,10 @@ end
   padtype pre``_``letter``_``suffix``_o (.PAD(p_``pre``_``suffix``_o[num])  `BSG_OUTPUT_ENABLE(pre``_``suffix``_oen_int[num]), .A(pre``_``suffix``_o_int[num]));
 
 
+// Physical only cells
+`define BSG_PHYSICAL_ONLY_PAD(name,padtype) \
+  padtype name ();
+
 // shared macros
 `include "bsg_iopad_meta_macros.v"
 

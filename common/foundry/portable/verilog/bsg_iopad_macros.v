@@ -49,7 +49,8 @@ assign p_``name``_o = name``_o_int;
 `define BSG_IO_TIELO_VEC_ONE(name,item) assign name[item] = 1'b0;
 `define BSG_IO_TIEHI_VEC_ONE(name,item) assign name[item] = 1'b1;
 
-
+`define BSG_PHYSICAL_ONLY_PAD(name,padtype) \
+  /* intentionally left blank */
 
 // shared macros
 `include "bsg_iopad_meta_macros.v"
