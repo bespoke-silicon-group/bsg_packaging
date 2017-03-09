@@ -245,8 +245,7 @@
         (inst name="DVDD_L_8")
     )
     (bottom
-        (inst name="PDVDDTIE_BOTTOM"  )
-        (inst name="DVDD_B_1")
+        (inst name="DVDDTIE_B_1")
         (inst name="DVSS_B_1")
         (inst name="VDD_B_1")
         (inst name="VSS_B_1")
