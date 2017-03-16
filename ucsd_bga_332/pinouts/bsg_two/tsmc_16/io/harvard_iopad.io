@@ -7,16 +7,16 @@
 )
 (row_margin
     (top
-  (io_row ring_number=1 margin=96)
+  (io_row ring_number=1 margin=21.6)
     )
     (left
-  (io_row ring_number=1 margin=96)
+  (io_row ring_number=1 margin=21.6)
     )
     (bottom
-  (io_row ring_number=1 margin=96)
+  (io_row ring_number=1 margin=21.6)
     )
     (right
-  (io_row ring_number=1 margin=96)
+  (io_row ring_number=1 margin=21.6)
     )
 )
 (iopad
