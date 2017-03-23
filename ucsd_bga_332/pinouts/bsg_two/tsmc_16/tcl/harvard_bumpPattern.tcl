@@ -54,33 +54,3 @@ set VSS_Core {F7  G7  H7  I7  J7  K7  L7  M7  N7  O7  \
               J18 K18 L18 M18 N18 O18 P18 Q18 R18 S18 \
               T18 U18 F20 G20 H20 I20 J20 K20 L20 M20 \
               N20 O20 P20 Q20 R20 S20 T20 U20}
-
-
-# This is arbitrarily set. It seems to attempt to adhere to it (i.e it's no
-# longer random), but it still allows assignments beyond the specification
-set max_assignBump_dist 400
-
-select_bump -bumps $VDD_P
-assignBump -pgonly -pgnet VDD -selected -maxDistance $max_assignBump_dist
-deselect_bump
-
-select_bump -bumps $VSS_P_Core
-assignBump -pgonly -pgnet {VSS} -selected -maxDistance $max_assignBump_dist
-deselect_bump
-
-select_bump -bumps $VSS_P_IO
-assignBump -pgonly -pgnet {DVSS} -selected -maxDistance $max_assignBump_dist
-deselect_bump
-
-select_bump -bumps $VDD_IO
-assignBump -pgonly -pgnet DVDD -selected -maxDistance $max_assignBump_dist
-deselect_bump
-
-select_bump -bumps $VDD_IO
-assignBump -pgonly -pgnet DVDD -selected -maxDistance $max_assignBump_dist
-deselect_bump
-
-select_bump
-deselect_bump -bumps "$VSS_P_Core $VSS_P_IO $VSS_Core $VDD_P $VDD_IO $VDD1 $VDD2 $VDD3 $VDD4 $VDD5 $VDD6 $VDDG"
-assignBump -selected -maxDistance $max_assignBump_dist
-deselect_bump
