@@ -1,23 +1,23 @@
-# VDD Peripheral Core
-set VDD_P {A2  A8  A19 A25 B1  B26 C6  C13 C14 C21 \
-           E11 E16 F3  F24 H1  H26 K5  K22 M3  M24 \
-           N3  N24 P5  P22 S1  S26 U3  U24 V11 V16 \
-           X6  X13 X14 X21 Y1  Y26 Z2  Z8  Z19 Z25}
+# VDD Peripheral Core (VDD)
+set VDD_PIO {A2  A8  A19 A25 B1  B26 C6  C13 C14 C21 \
+             E11 E16 F3  F24 H1  H26 K5  K22 M3  M24 \
+             N3  N24 P5  P22 S1  S26 U3  U24 V11 V16 \
+             X6  X13 X14 X21 Y1  Y26 Z2  Z8  Z19 Z25}
 
-# VDD Peripheral IO
-set VDD_IO {A21 A6  B2  B25 C11 C12 C15 C16 C24 C3  \
-            F1  F26 K24 K3  L24 L3  O24 O3  P24 P3  \
-            U1  U26 X11 X12 X15 X16 X24 X3  Y2  Y25 \
-            Z21  Z6 }
+# VDD Peripheral IO (DVDD)
+set DVDD_PIO {A21 A6  B2  B25 C11 C12 C15 C16 C24 C3  \
+              F1  F26 K24 K3  L24 L3  O24 O3  P24 P3  \
+              U1  U26 X11 X12 X15 X16 X24 X3  Y2  Y25 \
+              Z21  Z6 }
 
-# VSS Peripheral Core
-set VSS_P_Core {A5  A10 A13 A14 A17 A22 B3  B24 C2  C25 \
-                D9  D18 E1  E26 I4  I23 J1  J26 M1  M26 \
-                N1  N26 Q1  Q26 R4  R23 V1  V26 W9  W18 \
-                X2  X25 Y3  Y24 Z5  Z10 Z13 Z14 Z17 Z22}
+# VSS Peripheral Core (VSS)
+set VSS_PIO {A5  A10 A13 A14 A17 A22 B3  B24 C2  C25 \
+             D9  D18 E1  E26 I4  I23 J1  J26 M1  M26 \
+             N1  N26 Q1  Q26 R4  R23 V1  V26 W9  W18 \
+             X2  X25 Y3  Y24 Z5  Z10 Z13 Z14 Z17 Z22}
 
-# VSS Peripheral IO
-set VSS_P_IO {B11 B12 B15 B16 C7  C20 D4  D23 E5  E22 \
+# VSS Peripheral IO (DVSS)
+set DVSS_PIO {B11 B12 B15 B16 C7  C20 D4  D23 E5  E22 \
               G3  G24 K2  K25 L2  L25 O2  O25 P2  P25 \
               T3  T24 V5  V22 W4  W23 X7  X20 Y11 Y12 \
               Y15 Y16}
@@ -54,3 +54,6 @@ set VSS_Core {F7  G7  H7  I7  J7  K7  L7  M7  N7  O7  \
               J18 K18 L18 M18 N18 O18 P18 Q18 R18 S18 \
               T18 U18 F20 G20 H20 I20 J20 K20 L20 M20 \
               N20 O20 P20 Q20 R20 S20 T20 U20}
+
+# VDD Core
+set VDD_Core "$VDDG $VDD1 $VDD2 $VDD3 $VDD4 $VDD5 $VDD6"

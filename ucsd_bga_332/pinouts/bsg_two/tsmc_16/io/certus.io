@@ -264,6 +264,11 @@
 	(inst  name="sdo_C_data_0_o"	offset=840.3180 )
 	(inst  name="DVDD_B_7"	offset=885.0720 )
 	(inst  name="DVSS_B_7"	offset=934.8260 )
+##############################################
+# PLL section starts here
+(inst  name="BRK_LDO_START"	)
+
+
 	(inst  name="PAVDD2"	offset=984.5800 )
 	(inst  name="PAVSS2"	offset=1029.3340 )
 	(inst  name="LDO_A11"	offset=1074.0880 )

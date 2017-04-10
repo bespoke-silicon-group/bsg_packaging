@@ -125,17 +125,3 @@ BSG_PAD_BIDIR_V should be defined!
    `BSG_IO_OUT(JTAG_TDO,`BSG_PAD_BIDIR_V)
 //   `BSG_IO_TIELO(JTAG_TDO_oen_int)
 
-   // these are dedicated power pins and should not be
-   // instantiated as pins in the verilog
-   //
-   //`BSG_IO_IN(PLL_VDD)
-   //`BSG_IO_IN(PLL_VSS)
-
-   //`BSG_IO_IN(PLL_V33)
-   //`BSG_IO_IN(PLL_VZZ)
-
-`ifdef DIE_SIZE_IS_25
-`include "bsg_iopads_physical_only25.v"
-`else
-`include "bsg_iopads_physical_only.v"
-`endif
