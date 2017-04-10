@@ -134,8 +134,12 @@ BSG_PAD_BIDIR_V should be defined!
    //`BSG_IO_IN(PLL_V33)
    //`BSG_IO_IN(PLL_VZZ)
 
-`ifdef DIE_SIZE_IS_25
-`include "bsg_iopads_physical_only25.v"
-`else
-`include "bsg_iopads_physical_only.v"
-`endif
+// All physical only IO pads are instantiated in backend now to make it
+// easier to create more or less of them as we shift pads around, add
+// breakers, etc.
+
+//`ifdef DIE_SIZE_IS_25
+//`include "bsg_iopads_physical_only25.v"
+//`else
+//`include "bsg_iopads_physical_only.v"
+//`endif
