@@ -276,8 +276,8 @@
 	(inst  name="LDO_A9"	offset=1163.5960 )
 	(inst  name="LDO_A8"	offset=1208.3500 )
 	(inst  name="LDO_A7"	offset=1253.1040 )
-	(inst  name="VSS_B_8"	offset=1297.8580 )
-	(inst  name="VDD_B_8"	offset=1347.6120 )
+	(inst  name="LDO_VSS_B_8"	offset=1297.8580 )
+	(inst  name="LDO_VDD_B_8"	offset=1347.6120 )
  	(inst  name="LDO_A6"	offset=1397.3660 )
 	(inst  name="LDO_A5"	offset=1442.1200 )
 	(inst  name="LDO_A4"	offset=1486.8740 )
@@ -285,8 +285,8 @@
 	(inst  name="LDO_A2"	offset=1576.3820 )
 	(inst  name="PAVDD1"	offset=1621.1360 )
 	(inst  name="PAVSS1"	offset=1665.8900 )
-	(inst  name="VDD_B_7"	offset=1710.6440 )
-	(inst  name="VSS_B_7"	offset=1760.3980 )
+	(inst  name="LDO_VDD_B_7"	offset=1710.6440 )
+	(inst  name="LDO_VSS_B_7"	offset=1760.3980 )
  	(inst  name="LDO_A1"	offset=1810.1520 )
 
 ##############################################
