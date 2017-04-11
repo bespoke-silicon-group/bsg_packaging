@@ -1,59 +1,59 @@
 # VDD Peripheral Core (VDD)
-set VDD_PIO {A2  A8  A19 A25 B1  B26 C6  C13 C14 C21 \
-             E11 E16 F3  F24 H1  H26 K5  K22 M3  M24 \
-             N3  N24 P5  P22 S1  S26 U3  U24 V11 V16 \
-             X6  X13 X14 X21 Y1  Y26 Z2  Z8  Z19 Z25}
+set VDD_PIO {bumpA2  bumpA8  bumpA19 bumpA25 bumpB1  bumpB26 bumpC6  bumpC13 bumpC14 bumpC21 \
+             bumpE11 bumpE16 bumpF3  bumpF24 bumpH1  bumpH26 bumpK5  bumpK22 bumpM3  bumpM24 \
+             bumpN3  bumpN24 bumpP5  bumpP22 bumpS1  bumpS26 bumpU3  bumpU24 bumpV11 bumpV16 \
+             bumpX6  bumpX13 bumpX14 bumpX21 bumpY1  bumpY26 bumpZ2  bumpZ8  bumpZ19 bumpZ25}
 
 # VDD Peripheral IO (DVDD)
-set DVDD_PIO {A21 A6  B2  B25 C11 C12 C15 C16 C24 C3  \
-              F1  F26 K24 K3  L24 L3  O24 O3  P24 P3  \
-              U1  U26 X11 X12 X15 X16 X24 X3  Y2  Y25 \
-              Z21  Z6 }
+set DVDD_PIO {bumpA21 bumpA6  bumpB2  bumpB25 bumpC11 bumpC12 bumpC15 bumpC16 bumpC24 bumpC3  \
+              bumpF1  bumpF26 bumpK24 bumpK3  bumpL24 bumpL3  bumpO24 bumpO3  bumpP24 bumpP3  \
+              bumpU1  bumpU26 bumpX11 bumpX12 bumpX15 bumpX16 bumpX24 bumpX3  bumpY2  bumpY25 \
+              bumpZ21  bumpZ6 }
 
 # VSS Peripheral Core (VSS)
-set VSS_PIO {A5  A10 A13 A14 A17 A22 B3  B24 C2  C25 \
-             D9  D18 E1  E26 I4  I23 J1  J26 M1  M26 \
-             N1  N26 Q1  Q26 R4  R23 V1  V26 W9  W18 \
-             X2  X25 Y3  Y24 Z5  Z10 Z13 Z14 Z17 Z22}
+set VSS_PIO {bumpA5  bumpA10 bumpA13 bumpA14 bumpA17 bumpA22 bumpB3  bumpB24 bumpC2  bumpC25 \
+             bumpD9  bumpD18 bumpE1  bumpE26 bumpI4  bumpI23 bumpJ1  bumpJ26 bumpM1  bumpM26 \
+             bumpN1  bumpN26 bumpQ1  bumpQ26 bumpR4  bumpR23 bumpV1  bumpV26 bumpW9  bumpW18 \
+             bumpX2  bumpX25 bumpY3  bumpY24 bumpZ5  bumpZ10 bumpZ13 bumpZ14 bumpZ17 bumpZ22}
 
 # VSS Peripheral IO (DVSS)
-set DVSS_PIO {B11 B12 B15 B16 C7  C20 D4  D23 E5  E22 \
-              G3  G24 K2  K25 L2  L25 O2  O25 P2  P25 \
-              T3  T24 V5  V22 W4  W23 X7  X20 Y11 Y12 \
-              Y15 Y16}
+set DVSS_PIO {bumpB11 bumpB12 bumpB15 bumpB16 bumpC7  bumpC20 bumpD4  bumpD23 bumpE5  bumpE22 \
+              bumpG3  bumpG24 bumpK2  bumpK25 bumpL2  bumpL25 bumpO2  bumpO25 bumpP2  bumpP25 \
+              bumpT3  bumpT24 bumpV5  bumpV22 bumpW4  bumpW23 bumpX7  bumpX20 bumpY11 bumpY12 \
+              bumpY15 bumpY16}
 
-set VDD1 {F8  F12 G8  G12 H6  H8  H10 H12 I6  I8  \
-          I10 I12 J6  J8  J10 J12}
-set VDD2 {K6  K10 L6  L10 M6  M8  M10 M12 N6  N8  \
-          N10 N12 O6  O10 P6  P10}
-set VDD3 {Q6  Q8  Q10 Q12 R6  R8  R10 R12 S6  S8  \
-          S10 S12 T8  T12 U8  U12}
-set VDD4 {F15 F19 G15 G19 H15 H17 H19 H21 I15 I17 \
-          I19 I21 J15 J17 J19 J21}
-set VDD5 {K17 K21 L17 L21 M15 M17 M19 M21 N15 N17 \
-          N19 N21 O17 O21 P17 P21}
-set VDD6 {Q15 Q17 Q19 Q21 R15 R17 R19 R21 S15 S17 \
-          S19 S21 T15 T19 U15 U19}
+set VDD1 {bumpF8  bumpF12 bumpG8  bumpG12 bumpH6  bumpH8  bumpH10 bumpH12 bumpI6  bumpI8  \
+          bumpI10 bumpI12 bumpJ6  bumpJ8  bumpJ10 bumpJ12}
+set VDD2 {bumpK6  bumpK10 bumpL6  bumpL10 bumpM6  bumpM8  bumpM10 bumpM12 bumpN6  bumpN8  \
+          bumpN10 bumpN12 bumpO6  bumpO10 bumpP6  bumpP10}
+set VDD3 {bumpQ6  bumpQ8  bumpQ10 bumpQ12 bumpR6  bumpR8  bumpR10 bumpR12 bumpS6  bumpS8  \
+          bumpS10 bumpS12 bumpT8  bumpT12 bumpU8  bumpU12}
+set VDD4 {bumpF15 bumpF19 bumpG15 bumpG19 bumpH15 bumpH17 bumpH19 bumpH21 bumpI15 bumpI17 \
+          bumpI19 bumpI21 bumpJ15 bumpJ17 bumpJ19 bumpJ21}
+set VDD5 {bumpK17 bumpK21 bumpL17 bumpL21 bumpM15 bumpM17 bumpM19 bumpM21 bumpN15 bumpN17 \
+          bumpN19 bumpN21 bumpO17 bumpO21 bumpP17 bumpP21}
+set VDD6 {bumpQ15 bumpQ17 bumpQ19 bumpQ21 bumpR15 bumpR17 bumpR19 bumpR21 bumpS15 bumpS17 \
+          bumpS19 bumpS21 bumpT15 bumpT19 bumpU15 bumpU19}
 
-set VDDG {F6  F10 F17 F21 G6  G10 G17 G21 K8  K12 \
-          K15 K19 L8  L12 L15 L19 O8  O12 O15 O19 \
-          P8  P12 P15 P19 T6  T10 T17 T21 U6  U10 \
-          U17 U21}
+set VDDG {bumpF6  bumpF10 bumpF17 bumpF21 bumpG6  bumpG10 bumpG17 bumpG21 bumpK8  bumpK12 \
+          bumpK15 bumpK19 bumpL8  bumpL12 bumpL15 bumpL19 bumpO8  bumpO12 bumpO15 bumpO19 \
+          bumpP8  bumpP12 bumpP15 bumpP19 bumpT6  bumpT10 bumpT17 bumpT21 bumpU6  bumpU10 \
+          bumpU17 bumpU21}
 
 # VSS Core
-set VSS_Core {F7  G7  H7  I7  J7  K7  L7  M7  N7  O7  \
-              P7  Q7  R7  S7  T7  U7  F9  G9  H9  I9  \
-              J9  K9  L9  M9  N9  O9  P9  Q9  R9  S9  \
-              T9  U9  F11 G11 H11 I11 J11 K11 L11 M11 \
-              N11 O11 P11 Q11 R11 S11 T11 U11 F13 G13 \
-              H13 I13 J13 K13 L13 M13 N13 O13 P13 Q13 \
-              R13 S13 T13 U13 F14 G14 H14 I14 J14 K14 \
-              L14 M14 N14 O14 P14 Q14 R14 S14 T14 U14 \
-              F16 G16 H16 I16 J16 K16 L16 M16 N16 O16 \
-              P16 Q16 R16 S16 T16 U16 F18 G18 H18 I18 \
-              J18 K18 L18 M18 N18 O18 P18 Q18 R18 S18 \
-              T18 U18 F20 G20 H20 I20 J20 K20 L20 M20 \
-              N20 O20 P20 Q20 R20 S20 T20 U20}
+set VSS_Core {bumpF7  bumpG7  bumpH7  bumpI7  bumpJ7  bumpK7  bumpL7  bumpM7  bumpN7  bumpO7  \
+              bumpP7  bumpQ7  bumpR7  bumpS7  bumpT7  bumpU7  bumpF9  bumpG9  bumpH9  bumpI9  \
+              bumpJ9  bumpK9  bumpL9  bumpM9  bumpN9  bumpO9  bumpP9  bumpQ9  bumpR9  bumpS9  \
+              bumpT9  bumpU9  bumpF11 bumpG11 bumpH11 bumpI11 bumpJ11 bumpK11 bumpL11 bumpM11 \
+              bumpN11 bumpO11 bumpP11 bumpQ11 bumpR11 bumpS11 bumpT11 bumpU11 bumpF13 bumpG13 \
+              bumpH13 bumpI13 bumpJ13 bumpK13 bumpL13 bumpM13 bumpN13 bumpO13 bumpP13 bumpQ13 \
+              bumpR13 bumpS13 bumpT13 bumpU13 bumpF14 bumpG14 bumpH14 bumpI14 bumpJ14 bumpK14 \
+              bumpL14 bumpM14 bumpN14 bumpO14 bumpP14 bumpQ14 bumpR14 bumpS14 bumpT14 bumpU14 \
+              bumpF16 bumpG16 bumpH16 bumpI16 bumpJ16 bumpK16 bumpL16 bumpM16 bumpN16 bumpO16 \
+              bumpP16 bumpQ16 bumpR16 bumpS16 bumpT16 bumpU16 bumpF18 bumpG18 bumpH18 bumpI18 \
+              bumpJ18 bumpK18 bumpL18 bumpM18 bumpN18 bumpO18 bumpP18 bumpQ18 bumpR18 bumpS18 \
+              bumpT18 bumpU18 bumpF20 bumpG20 bumpH20 bumpI20 bumpJ20 bumpK20 bumpL20 bumpM20 \
+              bumpN20 bumpO20 bumpP20 bumpQ20 bumpR20 bumpS20 bumpT20 bumpU20}
 
 # VDD Core
 set VDD_Core "$VDDG $VDD1 $VDD2 $VDD3 $VDD4 $VDD5 $VDD6"
