@@ -34,7 +34,7 @@
 //sdo_sclk_ex_o, sdi_tkn_ex_o, SMA_out_p_o, SMA_out_n_o, JTAG_TDO_o
    output p_LDO_CLKOV64_o, output p_LDO_ENH_o, output p_LDO_ENHH_o, output p_LDO_ENL_o, output p_LDO_ENLL_o
  , input p_LDO_EXT_SAM_i, input p_LDO_CLK_LOAD_i, input p_LDO_CLK_REF_i, input p_LDO_PLL_i, input p_LDO_RSTIN_i
- , input p_SPI_CLK_i, input p_SPI_IN_i, input p_SPI_RST_i
+ , input p_LDO_SPI_CLK_i, input p_LDO_SPI_IN_i, input p_LDO_SPI_RST_i
 
 //LDO ANALOG DOMAIN
  , input  p_LDO_A9_i, input p_LDO_A1_i, input p_LDO_A2_i, input  p_LDO_A7_i, input  p_LDO_A6_i, input  p_LDO_A11_i
