@@ -156,13 +156,13 @@
 	(inst  name="LDO_SPI_IN_i"	offset=875.4720 )
 	(inst  name="DVSS_L_2"	offset=919.8240 )
 	(inst  name="DVDD_L_2"	offset=969.2640 )
-#	(inst  name="LDO_SPI_RST_i"	offset=1018.6560 )
+	(inst  name="LDO_SPI_RST_i"	offset=1018.6560 )
 	(inst  name="sdi_B_sclk_ex_i"	offset=1063.0560 )
 	(inst  name="sdi_B_tkn_ex_o"	offset=1107.4080 )
-#	(inst  name="sdi_B_data_7_i"	offset=1151.7600 )
+	(inst  name="sdi_B_data_7_i"	offset=1151.7600 )
 	(inst  name="sdi_B_data_6_i"	offset=1196.1600 )
 	(inst  name="sdi_B_data_5_i"	offset=1240.5120 )
-#	(inst  name="sdi_B_data_4_i"	offset=1284.8640 )
+	(inst  name="sdi_B_data_4_i"	offset=1284.8640 )
 	(inst  name="VSS_L_3"	offset=1329.2640 )
 	(inst  name="VDD_L_3"	offset=1378.6560 )
 	(inst  name="misc_L_7_i"	offset=1428.0960 )
@@ -265,8 +265,8 @@
 	(inst  name="DVDD_B_7"	offset=885.0720 )
 	(inst  name="DVSS_B_7"	offset=934.8260 )
 ##############################################
-# PLL section starts here
-(inst  name="BRK_LDO_START"	)
+# LDO section starts here
+	(inst  name="BRK_LDO_START"	)
 
 
 	(inst  name="PAVDD2"	offset=984.5800 )
@@ -292,7 +292,7 @@
 ##############################################
 # PLL section starts here
 # All instances must start with PLL_* for globalNetConnect
-(inst  name="BRK_PLL_START"	)
+	(inst  name="BRK_PLL_START"	)
 
 	(inst  name="PLL_DVDD_B_6"	offset=1854.9060 )
 	(inst  name="PLL_DVSS_B_6"	offset=1904.6600 )
