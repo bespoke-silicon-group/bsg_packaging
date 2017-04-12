@@ -101,8 +101,10 @@ BSG_PAD_BIDIR_V should be defined!
 
    `BSG_IO_OUT(SMA_out_p,`BSG_PAD_BIDIR_V)
    `BSG_IO_OUT(SMA_out_n,`BSG_PAD_BIDIR_V)
-   `BSG_IO_TIELO(SMA_out_p_oen_int)
-   `BSG_IO_TIELO(SMA_out_n_oen_int)
+
+   // Unused in Certus
+   //`BSG_IO_TIELO(SMA_out_p_oen_int)
+   //`BSG_IO_TIELO(SMA_out_n_oen_int)
 
    // Lutag inputs
    `BSG_IO_IN(JTAG_TDI, `BSG_PAD_BIDIR_H)
