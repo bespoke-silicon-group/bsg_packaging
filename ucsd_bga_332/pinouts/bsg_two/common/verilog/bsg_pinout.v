@@ -28,9 +28,26 @@
  // all "100-ohm impedance-controlled-in-package" differential pairs
  //
 
+ //LDO DIGITAL DOMAIN
+ //NEED TO FIND AND REMOVE THE ONES BELOW IF THEY CAUSE VIOLATIONS FROM BEING ON THE RING STILL AND UNCONNECTED
+ //misc_R_1_i_int, misc_R_2_i_int, misc_R_4_i_int, SMA_in_p_i_int, sdi_sclk_ex_i_int[0], SMA_in_n_i_int, JTAG_TDI_i_int, clk_0_p_i_int)
+//sdo_sclk_ex_o, sdi_tkn_ex_o, SMA_out_p_o, SMA_out_n_o, JTAG_TDO_o
+   output p_LDO_CLKOV64_o, output p_LDO_ENH_o, output p_LDO_ENHH_o, output p_LDO_ENL_o, output p_LDO_ENLL_o
+ , input p_LDO_EXT_SAM_i, input p_LDO_CLK_LOAD_i, input p_LDO_CLK_REF_i, input p_LDO_PLL_i, input p_LDO_RSTIN_i
+ , input p_SPI_CLK_i, input p_SPI_IN_i, input p_SPI_RST_i
+
+//LDO ANALOG DOMAIN
+ , input  p_LDO_A9_i, input p_LDO_A1_i, input p_LDO_A2_i, input  p_LDO_A7_i, input  p_LDO_A6_i, input  p_LDO_A11_i
+
+//PLL DOMIN
+ , input  p_PLL_1_REF_i, input  p_PLL_2_REF_i, input  p_PLL_3_REF_i
+ , input  p_PLL_1_RST_i, input  p_PLL_2_RST_i, input  p_PLL_3_RST_i
+ , output p_PLL_1_TST_o ,output p_PLL_2_TST_o, output p_PLL_3_TST_o
+
+
  // unused differential inputs
  // we give these as outputs, and then go high-impedance
-   output p_clk_0_p_i    , output  p_clk_0_n_i
+ , output p_clk_0_p_i    , output  p_clk_0_n_i
  , output  p_clk_1_p_i    , output  p_clk_1_n_i
 
  // unused differential inputs
@@ -41,7 +58,7 @@
 
  // *******************************************************************
  // ultra-shielded "50-ohm impedance-controlled-in-package" clock for PLL
- , input   p_PLL_CLK_i
+
 
  // *******************************************************************
  // all "50-ohm impedance-controlled-in-package" signals starting here
@@ -90,27 +107,21 @@
  // but are next to clock or token signals
  // and are not length-matched
 
- , input  p_misc_T_0_i, input p_misc_T_1_i, input p_misc_T_2_i
-
- , input  p_misc_L_7_i, input  p_misc_R_7_i
+ , input  p_misc_R_4_i, p_misc_R_5_i
  , input  p_misc_L_6_i, input  p_misc_R_6_i
- , input  p_misc_L_5_i, input  p_misc_R_5_i
- , input  p_misc_L_4_i, input  p_misc_R_4_i
 
  // L3 and R3 are output pads because it works with the pad ring
  , output p_misc_L_3_o, output p_misc_R_3_o
 
  , input  p_misc_L_2_i, input  p_misc_R_2_i
  , input  p_misc_L_1_i, input  p_misc_R_1_i
- , input  p_misc_L_0_i, input  p_misc_R_0_i
+
 
  , input  p_reset_i
 
  // for JTAG, or other purposes
- , input  p_JTAG_TMS_i
  , input  p_JTAG_TDI_i
  , input  p_JTAG_TCK_i
- , input  p_JTAG_TRST_i
  , output p_JTAG_TDO_o
 
  // *******************************************************************
@@ -118,7 +129,7 @@
  // for powering PLL or can be used for low frequency debug signals
  // NOTE: Driver selected by XTC macro must be updated according to use.
 
-// , input  p_PLL_VDD_i
+// , input  p_PLLVDD_i
 // , input  p_PLL_VSS_i
 // , input  p_PLL_V33_i
 // , input  p_PLL_VZZ_i

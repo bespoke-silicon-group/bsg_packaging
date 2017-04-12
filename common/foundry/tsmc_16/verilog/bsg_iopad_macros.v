@@ -53,6 +53,21 @@
 // Set slew rate (0 = fast, 1 = slow)
 `define OUTPUT_SLEW_RATE   1'b0
 
+//50-Ohm variant
+`define ANALOG_PAD_50(pad,a) \
+   .PAD(pad),                      \
+   .PADR2(a),                      \
+   .SNS(1'b1),                     \
+   .RTO(1'b1)                     
+
+  //50-Ohm variant
+`define ANALOG_PAD_500(pad,a) \
+   .PAD(pad),                      \
+   .PADR1(a),                      \
+   .SNS(1'b1),                     \
+   .RTO(1'b1),                     
+
+
 `define BIDIR_PAD_OUTPUT_ENABLED(pad,a) \
     .OE(1'b1),                    \
     .A(a),                        \
@@ -248,6 +263,11 @@
 
 `define BSG_IO_IN_V(name,index,padtype) \
     padtype name``_``index``_i (`BIDIR_PAD_INPUT_ENABLE(p_``name``_i[index], name``_i_int[index]));
+
+`define BSG_ANALOG_PAD(name,padtype) \
+    wire name``_i_int;          \
+    padtype name``_i (`ANALOG_PAD_50(p_``name``_i, name``_i_int));
+
 
 // *****************************************************************************
 //
