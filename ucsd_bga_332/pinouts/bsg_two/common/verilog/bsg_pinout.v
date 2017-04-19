@@ -33,17 +33,25 @@
  //misc_R_1_i_int, misc_R_2_i_int, misc_R_4_i_int, SMA_in_p_i_int, sdi_sclk_ex_i_int[0], SMA_in_n_i_int, JTAG_TDI_i_int, clk_0_p_i_int)
 //sdo_sclk_ex_o, sdi_tkn_ex_o, SMA_out_p_o, SMA_out_n_o, JTAG_TDO_o
    output p_LDO_CLKOV64_o, output p_LDO_ENH_o, output p_LDO_ENHH_o, output p_LDO_ENL_o, output p_LDO_ENLL_o
- , input p_LDO_EXT_SAM_i, input p_LDO_CLK_LOAD_i, input p_LDO_CLK_REF_i, input p_LDO_PLL_i, input p_LDO_RSTIN_i
+ , input p_LDO_EXT_SAM_i, input p_LDO_CLK_LOAD_i, input p_LDO_CLK_REF_i, input p_LDO_RSTIN_i
  , input p_LDO_SPI_CLK_i, input p_LDO_SPI_IN_i, input p_LDO_SPI_RST_i
+ // , input p_LDO_PLL_i
 
 //LDO ANALOG DOMAIN
- , input  p_LDO_A9_i, input p_LDO_A1_i, input p_LDO_A2_i, input  p_LDO_A7_i, input  p_LDO_A6_i, input  p_LDO_A11_i
+ , input  p_LDO_VREFH_i, input p_LDO_VREFL_i, input p_LDO_VB_RING_i
+ , input  p_LDO_VCAL_HH_i, input  p_LDO_VCAL_LL_i, input  p_LDO_VL_i
+ , input  p_LDO_VDD_LOAD_i, input  p_LDO_VDDIO_i, input  p_LDO_VDDC_i
 
 //PLL DOMIN
  , input  p_PLL_1_REF_i, input  p_PLL_2_REF_i, input  p_PLL_3_REF_i
  , input  p_PLL_1_RST_i, input  p_PLL_2_RST_i, input  p_PLL_3_RST_i
  , output p_PLL_1_TST_o ,output p_PLL_2_TST_o, output p_PLL_3_TST_o
 
+//PLL Digital signals
+ , input p_PLL_SCLK_i
+ , input p_PLL_1_CS_i, input p_PLL_2_CS_i, input p_PLL_3_CS_i
+ , input p_PLL_1_SDI_i, input p_PLL_2_SDI_i, input p_PLL_3_SDI_i
+ , output p_PLL_1_SDO_o, output p_PLL_2_SDO_o, output p_PLL_3_SDO_o
 
  // unused differential inputs
  // we give these as outputs, and then go high-impedance
@@ -54,7 +62,7 @@
  // we give these as outputs, and then go high-impedance
  , output  p_SMA_in_p_i   , output p_SMA_in_n_i
 
- , output p_SMA_out_p_o  , output p_SMA_out_n_o
+ // , output p_SMA_out_p_o  , output p_SMA_out_n_o
 
  // *******************************************************************
  // ultra-shielded "50-ohm impedance-controlled-in-package" clock for PLL
@@ -95,34 +103,39 @@
  , input  [3:0] p_sdo_token_i
 
  // spare clocks, length matched to channels
- , input  [3:0] p_sdi_sclk_ex_i
+ // , input  [3:0] p_sdi_sclk_ex_i
  , output [3:0] p_sdo_sclk_ex_o
 
  // spare tokens for input and output channels
- , output [3:0] p_sdi_tkn_ex_o
- , input  [3:0] p_sdo_tkn_ex_i
+ // , output [3:0] p_sdi_tkn_ex_o
+ // , input  [3:0] p_sdo_tkn_ex_i
 
  // *******************************************************************
  // all "50-ohm impedance-controlled-in-package", starting here
  // but are next to clock or token signals
  // and are not length-matched
 
- , input  p_misc_R_4_i, p_misc_R_5_i
- , input  p_misc_L_6_i, input  p_misc_R_6_i
+ , input  p_misc_R_4_i
+ // , input p_misc_R_5_i
+ // , input  p_misc_L_6_i
+ // , input  p_misc_R_6_i
 
  // L3 and R3 are output pads because it works with the pad ring
- , output p_misc_L_3_o, output p_misc_R_3_o
+ // , output p_misc_L_3_o
+ , output p_misc_R_3_o
 
- , input  p_misc_L_2_i, input  p_misc_R_2_i
- , input  p_misc_L_1_i, input  p_misc_R_1_i
+ // , input  p_misc_L_2_i
+ , input  p_misc_R_2_i
+ // , input  p_misc_L_1_i
+ , input  p_misc_R_1_i
 
 
  , input  p_reset_i
 
  // for JTAG, or other purposes
- , input  p_JTAG_TDI_i
- , input  p_JTAG_TCK_i
- , output p_JTAG_TDO_o
+ // , input  p_JTAG_TDI_i
+ // , input  p_JTAG_TCK_i
+ // , output p_JTAG_TDO_o
 
  // *******************************************************************
  // all "not impedance controlled in package", starting here

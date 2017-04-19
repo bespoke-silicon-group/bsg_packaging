@@ -58,14 +58,14 @@
    .PAD(pad),                      \
    .PADR2(a),                      \
    .SNS(1'b1),                     \
-   .RTO(1'b1)                     
+   .RTO(1'b1)
 
-  //50-Ohm variant
+//500-Ohm variant
 `define ANALOG_PAD_500(pad,a) \
    .PAD(pad),                      \
    .PADR1(a),                      \
    .SNS(1'b1),                     \
-   .RTO(1'b1),                     
+   .RTO(1'b1)
 
 
 `define BIDIR_PAD_OUTPUT_ENABLED(pad,a) \
@@ -266,7 +266,7 @@
 
 `define BSG_ANALOG_PAD(name,padtype) \
     wire name``_i_int;          \
-    padtype name``_i (`ANALOG_PAD_50(p_``name``_i, name``_i_int));
+    padtype name``_i (`ANALOG_PAD_500(p_``name``_i, name``_i_int));
 
 
 // *****************************************************************************
