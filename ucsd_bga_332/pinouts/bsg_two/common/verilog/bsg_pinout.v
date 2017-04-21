@@ -38,14 +38,14 @@
  // , input p_LDO_PLL_i
 
 //LDO ANALOG DOMAIN
- , input  p_LDO_VREFH_i, input p_LDO_VREFL_i, input p_LDO_VB_RING_i
- , input  p_LDO_VCAL_HH_i, input  p_LDO_VCAL_LL_i, input  p_LDO_VL_i
- , input  p_LDO_VDD_LOAD_i, input  p_LDO_VDDIO_i, input  p_LDO_VDDC_i
+ , input  p_LDO_SECTION_VREFH_i, input p_LDO_SECTION_VREFL_i, input p_LDO_SECTION_VB_RING_i
+ , input  p_LDO_SECTION_VCAL_HH_i, input  p_LDO_SECTION_VCAL_LL_i, input  p_LDO_SECTION_VL_i
+ , input  p_LDO_SECTION_VDD_LOAD_i, input  p_LDO_SECTION_VDDIO_i, input  p_LDO_SECTION_VDDC_i
 
 //PLL DOMIN
- , input  p_PLL_1_REF_i, input  p_PLL_2_REF_i, input  p_PLL_3_REF_i
- , input  p_PLL_1_RST_i, input  p_PLL_2_RST_i, input  p_PLL_3_RST_i
- , output p_PLL_1_TST_o ,output p_PLL_2_TST_o, output p_PLL_3_TST_o
+ , input  p_PLL_SECTION_1_REF_i, input  p_PLL_SECTION_2_REF_i, input  p_PLL_SECTION_3_REF_i
+ , input  p_PLL_SECTION_1_RST_i, input  p_PLL_SECTION_2_RST_i, input  p_PLL_SECTION_3_RST_i
+ , output p_PLL_SECTION_1_TST_o ,output p_PLL_SECTION_2_TST_o, output p_PLL_SECTION_3_TST_o
 
 //PLL Digital signals
  , input p_PLL_SCLK_i
@@ -55,12 +55,12 @@
 
  // unused differential inputs
  // we give these as outputs, and then go high-impedance
- , output p_clk_0_p_i    , output  p_clk_0_n_i
- , output  p_clk_1_p_i    , output  p_clk_1_n_i
+ // , output p_clk_0_p_i    , output  p_clk_0_n_i
+ // , output  p_clk_1_p_i    , output  p_clk_1_n_i
 
  // unused differential inputs
  // we give these as outputs, and then go high-impedance
- , output  p_SMA_in_p_i   , output p_SMA_in_n_i
+ // , output  p_SMA_in_p_i   , output p_SMA_in_n_i
 
  // , output p_SMA_out_p_o  , output p_SMA_out_n_o
 
@@ -97,14 +97,14 @@
  , output [7:0] p_sdo_C_data_o, output [7:0] p_sdo_D_data_o
 
  // extra output datas
- , output p_sdo_A_data_8_o , output p_sdo_C_data_8_o
+ //, output p_sdo_A_data_8_o , output p_sdo_C_data_8_o
 
  // input tokens for output channels
  , input  [3:0] p_sdo_token_i
 
  // spare clocks, length matched to channels
  // , input  [3:0] p_sdi_sclk_ex_i
- , output [3:0] p_sdo_sclk_ex_o
+ // , output [3:0] p_sdo_sclk_ex_o
 
  // spare tokens for input and output channels
  // , output [3:0] p_sdi_tkn_ex_o
@@ -115,19 +115,19 @@
  // but are next to clock or token signals
  // and are not length-matched
 
- , input  p_misc_R_4_i
+ // , input  p_misc_R_4_i
  // , input p_misc_R_5_i
  // , input  p_misc_L_6_i
  // , input  p_misc_R_6_i
 
  // L3 and R3 are output pads because it works with the pad ring
  // , output p_misc_L_3_o
- , output p_misc_R_3_o
+ // , output p_misc_R_3_o
 
  // , input  p_misc_L_2_i
- , input  p_misc_R_2_i
+ // , input  p_misc_R_2_i
  // , input  p_misc_L_1_i
- , input  p_misc_R_1_i
+ // , input  p_misc_R_1_i
 
 
  , input  p_reset_i
