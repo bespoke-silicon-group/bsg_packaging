@@ -129,6 +129,12 @@
  // , input  p_misc_L_1_i
  // , input  p_misc_R_1_i
 
+ , input p_misc_L_7_i
+ , input p_misc_L_6_i
+ , input p_misc_L_5_i
+ , input p_misc_L_4_i
+ , input p_misc_R_0_i
+ , input p_misc_R_1_i
 
  , input  p_reset_i
 
