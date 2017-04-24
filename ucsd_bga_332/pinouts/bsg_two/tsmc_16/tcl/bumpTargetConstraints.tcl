@@ -269,8 +269,6 @@ addBumpConnectTargetConstraint -instName VDD_B_3 -bump bumpS26 -pinName VDD -por
 addBumpConnectTargetConstraint -instName VDD_B_4 -bump bumpP22 -pinName VDD -portNum 3
 # addBumpConnectTargetConstraint -instName VDD_B_5 -bump bumpN24 -pinName VDD -portNum 3
 # addBumpConnectTargetConstraint -instName VDD_B_6 -bump bumpM24 -pinName VDD -portNum 3
-addBumpConnectTargetConstraint -instName LDO_SECTION_VDD_B_7 -bump bumpK22 -pinName VDD -portNum 3
-addBumpConnectTargetConstraint -instName LDO_SECTION_VDD_B_8 -bump bumpH26 -pinName VDD -portNum 3
 addBumpConnectTargetConstraint -instName VDD_B_9 -bump bumpF24 -pinName VDD -portNum 3
 addBumpConnectTargetConstraint -instName VDD_B_10 -bump bumpB26 -pinName VDD -portNum 3
 addBumpConnectTargetConstraint -instName VDD_L_1 -bump bumpA25 -pinName VDD -portNum 3
@@ -309,8 +307,6 @@ addBumpConnectTargetConstraint -instName VSS_B_3 -bump bumpR23 -pinName VSS -por
 addBumpConnectTargetConstraint -instName VSS_B_4 -bump bumpQ26 -pinName VSS -portNum 3
 # addBumpConnectTargetConstraint -instName VSS_B_5 -bump bumpN26 -pinName VSS -portNum 3
 # addBumpConnectTargetConstraint -instName VSS_B_6 -bump bumpM26 -pinName VSS -portNum 3
-addBumpConnectTargetConstraint -instName LDO_SECTION_VSS_B_7 -bump bumpJ26 -pinName VSS -portNum 3
-addBumpConnectTargetConstraint -instName LDO_SECTION_VSS_B_8 -bump bumpI23 -pinName VSS -portNum 3
 addBumpConnectTargetConstraint -instName VSS_B_9 -bump bumpE26 -pinName VSS -portNum 3
 addBumpConnectTargetConstraint -instName VSS_B_10 -bump bumpC25 -pinName VSS -portNum 3
 addBumpConnectTargetConstraint -instName VSS_L_1 -bump bumpB24 -pinName VSS -portNum 3
@@ -409,12 +405,26 @@ addBumpConnectTargetConstraint -instName DVSS_T_6 -bump bumpP2 -pinName DVSS -po
 addBumpConnectTargetConstraint -instName DVSS_T_7 -bump bumpT3 -pinName DVSS -portNum 3
 addBumpConnectTargetConstraint -instName DVSS_T_8 -bump bumpV5 -pinName DVSS -portNum 3
 
-
-
 addBumpConnectTargetConstraint -instName PLL_SECTION_VDD_1 -bump bumpO22 -pinName VDD -portNum 3
 addBumpConnectTargetConstraint -instName PLL_SECTION_VSS_1 -bump bumpO23 -pinName VSS -portNum 3
 addBumpConnectTargetConstraint -instName PLL_SECTION_VDD_2 -bump bumpL22 -pinName VDD -portNum 3
 addBumpConnectTargetConstraint -instName PLL_SECTION_VSS_2 -bump bumpK26 -pinName VSS -portNum 3
+
+
+
+addBumpConnectTargetConstraint -instName LDO_SECTION_VDD_B_7 -bump bumpK22 -pinName VDD -portNum 3
+addBumpConnectTargetConstraint -instName LDO_SECTION_VDD_B_8 -bump bumpH26 -pinName VDD -portNum 3
+addBumpConnectTargetConstraint -instName LDO_SECTION_VSS_B_7 -bump bumpJ26 -pinName VSS -portNum 3
+addBumpConnectTargetConstraint -instName LDO_SECTION_VSS_B_8 -bump bumpI23 -pinName VSS -portNum 3
+addBumpConnectTargetConstraint -instName LDO_SECTION_PAVSS1 -bump bumpJ25 -pinName AVSSC -portNum 3
+addBumpConnectTargetConstraint -instName LDO_SECTION_PAVDD1 -bump bumpJ24 -pinName AVDDC -portNum 3
+addBumpConnectTargetConstraint -instName LDO_SECTION_VDDIO -bump bumpI25 -pinName VDDIAC -portNum 2
+addBumpConnectTargetConstraint -instName LDO_SECTION_PAVSS2 -bump bumpJ22 -pinName AVSSC -portNum 3
+addBumpConnectTargetConstraint -instName LDO_SECTION_PAVDD2 -bump bumpI24 -pinName AVDDC -portNum 3
+addBumpConnectTargetConstraint -instName LDO_SECTION_VDDC -bump bumpG25 -pinName VDDIAC -portNum 2
+addBumpConnectTargetConstraint -instName LDO_SECTION_PAVSS3 -bump bumpH23 -pinName AVSSC -portNum 3
+addBumpConnectTargetConstraint -instName LDO_SECTION_PAVDD3 -bump bumpH22 -pinName AVDDC -portNum 3
+
 
 
 # addBumpConnectTargetConstraint -instName SIG_B_1 -bump bumpW24 -pinName PAD -portNum 1
@@ -456,9 +466,6 @@ addBumpConnectTargetConstraint -instName PLL_SECTION_VSS_2 -bump bumpK26 -pinNam
 # addBumpConnectTargetConstraint -instName SIG_B_44 -bump bumpJ24 -pinName PAD -portNum 1
 # addBumpConnectTargetConstraint -instName SIG_B_45 -bump bumpI26 -pinName PAD -portNum 1
 # addBumpConnectTargetConstraint -instName SIG_B_46 -bump bumpJ23 -pinName PAD -portNum 1
-# addBumpConnectTargetConstraint -instName SIG_B_47 -bump bumpI25 -pinName PAD -portNum 1
-# addBumpConnectTargetConstraint -instName SIG_B_48 -bump bumpJ22 -pinName PAD -portNum 1
-# addBumpConnectTargetConstraint -instName SIG_B_49 -bump bumpI24 -pinName PAD -portNum 1
 # addBumpConnectTargetConstraint -instName SIG_B_50 -bump bumpH25 -pinName PAD -portNum 1
 # addBumpConnectTargetConstraint -instName SIG_B_51 -bump bumpI22 -pinName PAD -portNum 1
 # addBumpConnectTargetConstraint -instName SIG_B_52 -bump bumpG26 -pinName PAD -portNum 1

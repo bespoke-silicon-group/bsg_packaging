@@ -171,14 +171,19 @@ addInst -cell PDVSS_18_18_NT_DR_H -inst DVSS_R_8 -physical
 # All instances must start with LDO_SECTION_* for globalNetConnect
 addInst -cell PBRKANALOG_18_18_NT_DR_V -inst BRK_LDO_START -physical
 
-addInst -cell PAVDD_08_08_NT_DR_V -inst LDO_SECTION_PAVDD2  -physical
-addInst -cell PAVSS_08_08_NT_DR_V -inst LDO_SECTION_PAVSS2  -physical
+addInst -cell PAVDD_08_08_NT_DR_V  -inst LDO_SECTION_PAVDD3  -physical
+addInst -cell PAVSS_08_08_NT_DR_V  -inst LDO_SECTION_PAVSS3  -physical
+addInst -cell PVDDIA_08_08_NT_DR_V -inst LDO_SECTION_VDDC   -physical
 addInst -cell PVSS_08_08_NT_DR_V  -inst LDO_SECTION_VSS_B_8 -physical
 addInst -cell PVDD_08_08_NT_DR_V  -inst LDO_SECTION_VDD_B_8 -physical
+addInst -cell PAVDD_08_08_NT_DR_V -inst LDO_SECTION_PAVDD2  -physical
+addInst -cell PAVSS_08_08_NT_DR_V -inst LDO_SECTION_PAVSS2  -physical
+addInst -cell PVDDIA_08_08_NT_DR_V -inst LDO_SECTION_VDDIO  -physical
 addInst -cell PAVDD_08_08_NT_DR_V -inst LDO_SECTION_PAVDD1  -physical
 addInst -cell PAVSS_08_08_NT_DR_V -inst LDO_SECTION_PAVSS1  -physical
 addInst -cell PVDD_08_08_NT_DR_V  -inst LDO_SECTION_VDD_B_7 -physical
 addInst -cell PVSS_08_08_NT_DR_V  -inst LDO_SECTION_VSS_B_7 -physical
+
 
 # LDO section ends here
 ##############################################
