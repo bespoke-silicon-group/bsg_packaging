@@ -48,13 +48,13 @@ BSG_PAD_BIDIR_V should be defined!
   // `BSG_IO_OUT(misc_R_3, `BSG_PAD_BIDIR_H)
   // `BSG_IO_TIELO(misc_R_3_oen_int)
   // `BSG_IO_IN (misc_R_2, `BSG_PAD_BIDIR_H)
-  `BSG_IO_IN (misc_R_1, `BSG_PAD_BIDIR_H)
-  `BSG_IO_IN (misc_R_0, `BSG_PAD_BIDIR_H)
+  // `BSG_IO_IN (misc_R_1, `BSG_PAD_BIDIR_H)
+  // `BSG_IO_IN (misc_R_0, `BSG_PAD_BIDIR_H)
 
-  `BSG_IO_IN (misc_L_7, `BSG_PAD_BIDIR_H)
-  `BSG_IO_IN (misc_L_6, `BSG_PAD_BIDIR_H)
-  `BSG_IO_IN (misc_L_5, `BSG_PAD_BIDIR_H)
-  `BSG_IO_IN (misc_L_4, `BSG_PAD_BIDIR_H)
+  // `BSG_IO_IN (misc_L_7, `BSG_PAD_BIDIR_H)
+  // `BSG_IO_IN (misc_L_6, `BSG_PAD_BIDIR_H)
+  // `BSG_IO_IN (misc_L_5, `BSG_PAD_BIDIR_H)
+  // `BSG_IO_IN (misc_L_4, `BSG_PAD_BIDIR_H)
   // `BSG_IO_OUT(misc_L_3, `BSG_PAD_BIDIR_H)
   // `BSG_IO_TIELO(misc_L_3_oen_int)
   // `BSG_IO_IN (misc_L_2, `BSG_PAD_BIDIR_H)
@@ -127,6 +127,16 @@ BSG_PAD_BIDIR_V should be defined!
   `BSG_IO_IN (PLL_3_CS, `BSG_PAD_BIDIR_V)
   `BSG_IO_IN (PLL_3_SDI, `BSG_PAD_BIDIR_V)
   `BSG_IO_OUT(PLL_3_SDO, `BSG_PAD_BIDIR_V)
+
+  `BSG_IO_IN (PLL_1_CLK_BKP, `BSG_PAD_BIDIR_V)
+  `BSG_IO_IN (PLL_2_CLK_BKP, `BSG_PAD_BIDIR_V)
+  `BSG_IO_IN (PLL_3_CLK_BKP, `BSG_PAD_BIDIR_V)
+  `BSG_IO_IN (PLL_1_CLK_SEL, `BSG_PAD_BIDIR_V)
+  `BSG_IO_IN (PLL_2_CLK_SEL, `BSG_PAD_BIDIR_V)
+  `BSG_IO_IN (PLL_3_CLK_SEL, `BSG_PAD_BIDIR_V)
+
+
+
 
   // differential pairs
   //`BSG_IO_IN_DIFF_DISABLE (clk_0, `BSG_PAD_DISABLE)

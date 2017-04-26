@@ -54,6 +54,9 @@
  , input p_PLL_1_SDI_i, input p_PLL_2_SDI_i, input p_PLL_3_SDI_i
  , output p_PLL_1_SDO_o, output p_PLL_2_SDO_o, output p_PLL_3_SDO_o
 
+ , input p_PLL_1_CLK_BKP_i, input p_PLL_2_CLK_BKP_i, input p_PLL_3_CLK_BKP_i
+ , input p_PLL_1_CLK_SEL_i, input p_PLL_2_CLK_SEL_i, input p_PLL_3_CLK_SEL_i
+
  // unused differential inputs
  // we give these as outputs, and then go high-impedance
  // , output p_clk_0_p_i    , output  p_clk_0_n_i
@@ -130,12 +133,12 @@
  // , input  p_misc_L_1_i
  // , input  p_misc_R_1_i
 
- , input p_misc_L_7_i
- , input p_misc_L_6_i
- , input p_misc_L_5_i
- , input p_misc_L_4_i
- , input p_misc_R_0_i
- , input p_misc_R_1_i
+ // , input p_misc_L_7_i
+ // , input p_misc_L_6_i
+ // , input p_misc_L_5_i
+ // , input p_misc_L_4_i
+ // , input p_misc_R_0_i
+ // , input p_misc_R_1_i
 
  , input  p_reset_i
 
