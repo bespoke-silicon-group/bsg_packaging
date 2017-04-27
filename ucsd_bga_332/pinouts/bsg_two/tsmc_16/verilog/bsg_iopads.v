@@ -12,9 +12,9 @@ BSG_PAD_BIDIR_V should be defined!
    `BSG_IO_IN (PLL_CLK,`BSG_PAD_BIDIR_V)
    `BSG_IO_IN (reset,  `BSG_PAD_BIDIR_V)
 
-   `BSG_IO_IN_ABCD (sdi,sclk,    `BSG_PAD_BIDIR_H)
-   `BSG_IO_IN_ABCD (sdi,sclk_ex, `BSG_PAD_BIDIR_H)
-   `BSG_IO_IN_ABCD (sdi,ncmd,    `BSG_PAD_BIDIR_H)
+   `BSG_IO_IN_ABCD (sdi,sclk,    `BSG_PAD_BIDIR_H, `BSG_PAD_BIDIR_H, `BSG_PAD_BIDIR_H, `BSG_PAD_BIDIR_H)
+   `BSG_IO_IN_ABCD (sdi,sclk_ex, `BSG_PAD_BIDIR_H, `BSG_PAD_BIDIR_H, `BSG_PAD_BIDIR_H, `BSG_PAD_BIDIR_H)
+   `BSG_IO_IN_ABCD (sdi,ncmd,    `BSG_PAD_BIDIR_H, `BSG_PAD_BIDIR_H, `BSG_PAD_BIDIR_H, `BSG_PAD_BIDIR_H)
 
    `BSG_IO_OUT_ABCD(sdi,token,   `BSG_PAD_BIDIR_H,    `BSG_PAD_BIDIR_H,    `BSG_PAD_BIDIR_H,    `BSG_PAD_BIDIR_H   )
    `BSG_IO_TIELO_VEC(sdi_token_oen_int,4)
@@ -43,8 +43,8 @@ BSG_PAD_BIDIR_V should be defined!
    `BSG_IO_OUT_ABCD(sdo,ncmd,     `BSG_PAD_BIDIR_V, `BSG_PAD_BIDIR_V, `BSG_PAD_BIDIR_V, `BSG_PAD_BIDIR_V)
    `BSG_IO_TIELO_VEC(sdo_ncmd_oen_int,4)
 
-   `BSG_IO_IN_ABCD (sdo,token,  `BSG_PAD_BIDIR_V)
-   `BSG_IO_IN_ABCD (sdo,tkn_ex, `BSG_PAD_BIDIR_V)
+   `BSG_IO_IN_ABCD (sdo,token,  `BSG_PAD_BIDIR_V, `BSG_PAD_BIDIR_V, `BSG_PAD_BIDIR_V, `BSG_PAD_BIDIR_V)
+   `BSG_IO_IN_ABCD (sdo,tkn_ex, `BSG_PAD_BIDIR_V, `BSG_PAD_BIDIR_V, `BSG_PAD_BIDIR_V, `BSG_PAD_BIDIR_V)
 
    `BSG_IO_OUT_V70 (sdo_A_data, `BSG_PAD_BIDIR_V)
    `BSG_IO_OUT_V70 (sdo_B_data, `BSG_PAD_BIDIR_V)
