@@ -50,6 +50,9 @@ assign p_``name``_o = name``_o_int;
 `define BSG_IO_TIEHI_VEC_ONE(name,item) assign name[item] = 1'b1;
 
 `define BSG_PHYSICAL_ONLY_PAD(name,padtype) \
+
+`define BSG_ANALOG_PAD(name,padtype) `XTC_IN(name)
+
   /* intentionally left blank */
 
 // shared macros

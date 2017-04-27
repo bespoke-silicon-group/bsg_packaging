@@ -124,14 +124,14 @@
    `BSG_IO_OUT_V(name,7,padtype);
 
 
-`define BSG_IO_IN_ABCD(pre,suffix,padtype) \
+`define BSG_IO_IN_ABCD(pre,suffix,padtypeA,padtypeB,padtypeC,padtypeD) \
                                            \
     wire[3:0] pre``_``suffix``_i_int;      \
                                            \
-    `BSG_IO_IN_A(pre,suffix,A,0,padtype);  \
-    `BSG_IO_IN_A(pre,suffix,B,1,padtype);  \
-    `BSG_IO_IN_A(pre,suffix,C,2,padtype);  \
-    `BSG_IO_IN_A(pre,suffix,D,3,padtype);
+    `BSG_IO_IN_A(pre,suffix,A,0,padtypeA);  \
+    `BSG_IO_IN_A(pre,suffix,B,1,padtypeB);  \
+    `BSG_IO_IN_A(pre,suffix,C,2,padtypeC);  \
+    `BSG_IO_IN_A(pre,suffix,D,3,padtypeD);
 
 
 `define BSG_IO_OUT_ABCD(pre,suffix,padtypeA,padtypeB,padtypeC,padtypeD)  \
