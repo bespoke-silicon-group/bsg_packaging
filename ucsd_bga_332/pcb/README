@@ -2,7 +2,7 @@ This directory contains the final files for the UCSD BGA design, by Darren Smith
 
 Contents:
 
-  README.rtf                               this file
+  README                                   this file
   352_bga_pins_top_down_flat.pdf           shows ballout of BGA, top-down (XRAY) view
   UCSD001-DesignInfo-2014-03-15.xlsx       detail design info for BGA
 
