@@ -33,12 +33,14 @@ Alignment of top metal layer and left/right side of padring.
 ------------------------------------------------------------
 
 Note that bsg_two pinout is asymmetrical by design. Output channels are on top and bottom
-and inputs channels are on the sides. Output channels require more I/O VDD pins, so there
-are fewer available pads available for Core VDD on those sides. Additionally, the PLL
-region reduces the amount of pins for supply. So Core VDD supply is more highly concentrated
-on the left and right side of the package. In many cases, the top metal layer of a process
-has thicker metal and much lower resistance. So it is preferable to align the top metal layer
-with the left/right side of the package, which might require rotating the chip in the package,
+and inputs channels are on the sides, to reduce the noise of output channels on the inputs.
+
+Output channels require more I/O VDD pins, so there are fewer available pads available 
+for Core VDD on those sides. Additionally, the PLL region reduces the amount of pins for 
+supply. So Core VDD supply is more highly concentrated on the left and right side of the
+package. In many cases, the top metal layer of a process has thicker metal and much lower 
+resistance. So it is preferable to align the top metal layer with the left/right side of 
+the package, which might require rotating the chip in the package,
 depending on whether top metal runs horizontally or vertically.
 
 See below for example non-rotated and rotated versions.
