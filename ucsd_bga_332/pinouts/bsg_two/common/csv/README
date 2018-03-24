@@ -1,4 +1,6 @@
-This directory contains files for handoff to the assembly file.
+This directory contains files for handoff to the assembly house, i.e. attaching your die to the BGA substrate
+and adding solder bumps on the bottom of the substrate.
+
 These are a baseline that was used for our TSMC 180 manycore chip.
 
 Generally, you would start by dialing in your chip pad-ring geometry information
