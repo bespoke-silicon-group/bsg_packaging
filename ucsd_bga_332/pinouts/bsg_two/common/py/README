@@ -33,7 +33,7 @@ Alignment of top metal layer and left/right side of padring.
 ------------------------------------------------------------
 
 Note that bsg_two pinout is asymmetrical by design. Output channels are on top and bottom
-and inputs channels are on the sides, to reduce the noise of output channels on the inputs.
+and inputs channels are on the left and right side, to reduce the noise of output channels on the inputs.
 
 Output channels require more I/O VDD pins, so there are fewer available pads available 
 for Core VDD on those sides. Additionally, the PLL region reduces the amount of pins for 
@@ -48,8 +48,8 @@ See below for example non-rotated and rotated versions.
 Pad Ring Creation Scripts for IC Compiler
 -----------------------------------------
 
-This script is used to help generate the tcl files for Synopsys IC Compiler found in ../../<node>/tcl. This script takes in a csv
-file where each line is the following:
+This script is used to help generate the tcl files for Synopsys IC Compiler found in ../../<node>/tcl. 
+This script takes in a csv file where each line is the following:
 
     Pad Name, Center X Coordinate (in um), Center Y Coordinate (in um), Chip Side [top, bottom, left, right]
 
