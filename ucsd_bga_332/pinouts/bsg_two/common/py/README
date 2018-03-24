@@ -1,4 +1,4 @@
-This script is used to help generate the tcl files found in ../tcl. This script takes in a csv
+This script is used to help generate the tcl files found in ../../<node>/tcl. This script takes in a csv
 file where each line is the following:
 
     Pad Name, Center X Coordinate (in um), Center Y Coordinate (in um), Chip Side [top, bottom, left, right]
