@@ -5,7 +5,7 @@ When you resize your chip, or use different pads, which will have different size
 need to generate a modified pad ring.  Here are some helpful tips.
 
 You want to preserve the centroid location from the middle of the side, and then just move it inward or outward
-from the center of the chip in the perpendicular direction. We manually edit the bsg_two_centroid.csv and 
+from the center of the chip in the perpendicular direction. We manually edit the bsg_two_centroid.csv or
 bsg_two_centroid_rotate.csv files to do this. 
 
 So for example, in the beginning of the bsg_two_centroid file, here are the first few lines:
