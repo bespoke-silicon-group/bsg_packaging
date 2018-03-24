@@ -22,3 +22,4 @@ wire_bond_visualizer/                            : example scripts to draw the b
 
 
 Note that in this directory, we refer to misc_L_3 and misc_R_3 as input pins; consistent with the naming scheme when the package was designed.
+In bsg_two series chips, these pins are actually outputs, but it does not affect wire bonding.
