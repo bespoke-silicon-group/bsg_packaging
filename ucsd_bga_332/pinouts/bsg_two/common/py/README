@@ -1,8 +1,31 @@
-This script is used to help generate the tcl files found in ../../<node>/tcl. This script takes in a csv
+Alignment of top metal layer and left/right side of padring.
+---------------------------
+
+Note that bsg_two pinout is asymmetrical by design. Output channels are on top and bottom
+and inputs channels are on the sides. Output channels require more I/O VDD pins, so there
+are fewer available pads available for Core VDD on those sides. Additionally, the PLL
+region reduces the amount of pins for supply. So Core VDD supply is more highly concentrated
+on the left and right side of the package. In many cases, the top metal layer of a process
+has thicker metal and much lower resistance. So it is preferable to align the top metal layer
+with the left/right side of the package, which might require rotating the chip in the package,
+depending on whether top metal runs horizontally or vertically.
+
+See below for example non-rotated and rotated versions.
+
+Pad Ring Creation Scripts for IC Compiler
+-----------------------------------------
+
+This script is used to help generate the tcl files for Synopsys IC Compiler found in ../../<node>/tcl. This script takes in a csv
 file where each line is the following:
 
     Pad Name, Center X Coordinate (in um), Center Y Coordinate (in um), Chip Side [top, bottom, left, right]
 
-The script will take that csv file and create a list of 'set_pin_physcal_constraints' tcl commands
+The script will take that csv file and create a list of 'set_pin_physical_constraints' tcl commands
 which go in pin_pad_physical_constraints.tcl and a list of 'move_object' tcl commands which go in
 pad_move_to_location_file.tcl.
+
+bsg_two_centroid.csv: chip centered (used for TSMC 250; 5 metal layers)
+bsg_two_centroid_rotate.csv: chip rotated  (used for TSMC 180; 6 metal layers)
+
+
+
