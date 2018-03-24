@@ -24,7 +24,7 @@ sdi_B_tkn_ex_o,218.5,1180,left
 ....
 
 You would be manually editing the 103.5 and 218.5 numbers, which are the distance from the center of the chip. 
-You would leave the other numbers alone, since they stay the same relative to the center.
+You would leave the other numbers alone, since they stay the same relative to the middle of the side.
 
 If your chip is smaller than 5x5, then you start chopping off I/Os from the edges.
 Example chops are shown in the bsg_two/common/padring.pdf file.
