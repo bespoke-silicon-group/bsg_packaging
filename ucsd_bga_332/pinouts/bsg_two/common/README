@@ -41,6 +41,9 @@ the package, which might require rotating the chip in the package,
 depending on whether top metal runs horizontally or vertically.
 
 
+Files
+-----
+
 padring.pdf:         the bsg_two padring (note direction of misc_L_3_o and misc_R_3_o pins)
 
 bondpad_offsets.csv: the distance from the center of each bondpad to the middle of the side of the chip
