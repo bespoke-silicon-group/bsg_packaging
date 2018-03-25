@@ -8,8 +8,7 @@ need to generate a modified pad ring.  Here are some helpful tips:
   to the middle (M) of the side of the chip it is on as in the original padrid.
   We have included these distances in the file bondpad_offsets.csv.
 
-   000000000011111111112222222222333333333344444444445555
-   012345678901234567890123456789012345678901234567890123
+                           Top of Chip
    __....__________________________________________....___
    |          ____            |                          |
    |         |   |     D      |                          |
