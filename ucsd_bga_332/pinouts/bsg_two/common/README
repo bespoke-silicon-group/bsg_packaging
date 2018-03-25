@@ -23,7 +23,10 @@ need to generate a modified pad ring.  Here are some helpful tips:
    | ....        P            |                    ....  |
 
 - This pad ring was design to be staggered; the centers of neighbor pads are 115 micron apart (S) in the direction
-  perpendicular to the edge of the chip. Potentially you can make this work with a linear pad ring
+  perpendicular to the edge of the chip. It's unclear how much this distance can change before the bond house gets
+  unhappy. 
+
+  Potentially you can make this work with a linear pad ring
   but you would need pretty narrow wires to meet the 40 um effective pitch (P).
 
 Alignment of top metal layer and left/right side of padring.
