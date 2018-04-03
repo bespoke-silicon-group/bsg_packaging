@@ -40,7 +40,7 @@
 //LDO ANALOG DOMAIN
  , input  p_LDO_SECTION_VREFH_i, input p_LDO_SECTION_VREFL_i, input p_LDO_SECTION_VB_RING_i
  , input  p_LDO_SECTION_VCAL_HH_i, input  p_LDO_SECTION_VCAL_LL_i, input  p_LDO_SECTION_VL_i
- , input  p_LDO_SECTION_VDD_LOAD_i
+ , input  p_LDO_SECTION_VDD_LOAD_i, input  p_LDO_SECTION_VDDOUT_LDO_i
  // , input  p_LDO_SECTION_VDDIO_i, input  p_LDO_SECTION_VDDC_i
 
 //PLL DOMIN
