@@ -16,7 +16,7 @@
  , inout [dram_data_width_lp-1:0]   p_ddr_dq_io
 
  // Row/Column address signals, 16 bits at maximum
- , output[dram_addr_width_lp-1:0]   p_ddr_a_0_o
+ , output[dram_addr_width_lp-1:0]   p_ddr_a_o
 
  // Bank address signals, 3 bits at maximum
  , output[dram_mask_width_lp-1:0]   p_ddr_ba_o
@@ -56,7 +56,7 @@
  , output p_sdo_ncmd_o
 
  // output data signals
- , output [comm_link_data_width_lp-1:0] p_sdo_data_0_o
+ , output [comm_link_data_width_lp-1:0] p_sdo_data_o
 
  // input token signal
  , input  p_sdo_token_i
