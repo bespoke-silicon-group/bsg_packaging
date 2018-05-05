@@ -1,5 +1,0 @@
-Synopsys files for creating pad ring:
-
-pad_move_to_location_file.tcl:    created by bsg_packaging/ucsd_bga_332/pinouts/bsg_two_common/py/io_centers_to_tcl.py
-pin_pad_physical_constraints.tcl: "  "
-
