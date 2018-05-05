@@ -143,3 +143,18 @@
     `BSG_IO_OUT_A(pre,suffix,B,1,padtypeB);                              \
     `BSG_IO_OUT_A(pre,suffix,C,2,padtypeC);                              \
     `BSG_IO_OUT_A(pre,suffix,D,3,padtypeD);
+
+//only instantiate one channnel
+`define BSG_IO_IN_A_CH(pre,suffix,padtypeA) \
+                                           \
+    wire[0:0] pre``_``suffix``_i_int;      \
+                                           \
+    `BSG_IO_IN_A(pre,suffix,A,0,padtypeA);
+
+
+`define BSG_IO_OUT_A_CH(pre,suffix,padtypeA)  \
+                                                                         \
+    wire [0:0] pre``_``suffix``_o_int;                                   \
+    wire [0:0] pre``_``suffix``_oen_int;                                 \
+                                                                         \
+    `BSG_IO_OUT_A(pre,suffix,A,0,padtypeA);

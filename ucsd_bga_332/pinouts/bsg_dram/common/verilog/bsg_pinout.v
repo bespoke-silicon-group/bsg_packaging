@@ -1,102 +1,125 @@
+// 05/05/2018 shawnless.xie@gmail.com
+// **********************************************************************
+// BSG Dram Pinout (Based on UCSD BGA 332 bsg_two)
+//
+// This file defines all of the pads that are used for a given pinout of
+// a package. It would change if we reversed the direction of a pad. It
+// is recommended not to change the name of the
+// pin (except the _i or _o) at this level so that we can maintain canonical
+// naming for the package; instead just do an assign of a wire to rename.
+//
+// convention:
+//
+// - the input ports have a prefix of "p_"
+// - the corresponding signals have no prefix
+//   and have a suffix of _int.
+// - the IO pad names are consistent with the
+//   BGA 332 pinout names (e.g, sdi_B_data_7_i, sdi_B_ncmd_i)
+//
+// it is customary to include a macro file ahead of this one;
+// for example bsg_one_iopad_macros_verilog.v
+
+//module
+// bsg_two
 (
- // *************************************************************************
- // DDR DRAM interface signals
+ // *******************************************************************
+ // all "100-ohm impedance-controlled-in-package" differential pairs
  //
- localparam dram_data_width_lp = 16;
- localparam dram_addr_width_lp = 14;
- localparam dram_strobe_width_lp = dram_data_width_lp >> 3;
- localparam dram_mask_width_lp   = dram_data_width_lp >> 3;
- // Data mask signals
-   output[dram_strobe_width_lp-1:0] p_ddr_dm_o
 
- // DQ strobe signals, single-ended for DDR and differential for DDR2/3
- , inout [dram_strobe_width_lp-1:0] p_ddr_dqs_p_io
+ // unused differential inputs
+ // we give these as outputs, and then go high-impedance
+   output p_clk_0_p_i    , output  p_clk_0_n_i
+ , output  p_clk_1_p_i    , output  p_clk_1_n_i
 
- // DQ signals
- , inout [dram_data_width_lp-1:0]   p_ddr_dq_io
+ // unused differential inputs
+ // we give these as outputs, and then go high-impedance
+ , output  p_SMA_in_p_i   , output p_SMA_in_n_i
 
- // Row/Column address signals, 16 bits at maximum
- , output[dram_addr_width_lp-1:0]   p_ddr_a_o
+ , output p_SMA_out_p_o  , output p_SMA_out_n_o
 
- // Bank address signals, 3 bits at maximum
- , output[dram_mask_width_lp-1:0]   p_ddr_ba_o
+ // *******************************************************************
+ // ultra-shielded "50-ohm impedance-controlled-in-package" clock for PLL
+ , input   p_PLL_CLK_i
 
- // Control signals, p_ddr_odt_o and p_ddr_reset_o can be added to be
- // compatible with DDR2/3
- , output p_ddr_cke_o
- , output p_ddr_cs_n_o
- , output p_ddr_ras_n_o
- , output p_ddr_cas_n_o
- , output p_ddr_we_n_o
+ // *******************************************************************
+ // all "50-ohm impedance-controlled-in-package" signals starting here
+ // these are length matched within 1.55 mm length and
+ // .76 mm bond wire length.
 
- // Differential output clock signals
- , output p_ddr_ck_p_o
- , output p_ddr_ck_n_o
+ // input clocks for input channels A
+ , input  [0:0] p_sdi_sclk_i
 
- // *************************************************************************
- // Comm Link signals
- //
- // input clock signal
- localparam comm_link_data_width_lp = 8;
- , input  p_sdi_sclk_i
+ // input valids for input channels A
+ , input  [0:0] p_sdi_ncmd_i
 
- // input valid signal
- , input  p_sdi_ncmd_i
+ // input datas for input channels  A
+ , input  [7:0] p_sdi_A_data_i
 
- // input data signals
- , input  [comm_link_data_width_lp-1:0] p_sdi_data_i
+ // output tokens for input channels A
+ , output [0:0] p_sdi_token_o
 
- // output token signal
- , output p_sdi_token_o
+ // output clocks for output channels A
+ , output [0:0] p_sdo_sclk_o
 
- // output clk signal
- , output p_sdo_sclk_o
+ // output valids for output channels
+ , output [0:0] p_sdo_ncmd_o
 
- // output valid signal
- , output p_sdo_ncmd_o
+ // output data for out channels
+ , output [7:0] p_sdo_A_data_o
 
- // output data signals
- , output [comm_link_data_width_lp-1:0] p_sdo_data_o
+ // extra output datas
+ , output p_sdo_A_data_8_o , output p_sdo_C_data_8_o
 
- // input token signal
- , input  p_sdo_token_i
+ // input tokens for output channels
+ , input  [0:0] p_sdo_token_i
 
+ // spare clocks, length matched to channels
+ , input  [3:0] p_sdi_sclk_ex_i
+ , output [3:0] p_sdo_sclk_ex_o
 
+ // spare tokens for input and output channels
+ , output [3:0] p_sdi_tkn_ex_o
+ , input  [3:0] p_sdo_tkn_ex_i
 
- // *************************************************************************
- // misc signals to adjust the shape of the chip
- , input  p_misc_L_0_i
- , input  p_misc_L_1_i
- , input  p_misc_L_2_i
+ // *******************************************************************
+ // all "50-ohm impedance-controlled-in-package", starting here
+ // but are next to clock or token signals
+ // and are not length-matched
 
- , input  p_misc_T_0_i
- , input  p_misc_T_1_i
- , input  p_misc_T_2_i
+ , input  p_misc_T_0_i, input p_misc_T_1_i, input p_misc_T_2_i
 
- , input  p_misc_R_0_i
- , input  p_misc_R_1_i
- , input  p_misc_R_2_i
- , input  p_misc_R_3_o
- , input  p_misc_R_4_i
- , input  p_misc_R_5_i
- , input  p_misc_R_6_i
- , input  p_misc_R_7_i
- , input  p_misc_R_8_i
+ , input  p_misc_L_7_i, input  p_misc_R_7_i
+ , input  p_misc_L_6_i, input  p_misc_R_6_i
+ , input  p_misc_L_5_i, input  p_misc_R_5_i
+ , input  p_misc_L_4_i, input  p_misc_R_4_i
 
- , input  p_misc_T_1_i
+ // L3 and R3 are output pads because it works with the pad ring
+ , output p_misc_L_3_o, output p_misc_R_3_o
 
+ , input  p_misc_L_2_i, input  p_misc_R_2_i
+ , input  p_misc_L_1_i, input  p_misc_R_1_i
+ , input  p_misc_L_0_i, input  p_misc_R_0_i
 
- // *************************************************************************
- // Global input signals
  , input  p_reset_i
 
-
- // *************************************************************************
- // TAG signals
- , input  p_BYPASS_i
+ // for JTAG, or other purposes
  , input  p_JTAG_TMS_i
  , input  p_JTAG_TDI_i
  , input  p_JTAG_TCK_i
  , input  p_JTAG_TRST_i
  , output p_JTAG_TDO_o
-);
+
+ // *******************************************************************
+ // all "not impedance controlled in package", starting here
+ // for powering PLL or can be used for low frequency debug signals
+ // NOTE: Driver selected by XTC macro must be updated according to use.
+
+// , input  p_PLL_VDD_i
+// , input  p_PLL_VSS_i
+// , input  p_PLL_V33_i
+// , input  p_PLL_VZZ_i
+ );
+
+// End UCSD BGA 332 PAD Definitions
+// **********************************************************************
+
