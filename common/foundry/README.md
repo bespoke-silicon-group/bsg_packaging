@@ -18,15 +18,15 @@ BSG_IO_TIELO            | tie pad's input signal to low
 **Portable Implementations**
 
 [This link](portable/verilog/bsg_iopad_macros.v)
-contains the portable implementations for RTL-level simulation.
+contains the portable implementations for these macros for RTL-level simulation.
 
 **Foundry Specific Implementations**
 
-[This link](https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/common/foundry/tsmc_180_250/verilog/bsg_iopad_macros.v) shows example TSMC 180 implementations that thunk down to a particular PDK's I/O pad interfaces
+[This link](https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/common/foundry/tsmc_180_250/verilog/bsg_iopad_macros.v) shows example TSMC 180 implementations for these macros that thunk down to a particular PDK's I/O pad interfaces
 
 **Example Toplevel of a Design**
 
-[This link](https://bitbucket.org/taylor-bsg/bsg_designs/src/master/toplevels/bsg_two_manycore_vanilla_clk_gen/v/bsg_chip.v) shows an example TSMC 180 chip that uses these MACROS and reuses a padring
+[This link](https://bitbucket.org/taylor-bsg/bsg_designs/src/master/toplevels/bsg_two_manycore_vanilla_clk_gen/v/bsg_chip.v) shows an example TSMC 180 chip that uses these MACROS and uses the bsg_two pinout.
 
 ** PAD Mappings **
 
