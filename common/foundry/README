@@ -7,5 +7,7 @@ which will have their own unique port names and may potentially be low-true (in 
 
 contains the portable implementations for RTL-level simulation.
 
-**foundry/** provides the implementations that thunk down to a particular PDK's I/O pad interfaces
+**foundry/** 
+
+provides the implementations that thunk down to a particular PDK's I/O pad interfaces
 
