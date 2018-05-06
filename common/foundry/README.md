@@ -4,6 +4,8 @@ Specifically, it provides common macros that are responsible for providing a por
 interface which has a portable verilog interface, and the foundry (e.g. TSMC 40) specific I/O pad instantiations, 
 which will have their own unique port names and may potentially be low-true (in bsg, all ports should be high true!).
 
+The client of this portability interface is a particular pinout (e.g., the [bsg_two](https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/ucsd_bga_332/pinouts/bsg_two/common/verilog/bsg_pinout.v) pinout).
+
 **Example MACRO Names**
 
 MACRO | Description
@@ -13,8 +15,6 @@ BSG_IO_OUT(name,padtype)| output pad
 BSG_IO_IN_DISABLE       | disable input pad
 BSG_IO_TIELO            | tie pad's input signal to low
 
-
-
 **Portable Implementations**
 
 [This link](portable/verilog/bsg_iopad_macros.v)
@@ -23,6 +23,10 @@ contains the portable implementations for RTL-level simulation.
 **Foundry Specific Implementations**
 
 [This link](https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/common/foundry/tsmc_180_250/verilog/bsg_iopad_macros.v) shows example TSMC 180 implementations that thunk down to a particular PDK's I/O pad interfaces
+
+**Example Toplevel of a Design**
+
+[This link](https://bitbucket.org/taylor-bsg/bsg_designs/src/master/toplevels/bsg_two_manycore_vanilla_clk_gen/v/bsg_chip.v) shows an example TSMC 180 chip that uses these MACROS and reuses a padring
 
 ** PAD Mappings **
 
