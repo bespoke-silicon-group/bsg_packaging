@@ -3,13 +3,14 @@ The idea is, those macros are responsible for providing a portability layer betw
 interface which has a portable verilog interface, and the foundry (e.g. TSMC 40) specific I/O pad instantiations, 
 which will have their own unique port names and may potentially be low-true (in bsg, all ports should be high true!).
 
-**portable/verilog/bsg_iopad_macros.v**
+**Portable Implementations**
 
+[This link](portable/verilog/bsg_iopad_macros.v)
 contains the portable implementations for RTL-level simulation.
 
-**foundry/** 
+**Foundry Specific Implementations**
 
-provides the implementations that thunk down to a particular PDK's I/O pad interfaces
+[This link](https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/common/foundry/tsmc_180_250/verilog/bsg_iopad_macros.v) shows example TSMC 180 implementations that thunk down to a particular PDK's I/O pad interfaces
 
 ** padmappings **
 
