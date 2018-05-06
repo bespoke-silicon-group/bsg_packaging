@@ -1,6 +1,8 @@
-// 05/05/2018 shawnless.xie@gmail.com
+
+// MBT 8-17-2016
+//
 // **********************************************************************
-// BSG Dram Pinout (Based on UCSD BGA 332 bsg_two)
+// UCSD BSG Two Pinout (Based on UCSD BGA 332)
 //
 // This file defines all of the pads that are used for a given pinout of
 // a package. It would change if we reversed the direction of a pad. It
@@ -46,32 +48,34 @@
  // these are length matched within 1.55 mm length and
  // .76 mm bond wire length.
 
- // input clocks for input channels A
- , input  [0:0] p_sdi_sclk_i
+ // input clocks for input channels D,C,B,A
+ , input  [3:0] p_sdi_sclk_i
 
- // input valids for input channels A
- , input  [0:0] p_sdi_ncmd_i
+ // input valids for input channels D,C,B,A
+ , input  [3:0] p_sdi_ncmd_i
 
- // input datas for input channels  A
- , input  [7:0] p_sdi_A_data_i
+ // input datas for input channels D,C,B,A
+ , input  [7:0] p_sdi_A_data_i, input [7:0] p_sdi_B_data_i
+ , input  [7:0] p_sdi_C_data_i, input [7:0] p_sdi_D_data_i
 
- // output tokens for input channels A
- , output [0:0] p_sdi_token_o
+ // output tokens for input channels D,C,B,A
+ , output [3:0] p_sdi_token_o
 
- // output clocks for output channels A
- , output [0:0] p_sdo_sclk_o
+ // output clocks for output channels D,C,B,A
+ , output [3:0] p_sdo_sclk_o
 
  // output valids for output channels
- , output [0:0] p_sdo_ncmd_o
+ , output [3:0] p_sdo_ncmd_o
 
  // output data for out channels
- , output [7:0] p_sdo_A_data_o
+ , output [7:0] p_sdo_A_data_o, output [7:0] p_sdo_B_data_o
+ , output [7:0] p_sdo_C_data_o, output [7:0] p_sdo_D_data_o
 
  // extra output datas
  , output p_sdo_A_data_8_o , output p_sdo_C_data_8_o
 
  // input tokens for output channels
- , input  [0:0] p_sdo_token_i
+ , input  [3:0] p_sdo_token_i
 
  // spare clocks, length matched to channels
  , input  [3:0] p_sdi_sclk_ex_i

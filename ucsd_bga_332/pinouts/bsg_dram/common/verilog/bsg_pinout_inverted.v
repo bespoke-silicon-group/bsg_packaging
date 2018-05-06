@@ -43,31 +43,33 @@
  // .76 mm bond wire length.
 
  // output clocks for output channels D,C,B,A
- , output  [0:0] p_sdi_sclk_o
+ , output  [3:0] p_sdi_sclk_o
 
  // output valids for output channels D,C,B,A
- , output  [0:0] p_sdi_ncmd_o
+ , output  [3:0] p_sdi_ncmd_o
 
  // output datas for output channels D,C,B,A
- , output  [7:0] p_sdi_A_data_o
+ , output  [7:0] p_sdi_A_data_o, output [7:0] p_sdi_B_data_o
+ , output  [7:0] p_sdi_C_data_o, output [7:0] p_sdi_D_data_o
 
  // input tokens for output channels D,C,B,A
- , input [0:0] p_sdi_token_i
+ , input [3:0] p_sdi_token_i
 
  // input clocks for input channels D,C,B,A
- , input [0:0] p_sdo_sclk_i
+ , input [3:0] p_sdo_sclk_i
 
  // input valids for input channels
- , input [0:0] p_sdo_ncmd_i
+ , input [3:0] p_sdo_ncmd_i
 
  // input data for out channels
- , input [7:0] p_sdo_A_data_i
+ , input [7:0] p_sdo_A_data_i, input [7:0] p_sdo_B_data_i
+ , input [7:0] p_sdo_C_data_i, input [7:0] p_sdo_D_data_i
 
  // extra input datas
  , input p_sdo_A_data_8_i , input p_sdo_C_data_8_i
 
  // output tokens for input channels
- , output  [0:0] p_sdo_token_o
+ , output  [3:0] p_sdo_token_o
 
  // spare clocks, length matched to channels
  , output  [3:0] p_sdi_sclk_ex_o
