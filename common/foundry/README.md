@@ -1,4 +1,4 @@
-This folder is responsible for implementing a portability layer for I/Os cells in a verilog design.
+This folder is responsible for implementing a MACRO-based portability layer for I/Os cells in a verilog design that can be easily moved between process technologies.
 
 Specifically, it provides common macros that are responsible for providing a portability layer between a generic BSG I/O pad
 interface which has a portable verilog interface, and the foundry (e.g. TSMC 40) specific I/O pad instantiations, 
