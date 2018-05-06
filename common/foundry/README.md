@@ -11,3 +11,15 @@ contains the portable implementations for RTL-level simulation.
 
 provides the implementations that thunk down to a particular PDK's I/O pad interfaces
 
+** padmappings **
+
+Note that the actual names of the pad cells are specified elsewhere, as they often encode design-specific parameters, for example 12 mA versus 16mA.
+
+For the bsg 180nm chips (where we tried several different I/O drive strengths, and found that 16 mA was good for 3.3V wirebond I/O with parallel termination;
+and 12 mA was good for 1.8V flipchip I/O with parallel termination.
+
+[For the 180nm TSMC chips](https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/ucsd_bga_332/pinouts/bsg_two/tsmc_16/verilog/padmappings/one/bsg_padmapping.v)
+
+[For the 16nm Celerity chip](https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/ucsd_bga_332/pinouts/bsg_two/tsmc_16/verilog/padmappings/one/bsg_padmapping.v)
+
+
