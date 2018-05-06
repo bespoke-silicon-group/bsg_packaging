@@ -6,9 +6,14 @@ which will have their own unique port names and may potentially be low-true (in 
 
 **Example MACRO Names**
 
-BSG_IO_IN(name,padtype)
+MACRO | Description
+------|------------
+BSG_IO_IN(name,padtype) | input pad
+BSG_IO_OUT(name,padtype)| output pad
+BSG_PAD_DISABLE         | PAD is not being used
+BSG_IO_TIELO            | tie input signal to pad low
 
-BSG_IO_OUT(name,padtype)
+
 
 **Portable Implementations**
 
@@ -19,12 +24,12 @@ contains the portable implementations for RTL-level simulation.
 
 [This link](https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/common/foundry/tsmc_180_250/verilog/bsg_iopad_macros.v) shows example TSMC 180 implementations that thunk down to a particular PDK's I/O pad interfaces
 
-** padmappings **
+** PAD Mappings **
 
-Note that the actual names of the pad cells are specified elsewhere, as they often encode design-specific parameters, for example 12 mA versus 16mA.
+Note that although this provides a portable interface to a particular foundry, the drive strengths of particular cells are something that  the actual names of the pad cells are specified elsewhere, as they often encode design-specific parameters, for example 12 mA versus 16mA.
 
-For the bsg 180nm chips (where we tried several different I/O drive strengths, and found that 16 mA was good for 3.3V wirebond I/O with parallel termination;
-and 12 mA was good for 1.8V flipchip I/O with parallel termination.
+For the bsg 180nm chips (we tried several different I/O drive strengths and slew control settings), and found that 16 mA was good for 3.3V wirebond I/O with parallel termination;
+and 12 mA was good for 1.8V flipchip I/O with parallel termination, and that slew control was not helpful in any case.
 
 [For the 180nm TSMC chips](https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/ucsd_bga_332/pinouts/bsg_two/tsmc_16/verilog/padmappings/one/bsg_padmapping.v)
 
