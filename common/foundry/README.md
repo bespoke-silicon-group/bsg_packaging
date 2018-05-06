@@ -10,8 +10,8 @@ MACRO | Description
 ------|------------
 BSG_IO_IN(name,padtype) | input pad
 BSG_IO_OUT(name,padtype)| output pad
-BSG_PAD_DISABLE         | PAD is not being used
-BSG_IO_TIELO            | tie input signal to pad low
+BSG_IO_IN_DISABLE       | disable input pad
+BSG_IO_TIELO            | tie pad's input signal to low
 
 
 
