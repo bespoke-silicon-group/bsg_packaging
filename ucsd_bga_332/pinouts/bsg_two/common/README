@@ -6,6 +6,7 @@ need to generate a modified pad ring.  Here are some helpful tips:
 
 - In your modified ring, the center of each bondpad should have roughly the same distance (D) 
   to the middle (M) of the side of the chip it is on as in the original padrid.
+  
   We have included these distances in the file bondpad_offsets.csv.
  
                             Top of Chip
