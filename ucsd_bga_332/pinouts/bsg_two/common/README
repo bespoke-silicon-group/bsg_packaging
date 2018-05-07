@@ -9,19 +9,19 @@ need to generate a modified pad ring.  Here are some helpful tips:
   We have included these distances in the file bondpad_offsets.csv.
  
                             Top of Chip
-    __....__________________________________________....___
-    |          ____            |                          |
-    |         |   |     D      |                          |
-    |    -    | <------------->|                          |
-    |    |    |___|            |                          |
-    |    |S         ___        |                          |
-    |    |         |   |       |                          |
-    |    -         | <-------->|                          |
-    |              |___|       |                          |
-    |                          |                          |
-    |           <--->          | M                        | 
-    | ....        P            |                    ....  |
-
+     __....__________________________________________....___
+     |          ____            |                          |
+     |         |   |     D      |                          |
+     |    -    | <------------->|                          |
+     |    |    |___|            |                          |
+     |    |S         ___        |                          |
+     |    |         |   |       |                          |
+     |    -         | <-------->|                          |
+     |              |___|       |                          |
+     |                          |                          |
+     |           <--->          | M                        | 
+     | ....        P            |                    ....  |
+     
 - This pad ring was design to be staggered; the centers of neighbor pads are 115 micron apart (S) in the direction
   perpendicular to the edge of the chip. It's unclear how much this distance can change before the bond house gets
   unhappy. 
