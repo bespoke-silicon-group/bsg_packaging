@@ -11,8 +11,8 @@ directory is for holding pinout-specific files.
 The two current pinouts are:
 
 - bsg_one:   preliminary version; do not use
-- bsg_two:   wirebond BGA using the BGA_332 socket and final padring for BGA_332
-- bsg_three: flipchip BGA from DARPA CRAFT program
+- bsg_two:   **wirebond** BGA using the BGA_332 socket and final padring for BGA_332
+- bsg_three: **flipchip** BGA from DARPA CRAFT program
 
 
 
