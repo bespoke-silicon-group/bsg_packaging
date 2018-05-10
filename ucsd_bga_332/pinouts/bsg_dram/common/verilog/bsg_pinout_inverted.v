@@ -71,13 +71,17 @@
  // output tokens for input channels
  , output  [3:0] p_sdo_token_o
 
+ // ----------------------------------------------------
+ //
+ //   CUTTED IN 3x3mm^2 pad ring
+ //
  // spare clocks, length matched to channels
- , output  [3:0] p_sdi_sclk_ex_o
- , input [3:0] p_sdo_sclk_ex_i
+ // , output  [3:0] p_sdi_sclk_ex_o
+ // , input [3:0] p_sdo_sclk_ex_i
 
- // spare tokens for output and input channels
- , input [3:0] p_sdi_tkn_ex_i
- , output  [3:0] p_sdo_tkn_ex_o
+ // // spare tokens for output and input channels
+ // , input [3:0] p_sdi_tkn_ex_i
+ // , output  [3:0] p_sdo_tkn_ex_o
 
  // *******************************************************************
  // all "50-ohm impedance-controlled-in-package", starting here

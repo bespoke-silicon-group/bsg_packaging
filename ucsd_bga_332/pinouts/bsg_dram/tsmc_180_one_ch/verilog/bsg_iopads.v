@@ -34,14 +34,22 @@ BSG_PAD_DISABLE should be defined!
    `BSG_IO_IN (reset,  `BSG_PAD_INPUT_PULLDOWN)
 
    `BSG_IO_IN_A_CH(sdi,sclk,    `BSG_PAD_INPUT_PULLDOWN)
-   `BSG_IO_IN_ABCD (sdi,sclk_ex, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
+//-------------------------------------
+//
+//  CUTTED FOR 3x3mm^2 padring
+//
+//   `BSG_IO_IN_ABCD (sdi,sclk_ex, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
    `BSG_IO_IN_A_CH(sdi,ncmd,    `BSG_PAD_INPUT_PULLDOWN)
 
    `BSG_IO_OUT_A_CH(sdi,token,   `BSG_PAD_OUTPUT_A)
    `BSG_IO_TIELO_VEC(sdi_token_oen_int,1)
 
-   // sdi_tkn_ex[3] needs a fast pad because it is the clock test output
-   `BSG_IO_OUT_ABCD(sdi,tkn_ex,  `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_FAST)
+//-------------------------------------
+//
+//  CUTTED FOR 3x3mm^2 padring
+//
+// sdi_tkn_ex[3] needs a fast pad because it is the clock test output
+//`BSG_IO_OUT_ABCD(sdi,tkn_ex,  `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_FAST)
 
 // user settable
 //   `BSG_IO_TIELO_VEC(sdi_tkn_ex_oen_int,4)
@@ -52,8 +60,12 @@ BSG_PAD_DISABLE should be defined!
    `BSG_IO_OUT_A_CH(sdo,sclk,     `BSG_PAD_OUTPUT_A)
    `BSG_IO_TIELO_VEC(sdo_sclk_oen_int,1)
 
+//-------------------------------------
+//
+//  CUTTED FOR 3x3mm^2 padring
+//
    // we make these fast because they are used as data for 10-bit channels
-   `BSG_IO_OUT_ABCD(sdo,sclk_ex,  `BSG_PAD_OUTPUT_A, `BSG_PAD_OUTPUT_B, `BSG_PAD_OUTPUT_C, `BSG_PAD_OUTPUT_D)
+   //`BSG_IO_OUT_ABCD(sdo,sclk_ex,  `BSG_PAD_OUTPUT_A, `BSG_PAD_OUTPUT_B, `BSG_PAD_OUTPUT_C, `BSG_PAD_OUTPUT_D)
 
    // user settable
    //`BSG_IO_TIELO_VEC(sdo_sclk_ex_oen_int,4)
@@ -62,7 +74,12 @@ BSG_PAD_DISABLE should be defined!
    `BSG_IO_TIELO_VEC(sdo_ncmd_oen_int,1)
 
    `BSG_IO_IN_A_CH (sdo,token,  `BSG_PAD_INPUT_PULLDOWN)
-   `BSG_IO_IN_ABCD (sdo,tkn_ex, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
+
+//-------------------------------------
+//
+//  CUTTED FOR 3x3mm^2 padring
+//
+   //`BSG_IO_IN_ABCD (sdo,tkn_ex, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
 
    `BSG_IO_OUT_V70 (sdo_A_data, `BSG_PAD_OUTPUT_A)
 
