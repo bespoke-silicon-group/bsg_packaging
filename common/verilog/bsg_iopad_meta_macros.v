@@ -172,10 +172,10 @@
     `BSG_IO_OUT_A(pre,suffix,C,2,padtypeC);                              \
     `BSG_IO_OUT_A(pre,suffix,D,3,padtypeD);
 
-`define BSG_IO_OUT_CD(pre,suffix,padtypeC,padtypeD)  \
+`define BSG_IO_OENOUT_CD(pre,suffix,padtypeC,padtypeD)  \
                                                                          \
     wire [1:0] pre``_``suffix``_o_int;                                   \
-    wire [1:0] pre``_``suffix``_oen_int;                                 \
+    wire [1:0] pre``_``suffix``_oe_n_int;                                 \
                                                                          \
     `BSG_IO_OUT_A(pre,suffix,C,0,padtypeC);                              \
     `BSG_IO_OUT_A(pre,suffix,D,1,padtypeD);                              \
