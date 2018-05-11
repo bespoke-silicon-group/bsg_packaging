@@ -31,7 +31,8 @@
  // unused differential inputs
  // we give these as outputs, and then go high-impedance
    output p_clk_0_p_i    , output  p_clk_0_n_i
- , output  p_clk_1_p_i    , output  p_clk_1_n_i
+ , output  p_clk_1_p_o  // ==>  ddr_clk_p
+ , output  p_clk_1_n_o  // ==>  ddr_clk_n
 
  // unused differential inputs
  // we give these as outputs, and then go high-impedance
@@ -49,27 +50,44 @@
  // .76 mm bond wire length.
 
  // input clocks for input channels D,C,B,A
- , input  [3:0] p_sdi_sclk_i
+ //
+ // MODIFIED FOR DRAM
+ //, input  [3:0] p_sdi_sclk_i
+ , inout   [1:0] p_sdi_sclk_io   //==> {dqs[1], dqs[0]}
+ , input   [1:0] p_sdi_sclk_i
 
+ // MODIFIED FOR DRAM
  // input valids for input channels D,C,B,A
- , input  [3:0] p_sdi_ncmd_i
+ , output [1:0] p_sdi_ncmd_o   //==> {dm[1], dm[0]}
+ , input  [1:0] p_sdi_ncmd_i
 
  // input datas for input channels D,C,B,A
- , input  [7:0] p_sdi_A_data_i, input [7:0] p_sdi_B_data_i
- , input  [7:0] p_sdi_C_data_i, input [7:0] p_sdi_D_data_i
+ , input  [7:0] p_sdi_A_data_i
+
+ // MODIFIED FOR DRAM
+ //, input  [7:0] p_sdi_B_data_i
+ , inout  [7:0] p_sdi_B_data_io //==> dq[7:0]
+
+ , input  [7:0] p_sdi_C_data_i
+
+ // MODIFIED FOR DRAM
+ //, input [7:0] p_sdi_D_data_i
+ , inout [7:0] p_sdi_D_data_io //==> dq[15:8]
 
  // output tokens for input channels D,C,B,A
- , output [3:0] p_sdi_token_o
+ , output [3:0] p_sdi_token_o  //==> {ddr_cs,  --, --, sdi_A_token_o}
 
  // output clocks for output channels D,C,B,A
- , output [3:0] p_sdo_sclk_o
+ , output [3:0] p_sdo_sclk_o   //==> {ddr_cke, ddr_we, --, sdo_A_sclk_o}
 
  // output valids for output channels
- , output [3:0] p_sdo_ncmd_o
+ , output [3:0] p_sdo_ncmd_o  //==> {ddr_cas, ddr_ras, --, sdo_A_ncmd_o}
 
  // output data for out channels
- , output [7:0] p_sdo_A_data_o, output [7:0] p_sdo_B_data_o
- , output [7:0] p_sdo_C_data_o, output [7:0] p_sdo_D_data_o
+ , output [7:0] p_sdo_A_data_o
+ , output [7:0] p_sdo_B_data_o
+ , output [7:0] p_sdo_C_data_o //==> ddr_addr[7:0]
+ , output [7:0] p_sdo_D_data_o //==> {ddr_ba[1:0], ddr_addr[13:8]}
 
  // extra output datas
  , output p_sdo_A_data_8_o , output p_sdo_C_data_8_o

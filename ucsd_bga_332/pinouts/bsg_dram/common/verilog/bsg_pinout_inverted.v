@@ -31,7 +31,8 @@
  // unused differential outputs
  // we give these as inputs, and then go high-impedance
    output p_clk_0_p_o   , output p_clk_0_n_o
- , output  p_clk_1_p_o  , output p_clk_1_n_o
+ , input  p_clk_1_p_i  // ==>  ddr_clk_p
+ , input  p_clk_1_n_i  // ==>  ddr_clk_n
 
  // *******************************************************************
  // ultra-shielded "50-ohm impedance-controlled-in-package" clock for PLL
@@ -43,27 +44,39 @@
  // .76 mm bond wire length.
 
  // output clocks for output channels D,C,B,A
- , output  [3:0] p_sdi_sclk_o
+ //
+ // MODIFIED FOR DRAM
+ //, output  [3:0] p_sdi_sclk_o
+ , inout   [1:0] p_sdi_sclk_io   //==> {dqs[1], dqs[0]}
+ , output  [1:0] p_sdi_sclk_o
 
+ // MODIFIED FOR DRAM
  // output valids for output channels D,C,B,A
- , output  [3:0] p_sdi_ncmd_o
+ //, output  [3:0] p_sdi_ncmd_o
+ , input   [1:0] p_sdi_ncmd_i   //==> {dm[1], dm[0]}
+ , output  [1:0] p_sdi_ncmd_o
 
  // output datas for output channels D,C,B,A
- , output  [7:0] p_sdi_A_data_o, output [7:0] p_sdi_B_data_o
- , output  [7:0] p_sdi_C_data_o, output [7:0] p_sdi_D_data_o
+ , output  [7:0] p_sdi_A_data_o
+ // MODIFIED FOR DRAM
+ , inout   [7:0] p_sdi_B_data_io  //==> dq[7:0]
+ , output  [7:0] p_sdi_C_data_o
+ // MODIFIED FOR DRAM
+ , inout   [7:0] p_sdi_D_data_io  //==> dq[15:8]
 
  // input tokens for output channels D,C,B,A
- , input [3:0] p_sdi_token_i
+ , input [3:0] p_sdi_token_i      //==> {ddr_cs, --, --, sdi_A_token_o}
 
  // input clocks for input channels D,C,B,A
- , input [3:0] p_sdo_sclk_i
+ , input [3:0] p_sdo_sclk_i       //==> {ddr_cke, ddr_we, --, sdo_A_sclk_o}
 
  // input valids for input channels
- , input [3:0] p_sdo_ncmd_i
+ , input [3:0] p_sdo_ncmd_i       //==> {ddr_cas, ddr_ras, --, sdo_A_ncmd_o}
 
  // input data for out channels
  , input [7:0] p_sdo_A_data_i, input [7:0] p_sdo_B_data_i
- , input [7:0] p_sdo_C_data_i, input [7:0] p_sdo_D_data_i
+ , input [7:0] p_sdo_C_data_i     //==> addr_ddr[7:0]
+ , input [7:0] p_sdo_D_data_i     //==> {ddr_ba[1:0], ddr_addr[13:0]}
 
  // extra input datas
  , input p_sdo_A_data_8_i , input p_sdo_C_data_8_i

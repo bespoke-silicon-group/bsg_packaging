@@ -20,7 +20,6 @@ BSG_PAD_OUTPUT_C should be defined!
 BSG_PAD_OUTPUT_D should be defined!
 `endif
 
-
 `ifndef BSG_PAD_OUTPUT_SLOW
 BSG_PAD_OUTPUT_SLOW should be defined!
 `endif
@@ -33,57 +32,51 @@ BSG_PAD_DISABLE should be defined!
    `BSG_IO_IN (PLL_CLK,`BSG_PAD_INPUT_PULLDOWN)
    `BSG_IO_IN (reset,  `BSG_PAD_INPUT_PULLDOWN)
 
-   `BSG_IO_IN_A_CH(sdi,sclk,    `BSG_PAD_INPUT_PULLDOWN)
-//-------------------------------------
-//
-//  CUTTED FOR 3x3mm^2 padring
-//
-//   `BSG_IO_IN_ABCD (sdi,sclk_ex, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
-   `BSG_IO_IN_A_CH(sdi,ncmd,    `BSG_PAD_INPUT_PULLDOWN)
+   `BSG_IO_IN_AB    (sdi,sclk,    `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
+   `BSG_IO_INOUT_CD (sdi,sclk,    `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
+// `BSG_IO_IN_ABCD (sdi,sclk_ex, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
+   `BSG_IO_IN_AB    (sdi,ncmd,    `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
+   `BSG_IO_OUT_CD   (sdi,ncmd,    `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
 
-   `BSG_IO_OUT_A_CH(sdi,token,   `BSG_PAD_OUTPUT_A)
-   `BSG_IO_TIELO_VEC(sdi_token_oen_int,1)
+   `BSG_IO_OUT_ABCD(sdi,token,   `BSG_PAD_OUTPUT_A,    `BSG_PAD_OUTPUT_B,    `BSG_PAD_OUTPUT_C,    `BSG_PAD_OUTPUT_D   )
+   `BSG_IO_TIELO_VEC(sdi_token_oen_int,4)
 
-//-------------------------------------
-//
-//  CUTTED FOR 3x3mm^2 padring
-//
-// sdi_tkn_ex[3] needs a fast pad because it is the clock test output
-//`BSG_IO_OUT_ABCD(sdi,tkn_ex,  `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_FAST)
+   // sdi_tkn_ex[3] needs a fast pad because it is the clock test output
+// `BSG_IO_OUT_ABCD(sdi,tkn_ex,  `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_SLOW, `BSG_PAD_OUTPUT_FAST)
 
 // user settable
 //   `BSG_IO_TIELO_VEC(sdi_tkn_ex_oen_int,4)
 
-   `BSG_IO_IN_V70 (sdi_A_data, `BSG_PAD_INPUT_PULLDOWN)
+   `BSG_IO_IN_V70       (sdi_A_data, `BSG_PAD_INPUT_PULLDOWN)
+   `BSG_IO_INOUT_V70    (sdi_B_data, `BSG_PAD_INPUT_PULLDOWN)
+   `BSG_IO_IN_V70       (sdi_C_data, `BSG_PAD_INPUT_PULLDOWN)
+   `BSG_IO_INOUT_V70    (sdi_D_data, `BSG_PAD_INPUT_PULLDOWN)
 
 
-   `BSG_IO_OUT_A_CH(sdo,sclk,     `BSG_PAD_OUTPUT_A)
-   `BSG_IO_TIELO_VEC(sdo_sclk_oen_int,1)
+   `BSG_IO_OUT_ABCD(sdo,sclk,     `BSG_PAD_OUTPUT_A, `BSG_PAD_OUTPUT_B, `BSG_PAD_OUTPUT_C, `BSG_PAD_OUTPUT_D)
+   `BSG_IO_TIELO_VEC(sdo_sclk_oen_int,4)
 
-//-------------------------------------
-//
-//  CUTTED FOR 3x3mm^2 padring
-//
    // we make these fast because they are used as data for 10-bit channels
-   //`BSG_IO_OUT_ABCD(sdo,sclk_ex,  `BSG_PAD_OUTPUT_A, `BSG_PAD_OUTPUT_B, `BSG_PAD_OUTPUT_C, `BSG_PAD_OUTPUT_D)
+// `BSG_IO_OUT_ABCD(sdo,sclk_ex,  `BSG_PAD_OUTPUT_A, `BSG_PAD_OUTPUT_B, `BSG_PAD_OUTPUT_C, `BSG_PAD_OUTPUT_D)
 
    // user settable
    //`BSG_IO_TIELO_VEC(sdo_sclk_ex_oen_int,4)
 
-   `BSG_IO_OUT_A_CH(sdo,ncmd,     `BSG_PAD_OUTPUT_A)
-   `BSG_IO_TIELO_VEC(sdo_ncmd_oen_int,1)
+   `BSG_IO_OUT_ABCD(sdo,ncmd,     `BSG_PAD_OUTPUT_A, `BSG_PAD_OUTPUT_B, `BSG_PAD_OUTPUT_C, `BSG_PAD_OUTPUT_D)
+   `BSG_IO_TIELO_VEC(sdo_ncmd_oen_int,4)
 
-   `BSG_IO_IN_A_CH (sdo,token,  `BSG_PAD_INPUT_PULLDOWN)
-
-//-------------------------------------
-//
-//  CUTTED FOR 3x3mm^2 padring
-//
-   //`BSG_IO_IN_ABCD (sdo,tkn_ex, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
+   `BSG_IO_IN_ABCD (sdo,token,  `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
+// `BSG_IO_IN_ABCD (sdo,tkn_ex, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN, `BSG_PAD_INPUT_PULLDOWN)
 
    `BSG_IO_OUT_V70 (sdo_A_data, `BSG_PAD_OUTPUT_A)
+   `BSG_IO_OUT_V70 (sdo_B_data, `BSG_PAD_OUTPUT_B)
+   `BSG_IO_OUT_V70 (sdo_C_data, `BSG_PAD_OUTPUT_C)
+   `BSG_IO_OUT_V70 (sdo_D_data, `BSG_PAD_OUTPUT_D)
 
    `BSG_IO_TIELO_VEC(sdo_A_data_oen_int,8)
+   `BSG_IO_TIELO_VEC(sdo_B_data_oen_int,8)
+   `BSG_IO_TIELO_VEC(sdo_C_data_oen_int,8)
+   `BSG_IO_TIELO_VEC(sdo_D_data_oen_int,8)
 
     // node L3 and R3 have been chosen as outputs
 
@@ -124,7 +117,9 @@ BSG_PAD_DISABLE should be defined!
 
    // differential pairs
    `BSG_IO_IN_DIFF_DISABLE (clk_0, `BSG_PAD_DISABLE)
-   `BSG_IO_IN_DIFF_DISABLE (clk_1, `BSG_PAD_DISABLE)
+// `BSG_IO_IN_DIFF_DISABLE (clk_1, `BSG_PAD_DISABLE)
+   `BSG_IO_OUT(clk_1_p,`BSG_PAD_OUTPUT_FAST)
+   `BSG_IO_OUT(clk_1_n,`BSG_PAD_OUTPUT_FAST)
    `BSG_IO_IN_DIFF_DISABLE (SMA_in,`BSG_PAD_DISABLE)
 
 

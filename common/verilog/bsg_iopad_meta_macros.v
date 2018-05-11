@@ -26,8 +26,6 @@
   `XTC_IN_V(name,6);                       \
   `XTC_IN_V(name,7);
 
-
-
 `define XTC_IN_V60(name)                   \
    wire [6:0] name``_i_int;                \
                                            \
@@ -65,7 +63,6 @@
   `XTC_IN_A(pre,suffix,D,3);
 
 
-
 `define XTC_OUT_ABCD(pre,suffix)           \
                                            \
    wire [3:0] pre``_``suffix``_o_int;      \
@@ -75,7 +72,6 @@
   `XTC_OUT_A(pre,suffix,B,1);              \
   `XTC_OUT_A(pre,suffix,C,2);              \
   `XTC_OUT_A(pre,suffix,D,3);
-
 
 
 // MBT use these definitions instead for bsg_two padring and on
@@ -92,6 +88,22 @@
   `BSG_IO_IN_V(name,5,padtype);            \
   `BSG_IO_IN_V(name,6,padtype);            \
   `BSG_IO_IN_V(name,7,padtype);
+
+`define BSG_IO_INOUT_V70(name,padtype)     \
+                                           \
+   wire [7:0] name``_i_io_int;             \
+   wire [7:0] name``_o_io_int;             \
+   wire [7:0] name``_oe_n_io_int;          \
+                                           \
+  `BSG_IO_INOUT_V(name,0,padtype);            \
+  `BSG_IO_INOUT_V(name,1,padtype);            \
+  `BSG_IO_INOUT_V(name,2,padtype);            \
+  `BSG_IO_INOUT_V(name,3,padtype);            \
+  `BSG_IO_INOUT_V(name,4,padtype);            \
+  `BSG_IO_INOUT_V(name,5,padtype);            \
+  `BSG_IO_INOUT_V(name,6,padtype);            \
+  `BSG_IO_INOUT_V(name,7,padtype);
+
 
 
 
@@ -133,6 +145,22 @@
     `BSG_IO_IN_A(pre,suffix,C,2,padtypeC);  \
     `BSG_IO_IN_A(pre,suffix,D,3,padtypeD);
 
+`define BSG_IO_IN_AB(pre,suffix,padtypeA,padtypeB) \
+                                           \
+    wire[1:0] pre``_``suffix``_i_int;      \
+                                           \
+    `BSG_IO_IN_A(pre,suffix,A,0,padtypeA);  \
+    `BSG_IO_IN_A(pre,suffix,B,1,padtypeB);
+
+`define BSG_IO_INOUT_CD(pre,suffix,padtypeC,padtypeD)   \
+                                                        \
+    wire[1:0] pre``_``suffix``_i_io_int;                   \
+    wire[1:0] pre``_``suffix``_o_io_int;                   \
+    wire[1:0] pre``_``suffix``_oe_n_io_int;                \
+                                                        \
+    `BSG_IO_INOUT_A(pre,suffix,C,0,padtypeC);           \
+    `BSG_IO_INOUT_A(pre,suffix,D,1,padtypeD);
+
 
 `define BSG_IO_OUT_ABCD(pre,suffix,padtypeA,padtypeB,padtypeC,padtypeD)  \
                                                                          \
@@ -144,17 +172,10 @@
     `BSG_IO_OUT_A(pre,suffix,C,2,padtypeC);                              \
     `BSG_IO_OUT_A(pre,suffix,D,3,padtypeD);
 
-//only instantiate one channnel
-`define BSG_IO_IN_A_CH(pre,suffix,padtypeA) \
-                                           \
-    wire[0:0] pre``_``suffix``_i_int;      \
-                                           \
-    `BSG_IO_IN_A(pre,suffix,A,0,padtypeA);
-
-
-`define BSG_IO_OUT_A_CH(pre,suffix,padtypeA)  \
+`define BSG_IO_OUT_CD(pre,suffix,padtypeC,padtypeD)  \
                                                                          \
-    wire [0:0] pre``_``suffix``_o_int;                                   \
-    wire [0:0] pre``_``suffix``_oen_int;                                 \
+    wire [1:0] pre``_``suffix``_o_int;                                   \
+    wire [1:0] pre``_``suffix``_oen_int;                                 \
                                                                          \
-    `BSG_IO_OUT_A(pre,suffix,A,0,padtypeA);
+    `BSG_IO_OUT_A(pre,suffix,C,0,padtypeC);                              \
+    `BSG_IO_OUT_A(pre,suffix,D,1,padtypeD);                              \
