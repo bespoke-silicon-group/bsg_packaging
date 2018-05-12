@@ -15,13 +15,9 @@
 // PDIDGZ foo_i (.PAD(p_foo_i), .C(foo_i_int));
 `define XTC_IN(name)                    wire name``_i_int = p_``name``_i;
 
-//  name_i_int :  input data from pad
-//  name_o_int :  output data to pad
-//  name_oe_n_int:  output enable. ACTIVE_LOW
-`define XTC_INOUT(name)                assign p_``name``_io = name``_oe_n_io_int ? 1'bz : name``_o_io_int;   \
-                                       assign name``_i_io_int  = p_``name``_io                        ;
-
-
+//  name_i_io_int :  input data from pad
+//  name_o_io_int :  output data to pad
+//  name_oe_n_io_int:  output enable. ACTIVE_LOW
 `define XTC_IN_A(pre,suffix,letter,index) assign pre``_``suffix``_i_int[index] = p_``pre``_``suffix``_i[index];
 
 `define XTC_INOUT_A(pre,suffix,letter,index) \
@@ -57,7 +53,6 @@
 `define BSG_IO_IN_V(name,index,padtype) `XTC_IN_V(name,index)
 `define BSG_IO_INOUT_V(name,index,padtype) `XTC_INOUT_V(name,index)
 `define BSG_IO_OUT(name,padtype) `XTC_OUT(name)
-`define BSG_IO_INOUT(name,padtype) `XTC_INOUT(name)
 
 `define BSG_IO_OUT_V(name,index,padtype) `XTC_OUT_V(name,index)
 `define BSG_IO_OUT_A(pre,suffix,letter,num,padtype) `XTC_OUT_A(pre,suffix,letter,num)
