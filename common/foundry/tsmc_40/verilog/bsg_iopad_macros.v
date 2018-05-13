@@ -120,10 +120,10 @@ end
 
 
 // **************************************************************************************************************
-// PRB12DGZ foo_0_io (.PAD(p_foo_io[0], .OEN( foo_oe_n_io_int[0], .I(foo_o_io_int[0]), .C(foo_i_io_int[0] )
+// PRB12DGZ foo_0_io (.PAD(p_foo_io[0], .OEN( foo_oen_io_int[0], .I(foo_o_io_int[0]), .C(foo_i_io_int[0] )
 `define BSG_IO_INOUT_V(name,index,padtype)                              \
-    padtype name``_``index``_io (.PAD             (p_``name``_o[``index]       )     \
-                                `BSG_OUTPUT_ENABLE(name``_oe_n_io_int[``index] )     \
+    padtype name``_``index``_io (.PAD             (p_``name``_io[``index]       )     \
+                                `BSG_OUTPUT_ENABLE(name``_oen_io_int[``index] )     \
                                 ,.I               (name``_o_io_int[``index]    )     \
                                 ,.C               (name``_i_io_int[``index]    )     \
                                 )
@@ -138,13 +138,13 @@ end
 
 // **************************************************************************************************************
 // PRB12DGZ sdo_A_sclk_ex_o (.PAD(p_sdo_sclk_ex_o[0])
-//                          ,.OEN(sdo_sclk_ex_oe_n_io_int[0])
+//                          ,.OEN(sdo_sclk_ex_oen_io_int[0])
 //                          ,.I(sdo_sclk_ex_o_io_int[0])
 //                          ,.C(sdo_sclk_ex_i_io_int[0]));
 
 `define BSG_IO_INOUT_A(pre,suffix,letter,num,padtype)                           \
   padtype pre``_``letter``_``suffix``_io( .PAD            (p_``pre``_``suffix``_io[num])     \
-                                        `BSG_OUTPUT_ENABLE(pre``_``suffix``_oe_n_io_int[num])\
+                                        `BSG_OUTPUT_ENABLE(pre``_``suffix``_oen_io_int[num])\
                                         ,.I               (pre``_``suffix``_o_io_int[num])   \
                                         ,.C               (pre``_``suffix``_i_io_int[num])   \
                                        );

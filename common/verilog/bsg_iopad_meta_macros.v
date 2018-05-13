@@ -93,7 +93,7 @@
                                            \
    wire [7:0] name``_i_io_int;             \
    wire [7:0] name``_o_io_int;             \
-   wire [7:0] name``_oe_n_io_int;          \
+   wire [7:0] name``_oen_io_int;          \
                                            \
   `BSG_IO_INOUT_V(name,0,padtype);            \
   `BSG_IO_INOUT_V(name,1,padtype);            \
@@ -156,7 +156,7 @@
                                                         \
     wire[1:0] pre``_``suffix``_i_io_int;                   \
     wire[1:0] pre``_``suffix``_o_io_int;                   \
-    wire[1:0] pre``_``suffix``_oe_n_io_int;                \
+    wire[1:0] pre``_``suffix``_oen_io_int;                \
                                                         \
     `BSG_IO_INOUT_A(pre,suffix,C,0,padtypeC);           \
     `BSG_IO_INOUT_A(pre,suffix,D,1,padtypeD);
@@ -175,7 +175,7 @@
 `define BSG_IO_OENOUT_CD(pre,suffix,padtypeC,padtypeD)  \
                                                                          \
     wire [1:0] pre``_``suffix``_o_int;                                   \
-    wire [1:0] pre``_``suffix``_oe_n_int;                                 \
+    wire [1:0] pre``_``suffix``_oen_int;                                 \
                                                                          \
     `BSG_IO_OUT_A(pre,suffix,C,0,padtypeC);                              \
     `BSG_IO_OUT_A(pre,suffix,D,1,padtypeD);                              \
