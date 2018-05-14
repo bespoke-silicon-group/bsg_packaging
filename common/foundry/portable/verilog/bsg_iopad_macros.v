@@ -17,12 +17,12 @@
 
 //  name_i_io_int :  input data from pad
 //  name_o_io_int :  output data to pad
-//  name_oe_n_io_int:  output enable. ACTIVE_LOW
+//  name_oen_io_int:  output enable. ACTIVE_LOW
 `define XTC_IN_A(pre,suffix,letter,index) assign pre``_``suffix``_i_int[index] = p_``pre``_``suffix``_i[index];
 
 `define XTC_INOUT_A(pre,suffix,letter,index) \
         assign pre``_``suffix``_i_io_int[index] = p_``pre``_``suffix``_io[index]; \
-        assign p_``pre``_``suffix``_io[index]= ``pre``_``suffix``_oe_n_io_int[index]   \
+        assign p_``pre``_``suffix``_io[index]= ``pre``_``suffix``_oen_io_int[index]   \
                                              ? 1'bz                                 \
                                              : ``pre``_``suffix``_o_io_int[index] ;
 
@@ -30,7 +30,7 @@
 
 `define XTC_INOUT_V(name,index)                 \
                 assign name``_i_io_int[index]= p_``name``_io[index];       \
-                assign p_``name``_io[index] = name``_oe_n_io_int[index]   \
+                assign p_``name``_io[index] = name``_oen_io_int[index]   \
                                              ? 1'bz                     \
                                              : name``_o_io_int[index];
 
@@ -40,7 +40,7 @@
 `define XTC_OUT_V(name,index)    assign p_``name``_o[index] = name``_o_int[index];
 
 `define XTC_OUT_A(pre,suffix,letter,num)        assign p_``pre``_``suffix``_o[num] = pre``_``suffix``_o_int[num];
-`define XTC_OENOUT_A(pre,suffix,letter,num)     assign p_``pre``_``suffix``_o[num] = pre``_``suffix``_oe_n_int[num]? 1'bz : pre``_``suffix``_o_int[num];
+`define XTC_OENOUT_A(pre,suffix,letter,num)     assign p_``pre``_``suffix``_o[num] = pre``_``suffix``_oen_int[num]? 1'bz : pre``_``suffix``_o_int[num];
 
 `define BSG_IO_IN_DISABLE(name,padtype) wire name``_i_int = 0 & p_``name``_i;
 `define BSG_IO_IN_DIFF_DISABLE(name,padtype) \
