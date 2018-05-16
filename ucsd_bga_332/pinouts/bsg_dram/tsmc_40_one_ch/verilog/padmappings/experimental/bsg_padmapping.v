@@ -67,8 +67,8 @@
 // Tri-State Output Pad, High-Volt Tolerant
 `define BSG_PAD_DISABLE PDT02DGZ
 
-//PDB12DGZ = 12 mA inout pad (TSMC40nm).
-//Tri-State Output Pad with Input, High-Volt Tolerant
+//PDD12DGZ = 12 mA inout pad (TSMC40nm).
+//Tri-State Output Pad with Input and Pull-Down, High-Volt Tolerant
 //PAD Cap = 3.67 pF
 //DRAM output voltage measuring load: 20pF, 50O Transmition line.
-`define BSG_PAD_INOUT PDB12DGZ
+`define BSG_PAD_INOUT PDD12DGZ
