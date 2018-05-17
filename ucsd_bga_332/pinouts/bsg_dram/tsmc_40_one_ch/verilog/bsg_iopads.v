@@ -124,6 +124,9 @@ BSG_PAD_INOUT should be defined!
 // `BSG_IO_IN_DIFF_DISABLE (clk_1, `BSG_PAD_DISABLE)
    `BSG_IO_OUT(clk_1_p,`BSG_PAD_OUTPUT_FAST)
    `BSG_IO_OUT(clk_1_n,`BSG_PAD_OUTPUT_FAST)
+   `BSG_IO_TIELO(clk_1_p_oen_int)
+   `BSG_IO_TIELO(clk_1_n_oen_int)
+
    `BSG_IO_IN_DIFF_DISABLE (SMA_in,`BSG_PAD_DISABLE)
 
 
