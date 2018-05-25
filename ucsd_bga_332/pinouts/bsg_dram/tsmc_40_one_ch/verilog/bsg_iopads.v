@@ -90,8 +90,7 @@ BSG_PAD_INOUT should be defined!
    `BSG_IO_IN (misc_L_4, `BSG_PAD_INPUT_PULLDOWN)
    `BSG_IO_IN (misc_L_2, `BSG_PAD_INPUT_PULLDOWN)
    `BSG_IO_OUT(misc_L_3,`BSG_PAD_OUTPUT_SLOW)
-
-//`BSG_IO_TIELO(misc_L_3_oen_int)
+   `BSG_IO_TIELO(misc_L_3_oen_int)
 
    `BSG_IO_IN (misc_L_1, `BSG_PAD_INPUT_PULLDOWN)
    `BSG_IO_IN (misc_L_0, `BSG_PAD_INPUT_PULLDOWN)
@@ -101,7 +100,7 @@ BSG_PAD_INOUT should be defined!
    `BSG_IO_IN (misc_R_5, `BSG_PAD_INPUT_PULLDOWN)
    `BSG_IO_IN (misc_R_4, `BSG_PAD_INPUT_PULLDOWN)
    `BSG_IO_OUT(misc_R_3,`BSG_PAD_OUTPUT_SLOW)
-//   `BSG_IO_TIELO(misc_R_3_oen_int)
+   `BSG_IO_TIELO(misc_R_3_oen_int)
 
    `BSG_IO_IN (misc_R_2, `BSG_PAD_INPUT_PULLDOWN)
    `BSG_IO_IN (misc_R_1, `BSG_PAD_INPUT_PULLDOWN)
@@ -115,9 +114,6 @@ BSG_PAD_INOUT should be defined!
     // these can be used as fast i/os
    `BSG_IO_OUT(sdo_A_data_8,`BSG_PAD_OUTPUT_A)
    `BSG_IO_OUT(sdo_C_data_8,`BSG_PAD_OUTPUT_C)
-
-//   `BSG_IO_TIELO(sdo_A_data_8_oen_int)
-//   `BSG_IO_TIELO(sdo_C_data_8_oen_int)
 
    // differential pairs
    `BSG_IO_IN_DIFF_DISABLE (clk_0, `BSG_PAD_DISABLE)
