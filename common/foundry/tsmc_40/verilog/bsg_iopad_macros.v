@@ -28,10 +28,10 @@ error BSG_OUTPUT_NEEDS_ENABLES not defined
   bsg_tielo #(.width_p(1)) name``tielo (.o(name));
 
 `define BSG_IO_TIELO_VEC_ONE(name,item)                           \
-  bsg_tielo #(.width_p(1)) name``_``_item``tielo (.o(name[item]));
+  bsg_tielo #(.width_p(1)) name``_``item``_tielo (.o(name[item]));
 
 `define BSG_IO_TIEHI_VEC_ONE(name,item)                           \
-  bsg_tiehi #(.width_p(1)) name``_``_item``tiehi (.o(name[item]));
+  bsg_tiehi #(.width_p(1)) name``_``item``_tiehi (.o(name[item]));
 
 `define BSG_IO_TIEHI_VEC(name,width)             \
                                                  \
