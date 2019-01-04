@@ -1,14 +1,13 @@
-
-// MBT 8-17-2016
+// CZ 1-1-2019
 //
 // **********************************************************************
-// UCSD BSG Two Pinout (Based on UCSD BGA 332)
+// UW BSG ASIC Cloud Pinout (Based on UW BGA)
 //
 // This file defines all of the pads that are used for a given pinout of
 // a package. It would change if we reversed the direction of a pad. It
-// is recommended not to change the name of the
-// pin (except the _i or _o) at this level so that we can maintain canonical
-// naming for the package; instead just do an assign of a wire to rename.
+// is recommended not to change the name of the pin (except the _i or _o)
+// at this level so that we can maintain canonical naming for the package;
+// instead just do an assign of a wire to rename.
 //
 // convention:
 //
@@ -16,136 +15,163 @@
 // - the corresponding signals have no prefix
 //   and have a suffix of _int.
 // - the IO pad names are consistent with the
-//   BGA 332 pinout names (e.g, sdi_B_data_7_i, sdi_B_ncmd_i)
+//   BGA pinout names (e.g, sdi_B_data_7_i, sdi_B_ncmd_i)
 //
 // it is customary to include a macro file ahead of this one;
 // for example bsg_one_iopad_macros_verilog.v
 
-//module
-// bsg_two
-(
- // *******************************************************************
- // all "100-ohm impedance-controlled-in-package" differential pairs
- //
-
- // unused differential inputs
- // we give these as outputs, and then go high-impedance
-   output p_clk_0_p_i    , output  p_clk_0_n_i
- , output  p_clk_1_p_o  // ==>  ddr_clk_p
- , output  p_clk_1_n_o  // ==>  ddr_clk_n
-
- // unused differential inputs
- // we give these as outputs, and then go high-impedance
- , output  p_SMA_in_p_i   , output p_SMA_in_n_i
-
- , output p_SMA_out_p_o  , output p_SMA_out_n_o
-
- // *******************************************************************
- // ultra-shielded "50-ohm impedance-controlled-in-package" clock for PLL
- , input   p_PLL_CLK_i
-
- // *******************************************************************
- // all "50-ohm impedance-controlled-in-package" signals starting here
- // these are length matched within 1.55 mm length and
- // .76 mm bond wire length.
-
- // input clocks for input channels D,C,B,A
- //
- // MODIFIED FOR DRAM
- //, input  [3:0] p_sdi_sclk_i
- , inout   [1:0] p_sdi_sclk_io   //==> {dqs[1], dqs[0]}
- , input   [1:0] p_sdi_sclk_i
-
- // MODIFIED FOR DRAM
- // input valids for input channels D,C,B,A
- , output [1:0] p_sdi_ncmd_o   //==> {dm[1], dm[0]}
- , input  [1:0] p_sdi_ncmd_i
-
- // input datas for input channels D,C,B,A
- , input  [7:0] p_sdi_A_data_i
-
- // MODIFIED FOR DRAM
- //, input  [7:0] p_sdi_B_data_i
- , inout  [7:0] p_sdi_B_data_io //==> dq[7:0]
-
- , input  [7:0] p_sdi_C_data_i
-
- // MODIFIED FOR DRAM
- //, input [7:0] p_sdi_D_data_i
- , inout [7:0] p_sdi_D_data_io //==> dq[15:8]
-
- // output tokens for input channels D,C,B,A
- , output [3:0] p_sdi_token_o  //==> {ddr_cs,  --, --, sdi_A_token_o}
-
- // output clocks for output channels D,C,B,A
- , output [3:0] p_sdo_sclk_o   //==> {ddr_cke, ddr_we, --, sdo_A_sclk_o}
-
- // output valids for output channels
- , output [3:0] p_sdo_ncmd_o  //==> {ddr_cas, ddr_ras, --, sdo_A_ncmd_o}
-
- // output data for out channels
- , output [7:0] p_sdo_A_data_o
- , output [7:0] p_sdo_B_data_o
- , output [7:0] p_sdo_C_data_o //==> ddr_addr[7:0]
- , output [7:0] p_sdo_D_data_o //==> {ddr_ba[1:0], ddr_addr[13:8]}
-
- // extra output datas
- , output p_sdo_A_data_8_o , output p_sdo_C_data_8_o
-
- // input tokens for output channels
- , input  [3:0] p_sdo_token_i
-
- // ----------------------------------------------------
- //
- //   CUTTED IN 3x3mm^2 pad ring
- //
- // spare clocks, length matched to channels
- //, input  [3:0] p_sdi_sclk_ex_i
- //, output [3:0] p_sdo_sclk_ex_o
-
- //// spare tokens for input and output channels
- //, output [3:0] p_sdi_tkn_ex_o
- //, input  [3:0] p_sdo_tkn_ex_i
-
- // *******************************************************************
- // all "50-ohm impedance-controlled-in-package", starting here
- // but are next to clock or token signals
- // and are not length-matched
-
- , input  p_misc_T_0_i, input p_misc_T_1_i, input p_misc_T_2_i
-
- , input  p_misc_L_7_i, input  p_misc_R_7_i
- , input  p_misc_L_6_i, input  p_misc_R_6_i
- , input  p_misc_L_5_i, input  p_misc_R_5_i
- , input  p_misc_L_4_i, input  p_misc_R_4_i
-
- // L3 and R3 are output pads because it works with the pad ring
- , output p_misc_L_3_o, output p_misc_R_3_o
-
- , input  p_misc_L_2_i, input  p_misc_R_2_i
- , input  p_misc_L_1_i, input  p_misc_R_1_i
- , input  p_misc_L_0_i, input  p_misc_R_0_i
-
- , input  p_reset_i
-
- // for JTAG, or other purposes
- , input  p_JTAG_TMS_i
- , input  p_JTAG_TDI_i
- , input  p_JTAG_TCK_i
- , input  p_JTAG_TRST_i
- , output p_JTAG_TDO_o
-
- // *******************************************************************
- // all "not impedance controlled in package", starting here
- // for powering PLL or can be used for low frequency debug signals
- // NOTE: Driver selected by XTC macro must be updated according to use.
-
-// , input  p_PLL_VDD_i
-// , input  p_PLL_VSS_i
-// , input  p_PLL_V33_i
-// , input  p_PLL_VZZ_i
- );
-
-// End UCSD BGA 332 PAD Definitions
+// module bsg_asic_cloud
+  // 2-channel comm link interface, 48 pins
+  // input channel of comm link 1
+  (input  p_ci_clk_i
+  ,input  p_ci_v_i
+  ,output p_ci_tkn_o
+  ,input  p_ci_0_i
+  ,input  p_ci_1_i
+  ,input  p_ci_2_i
+  ,input  p_ci_3_i
+  ,input  p_ci_4_i
+  ,input  p_ci_5_i
+  ,input  p_ci_6_i
+  ,input  p_ci_7_i
+  ,input  p_ci_8_i
+  // output channel of comm link 1
+  ,output p_co_clk_o
+  ,output p_co_v_o
+  ,input  p_co_tkn_i
+  ,output p_co_0_o
+  ,output p_co_1_o
+  ,output p_co_2_o
+  ,output p_co_3_o
+  ,output p_co_4_o
+  ,output p_co_5_o
+  ,output p_co_6_o
+  ,output p_co_7_o
+  ,output p_co_8_o
+  // input channel of comm link 2
+  ,input  p_ci2_clk_i
+  ,input  p_ci2_v_i
+  ,output p_ci2_tkn_o
+  ,input  p_ci2_0_i
+  ,input  p_ci2_1_i
+  ,input  p_ci2_2_i
+  ,input  p_ci2_3_i
+  ,input  p_ci2_4_i
+  ,input  p_ci2_5_i
+  ,input  p_ci2_6_i
+  ,input  p_ci2_7_i
+  ,input  p_ci2_8_i
+  // output channel of comm link 2
+  ,output p_co2_clk_o
+  ,output p_co2_v_o
+  ,input  p_co2_tkn_i
+  ,output p_co2_0_o
+  ,output p_co2_1_o
+  ,output p_co2_2_o
+  ,output p_co2_3_o
+  ,output p_co2_4_o
+  ,output p_co2_5_o
+  ,output p_co2_6_o
+  ,output p_co2_7_o
+  ,output p_co2_8_o
+  // 32-bit ddr dram interface, 72 pins
+  // ddr interface differential output clock pair
+  ,output p_ddr_ck_p_o, output p_ddr_ck_n_o
+  // ddr interface output clock enable signal
+  ,output p_ddr_cke_o
+  // ddr interface output command signals
+  ,output p_ddr_cs_n_o
+  ,output p_ddr_ras_n_o
+  ,output p_ddr_cas_n_o
+  ,output p_ddr_we_n_o
+  // ddr interface output control signals
+  ,output p_ddr_reset_n_o
+  ,output p_ddr_odt_o
+  // ddr interface bank address
+  ,output p_ddr_ba_0_o
+  ,output p_ddr_ba_1_o
+  ,output p_ddr_ba_2_o
+  // ddr interface address bus
+  ,output p_ddr_addr_0_o
+  ,output p_ddr_addr_1_o
+  ,output p_ddr_addr_2_o
+  ,output p_ddr_addr_3_o
+  ,output p_ddr_addr_4_o
+  ,output p_ddr_addr_5_o
+  ,output p_ddr_addr_6_o
+  ,output p_ddr_addr_7_o
+  ,output p_ddr_addr_8_o
+  ,output p_ddr_addr_9_o
+  ,output p_ddr_addr_10_o
+  ,output p_ddr_addr_11_o
+  ,output p_ddr_addr_12_o
+  ,output p_ddr_addr_13_o
+  ,output p_ddr_addr_14_o
+  ,output p_ddr_addr_15_o
+  // 32-bit ddr interface data mask
+  ,output p_ddr_dm_0_o
+  ,output p_ddr_dm_1_o
+  ,output p_ddr_dm_2_o
+  ,output p_ddr_dm_3_o
+  // 32-bit ddr interface dq strobe signals
+  ,inout  p_ddr_dqs_p_0_io, inout  p_ddr_dqs_n_0_io
+  ,inout  p_ddr_dqs_p_1_io, inout  p_ddr_dqs_n_1_io
+  ,inout  p_ddr_dqs_p_2_io, inout  p_ddr_dqs_n_2_io
+  ,inout  p_ddr_dqs_p_3_io, inout  p_ddr_dqs_n_3_io
+  // ddr interface data bus
+  ,inout  p_ddr_dq_0_io
+  ,inout  p_ddr_dq_1_io
+  ,inout  p_ddr_dq_2_io
+  ,inout  p_ddr_dq_3_io
+  ,inout  p_ddr_dq_4_io
+  ,inout  p_ddr_dq_5_io
+  ,inout  p_ddr_dq_6_io
+  ,inout  p_ddr_dq_7_io
+  ,inout  p_ddr_dq_8_io
+  ,inout  p_ddr_dq_9_io
+  ,inout  p_ddr_dq_10_io
+  ,inout  p_ddr_dq_11_io
+  ,inout  p_ddr_dq_12_io
+  ,inout  p_ddr_dq_13_io
+  ,inout  p_ddr_dq_14_io
+  ,inout  p_ddr_dq_15_io
+  ,inout  p_ddr_dq_16_io
+  ,inout  p_ddr_dq_17_io
+  ,inout  p_ddr_dq_18_io
+  ,inout  p_ddr_dq_19_io
+  ,inout  p_ddr_dq_20_io
+  ,inout  p_ddr_dq_21_io
+  ,inout  p_ddr_dq_22_io
+  ,inout  p_ddr_dq_23_io
+  ,inout  p_ddr_dq_24_io
+  ,inout  p_ddr_dq_25_io
+  ,inout  p_ddr_dq_26_io
+  ,inout  p_ddr_dq_27_io
+  ,inout  p_ddr_dq_28_io
+  ,inout  p_ddr_dq_29_io
+  ,inout  p_ddr_dq_30_io
+  ,inout  p_ddr_dq_31_io
+  // bsg tag interface, 5 pins
+  ,input  p_bsg_tag_clk_i
+  ,input  p_bsg_tag_en_i
+  ,input  p_bsg_tag_data_i
+  ,output p_bsg_tag_clk_o
+  ,output p_bsg_tag_data_o
+  // clock and reset interface, 9 pins
+  // clock input signals
+  ,input  p_clk_A_i
+  ,input  p_clk_B_i
+  ,input  p_clk_C_i
+  // clock output signal
+  ,output p_clk_o
+  // 3-bit clock selection signals
+  ,input  p_sel_0_i
+  ,input  p_sel_1_i
+  ,input  p_sel_2_i
+  // asynchronous reset signals
+  ,input  p_clk_async_reset_i
+  ,input  p_core_async_reset_i
+  // miscellaneous signal, 1 pin
+  ,output p_misc_o);
+// End UW BGA PAD Definitions
 // **********************************************************************
-
