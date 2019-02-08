@@ -22,6 +22,7 @@
 
 // module bsg_asic_cloud
   // 2-channel comm link interface, 48 pins
+  // NEED A SWIZZLING ADAPTER TO WORK CORRECTLY
   // input channel of comm link 1
   (input  p_ci_clk_i
   ,input  p_ci_v_i
@@ -36,31 +37,33 @@
   ,input  p_ci_7_i
   ,input  p_ci_8_i
   // output channel of comm link 1
-  ,output p_co_clk_o
-  ,output p_co_v_o
-  ,input  p_co_tkn_i
-  ,output p_co_0_o
-  ,output p_co_1_o
-  ,output p_co_2_o
-  ,output p_co_3_o
-  ,output p_co_4_o
-  ,output p_co_5_o
-  ,output p_co_6_o
-  ,output p_co_7_o
-  ,output p_co_8_o
+  // direction switched from OUTPUT to INPUT
+  ,input  p_co_clk_i
+  ,input  p_co_v_i
+  ,output p_co_tkn_o
+  ,input  p_co_0_i
+  ,input  p_co_1_i
+  ,input  p_co_2_i
+  ,input  p_co_3_i
+  ,input  p_co_4_i
+  ,input  p_co_5_i
+  ,input  p_co_6_i
+  ,input  p_co_7_i
+  ,input  p_co_8_i
   // input channel of comm link 2
-  ,input  p_ci2_clk_i
-  ,input  p_ci2_v_i
-  ,output p_ci2_tkn_o
-  ,input  p_ci2_0_i
-  ,input  p_ci2_1_i
-  ,input  p_ci2_2_i
-  ,input  p_ci2_3_i
-  ,input  p_ci2_4_i
-  ,input  p_ci2_5_i
-  ,input  p_ci2_6_i
-  ,input  p_ci2_7_i
-  ,input  p_ci2_8_i
+  // direction switched from INPUT to OUTPUT
+  ,output p_ci2_clk_o
+  ,output p_ci2_v_o
+  ,input  p_ci2_tkn_i
+  ,output p_ci2_0_o
+  ,output p_ci2_1_o
+  ,output p_ci2_2_o
+  ,output p_ci2_3_o
+  ,output p_ci2_4_o
+  ,output p_ci2_5_o
+  ,output p_ci2_6_o
+  ,output p_ci2_7_o
+  ,output p_ci2_8_o
   // output channel of comm link 2
   ,output p_co2_clk_o
   ,output p_co2_v_o
