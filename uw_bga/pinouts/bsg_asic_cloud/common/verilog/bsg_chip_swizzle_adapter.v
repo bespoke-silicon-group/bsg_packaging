@@ -62,7 +62,7 @@ module bsg_chip_swizzle_adapter
   assign guts_ci2_clk_o = port_co_clk_i;
   assign guts_ci2_v_o = port_co_v_i;
   assign guts_ci2_data_o = port_co_data_i;
-  assign port_ci2_tkn_o = guts_co_tkn_i;
+  assign port_co_tkn_o = guts_ci2_tkn_i;
 
 
   // channel port_ci2 are mapped to guts_co
