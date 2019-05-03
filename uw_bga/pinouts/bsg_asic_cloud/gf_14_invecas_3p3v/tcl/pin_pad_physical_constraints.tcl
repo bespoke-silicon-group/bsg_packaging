@@ -1,3 +1,12 @@
+#===============================================================================
+# pin_pad_physical_constraints.tcl
+#
+# This script is responsible for constraining the IO driver cells. After this
+# script is sourced, the palce_io command will be called which will then use
+# these constraints to physically place all of the IO cells.
+#===============================================================================
+
+puts "BSG-info: Running script [info script]\n"
 
 # Offset needs to give us space for the crackstop (14) distance to guard edge
 # in the crackstop (7) and then room for the pad overhang (13.707) which totals
@@ -327,4 +336,6 @@ lappend bottom_io_cells "ddr_dm_1_o"
 lappend bottom_io_cells "vzz_b_8"
 
 set_signal_io_constraint -io_guide io_ring.bottom -constraint "{{order_only} [join $bottom_io_cells]}"
+
+puts "BSG-info: Completed script [info script]\n"
 

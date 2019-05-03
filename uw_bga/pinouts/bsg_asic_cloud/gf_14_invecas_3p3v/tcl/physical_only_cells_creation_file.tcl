@@ -1,3 +1,16 @@
+#===============================================================================
+# physical_only_cell_creation_file.tcl
+#
+# Note: the name of this file is misleading. These cells are not just "physical
+# only" cells!
+#
+# This script is responsible for creating any additional IO cells that we need
+# that are not present in the netlist. This includes corner cells, supply
+# cells, and any other cells that might be required for the IO pad ring.
+#===============================================================================
+
+puts "BSG-info: Running script [info script]\n"
+
 create_cell {corner_ul corner_ur corner_lr corner_ll} */IN14LPP_GPIO33_13M9S30P_CORNER
 
 create_cell {vss_l_0 vss_l_1 vss_l_2 vss_l_3 vss_l_4 vss_l_5 vss_l_6 vss_l_7} */IN14LPP_GPIO33_13M9S30P_VSSC_H
@@ -26,4 +39,6 @@ create_cell {vdd_b_0 vdd_b_1 vdd_b_2 vdd_b_3 vdd_b_4 vdd_b_5 vdd_b_6 vdd_b_7} */
 create_cell {vzz_b_0 vzz_b_1 vzz_b_2 vzz_b_3 vzz_b_4 vzz_b_5 vzz_b_6 vzz_b_7 vzz_b_8} */IN14LPP_GPIO33_13M9S30P_VSSIO33_V
 create_cell {v18_b_0 v18_b_1 v18_b_2 v18_b_3 v18_b_4 v18_b_5 v18_b_6 v18_b_7 v18_b_8} */IN14LPP_GPIO33_13M9S30P_VDDIO33_V
 create_cell {bias_b_0 bias_b_1 bias_b_2 bias_b_3 bias_b_4} */IN14LPP_GPIO33_13M9S30P_BIAS_GENERATOR_V
+
+puts "BSG-info: Completed script [info script]\n"
 

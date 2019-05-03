@@ -1,3 +1,17 @@
+#===============================================================================
+# post_io_placement.tcl
+#
+# Sourced at the end of the place_io script. This is responsible for any last
+# minute IO stuff that is specific to the foundry. For this specific foundry,
+# this includes IO filler cell insertion, bond pad creation, and some net
+# connections for new "physical only" cells created.
+#===============================================================================
+
+puts "BSG-info: Running script [info script]\n"
+
+#===============================================================================
+# Create IO fillers
+#===============================================================================
 
 create_io_filler -io_guide io_ring.left \
                  -reference_cells { IN14LPP_GPIO33_13M9S30P_FILL20_H IN14LPP_GPIO33_13M9S30P_FILL10_H IN14LPP_GPIO33_13M9S30P_FILL5_H IN14LPP_GPIO33_13M9S30P_FILL1_H } \
@@ -15,14 +29,18 @@ create_io_filler -io_guide io_ring.bottom \
                  -reference_cells { IN14LPP_GPIO33_13M9S30P_FILL20_V IN14LPP_GPIO33_13M9S30P_FILL10_V IN14LPP_GPIO33_13M9S30P_FILL5_V  IN14LPP_GPIO33_13M9S30P_FILL1_V } \
                  -overlap_cells IN14LPP_GPIO33_13M9S30P_FILL1_V
 
+#===============================================================================
+# Create Bond Pads
+#===============================================================================
+
 set all_left_drivers   [sort_collection [get_cells -filter "design_type==pad && orientation==R0   && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_y}]
 set all_top_drivers    [sort_collection [get_cells -filter "design_type==pad && orientation==R180 && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_x}]
 set all_right_drivers  [sort_collection [get_cells -filter "design_type==pad && orientation==R180 && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_y}]
 set all_bottom_drivers [sort_collection [get_cells -filter "design_type==pad && orientation==R0   && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_x}]
 
-#===============================================================================
+#=======================================
 # LEFT
-#===============================================================================
+#=======================================
 
 set counter 0
 foreach_in_collection io $all_left_drivers {
@@ -41,9 +59,9 @@ foreach_in_collection io $all_left_drivers {
   incr counter
 }
 
-#===============================================================================
+#=======================================
 # TOP
-#===============================================================================
+#=======================================
 
 set counter 0
 foreach_in_collection io $all_top_drivers {
@@ -62,9 +80,9 @@ foreach_in_collection io $all_top_drivers {
   incr counter
 }
 
-#===============================================================================
+#=======================================
 # RIGHT
-#===============================================================================
+#=======================================
 
 set counter 0
 foreach_in_collection io $all_right_drivers {
@@ -83,9 +101,9 @@ foreach_in_collection io $all_right_drivers {
   incr counter
 }
 
-#===============================================================================
+#=======================================
 # BOTTOM
-#===============================================================================
+#=======================================
 
 set counter 0
 foreach_in_collection io $all_bottom_drivers {
@@ -105,9 +123,11 @@ foreach_in_collection io $all_bottom_drivers {
 }
 
 #===============================================================================
-# CONNECT BIAS PINS
+# Connect nets for bias generator cells
 #===============================================================================
 
 set all_bias_drivers [get_cells -filter "ref_name=~*BIAS*"]
 connect_net -net VDD [get_pins -of $all_bias_drivers -filter "name==MODE18"]
+
+puts "BSG-info: Completed script [info script]\n"
 
