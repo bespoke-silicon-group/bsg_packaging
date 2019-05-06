@@ -39,7 +39,7 @@ set all_right_drivers  [sort_collection [get_cells -filter "design_type==pad && 
 set all_bottom_drivers [sort_collection [get_cells -filter "design_type==pad && orientation==R0   && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_x}]
 
 #=======================================
-# LEFT
+# Left Side
 #=======================================
 
 set counter 0
@@ -60,7 +60,7 @@ foreach_in_collection io $all_left_drivers {
 }
 
 #=======================================
-# TOP
+# Top Side
 #=======================================
 
 set counter 0
@@ -81,7 +81,7 @@ foreach_in_collection io $all_top_drivers {
 }
 
 #=======================================
-# RIGHT
+# Right Side
 #=======================================
 
 set counter 0
@@ -102,7 +102,7 @@ foreach_in_collection io $all_right_drivers {
 }
 
 #=======================================
-# BOTTOM
+# Bottom Side
 #=======================================
 
 set counter 0
@@ -121,13 +121,6 @@ foreach_in_collection io $all_bottom_drivers {
   }
   incr counter
 }
-
-#===============================================================================
-# Connect nets for bias generator cells
-#===============================================================================
-
-set all_bias_drivers [get_cells -filter "ref_name=~*BIAS*"]
-connect_net -net VDD [get_pins -of $all_bias_drivers -filter "name==MODE18"]
 
 puts "BSG-info: Completed script [info script]\n"
 
