@@ -14,7 +14,7 @@
 `define PD_ENABLE    .PUC(1'b0),.PDC(1'b1)
 `define PU_PD_DISABLE .PUC(1'b0),.PDC(1'b0)  
 
-`define VREF .VREFN(),.VREFP()
+`define VREF .VREFN(vrefn_lo),.VREFP(vrefp_lo)
 
 `define ND_TREE .NDIN(1'b0),.NDOUT()
 

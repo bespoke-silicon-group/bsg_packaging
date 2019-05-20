@@ -1,5 +1,7 @@
 genvar i;
 
+  wire vrefn_lo, vrefp_lo;
+
   // EAST SIDE OF THE CHIP
   `BSG_IO_IN   (ci_0,    IN14LPP_GPIO33_13M9S30P_IO33_H)
   `BSG_IO_IN   (ci_1,    IN14LPP_GPIO33_13M9S30P_IO33_H)
@@ -168,4 +170,6 @@ genvar i;
   `BSG_IO_OUT  (ci2_6,    IN14LPP_GPIO33_13M9S30P_IO33_V)
   `BSG_IO_OUT  (ci2_7,    IN14LPP_GPIO33_13M9S30P_IO33_V)
   `BSG_IO_OUT  (ci2_8,    IN14LPP_GPIO33_13M9S30P_IO33_V)
+
+  `include "bsg_iopads_physical_only.v"
 
