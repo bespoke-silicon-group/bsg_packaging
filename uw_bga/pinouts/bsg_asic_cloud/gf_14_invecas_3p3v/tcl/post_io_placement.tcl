@@ -15,19 +15,36 @@ puts "BSG-info: Running script [info script]\n"
 
 create_io_filler -io_guide io_ring.left \
                  -reference_cells { IN14LPP_GPIO33_13M9S30P_FILL20_H IN14LPP_GPIO33_13M9S30P_FILL10_H IN14LPP_GPIO33_13M9S30P_FILL5_H IN14LPP_GPIO33_13M9S30P_FILL1_H } \
-                 -overlap_cells IN14LPP_GPIO33_13M9S30P_FILL1_H
+                 -overlap_cells IN14LPP_GPIO33_13M9S30P_FILL1_H \
+                 -prefix "io_filler"
 
 create_io_filler -io_guide io_ring.top \
                  -reference_cells { IN14LPP_GPIO33_13M9S30P_FILL20_V IN14LPP_GPIO33_13M9S30P_FILL10_V IN14LPP_GPIO33_13M9S30P_FILL5_V  IN14LPP_GPIO33_13M9S30P_FILL1_V } \
-                 -overlap_cells IN14LPP_GPIO33_13M9S30P_FILL1_V
+                 -overlap_cells IN14LPP_GPIO33_13M9S30P_FILL1_V \
+                 -prefix "io_filler"
 
 create_io_filler -io_guide io_ring.right \
                  -reference_cells { IN14LPP_GPIO33_13M9S30P_FILL20_H IN14LPP_GPIO33_13M9S30P_FILL10_H IN14LPP_GPIO33_13M9S30P_FILL5_H  IN14LPP_GPIO33_13M9S30P_FILL1_H } \
-                 -overlap_cells IN14LPP_GPIO33_13M9S30P_FILL1_H
+                 -overlap_cells IN14LPP_GPIO33_13M9S30P_FILL1_H \
+                 -prefix "io_filler"
 
 create_io_filler -io_guide io_ring.bottom \
                  -reference_cells { IN14LPP_GPIO33_13M9S30P_FILL20_V IN14LPP_GPIO33_13M9S30P_FILL10_V IN14LPP_GPIO33_13M9S30P_FILL5_V  IN14LPP_GPIO33_13M9S30P_FILL1_V } \
-                 -overlap_cells IN14LPP_GPIO33_13M9S30P_FILL1_V
+                 -overlap_cells IN14LPP_GPIO33_13M9S30P_FILL1_V \
+                 -prefix "io_filler"
+
+set io_filler_cells [get_cells -filter "name=~io_filler*"]
+
+connect_supply_net VDD   -port [get_pins -of $io_filler_cells -filter "name==VDDC"]
+connect_supply_net VSS   -port [get_pins -of $io_filler_cells -filter "name==VSSC"]
+connect_supply_net VDDIO -port [get_pins -of $io_filler_cells -filter "name==VDDIO"]
+connect_supply_net VSSIO -port [get_pins -of $io_filler_cells -filter "name==VSSIO"]
+
+connect_net -net vrefn_lo [get_pins -of $io_filler_cells -filter "name==VREFN"]
+connect_net -net vrefp_lo [get_pins -of $io_filler_cells -filter "name==VREFP"]
+
+commit_upf
+connect_pg_net -automatic -all_blocks
 
 #===============================================================================
 # Create Bond Pads
