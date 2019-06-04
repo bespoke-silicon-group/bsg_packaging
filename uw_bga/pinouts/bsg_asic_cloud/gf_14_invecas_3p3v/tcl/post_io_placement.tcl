@@ -50,6 +50,11 @@ connect_pg_net -automatic -all_blocks
 # Create Bond Pads
 #===============================================================================
 
+# BSG-STD: Disabling bond pad insertion. Currently, there is a routing block
+# issue on the bond pad frame views. Once that is fixed, bond pad insertion
+# will be re-enabled.
+if {0} {
+
 set all_left_drivers   [sort_collection [get_cells -filter "design_type==pad && orientation==R0   && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_y}]
 set all_top_drivers    [sort_collection [get_cells -filter "design_type==pad && orientation==R180 && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_x}]
 set all_right_drivers  [sort_collection [get_cells -filter "design_type==pad && orientation==R180 && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_y}]
@@ -138,6 +143,8 @@ foreach_in_collection io $all_bottom_drivers {
   }
   incr counter
 }
+
+} ;# if {0}
 
 puts "BSG-info: Completed script [info script]\n"
 
