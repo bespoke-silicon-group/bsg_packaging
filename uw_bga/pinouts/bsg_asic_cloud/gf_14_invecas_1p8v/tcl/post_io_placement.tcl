@@ -13,7 +13,6 @@ puts "BSG-info: Running script [info script]\n"
 # Create IO fillers
 #===============================================================================
 
-if {0} {
 create_io_filler -io_guide io_ring.left \
                  -reference_cells { IN12LP_GPIO18_13M9S30P_FILL20_H IN12LP_GPIO18_13M9S30P_FILL10_H IN12LP_GPIO18_13M9S30P_FILL5_H IN12LP_GPIO18_13M9S30P_FILL1_H } \
                  -overlap_cells IN12LP_GPIO18_13M9S30P_FILL1_H \
@@ -52,7 +51,7 @@ connect_pg_net -automatic -all_blocks
 # Create Bond Pads
 #===============================================================================
 
-} ;# if {0}
+if {0} {
 
 # BSG-STD: Disabling bond pad insertion. Currently, there is a routing block
 # issue on the bond pad frame views. Once that is fixed, bond pad insertion
@@ -147,6 +146,7 @@ foreach_in_collection io $all_bottom_drivers {
   incr counter
 }
 
+} ;# if {0}
 
 puts "BSG-info: Completed script [info script]\n"
 
