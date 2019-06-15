@@ -67,14 +67,14 @@ module bsg_chip_swizzle_adapter
 
   // channel port_ci2 are mapped to guts_co
   // pin sequence changed
-  assign port_ci2_clk_o = guts_co_v_i;
+  assign port_ci2_clk_o = guts_co_clk_i;
   assign port_ci2_v_o = guts_co_data_i[4];
   assign port_ci2_data_o[0] = guts_co_data_i[6];
   assign port_ci2_data_o[1] = guts_co_data_i[5];
   assign port_ci2_data_o[2] = guts_co_data_i[7];
   assign port_ci2_data_o[3] = guts_co_data_i[8];
   assign port_ci2_data_o[4] = guts_co_data_i[3];
-  assign port_ci2_data_o[5] = guts_co_clk_i;
+  assign port_ci2_data_o[5] = guts_co_v_i;
   assign port_ci2_data_o[6] = guts_co_data_i[2];
   assign port_ci2_data_o[7] = guts_co_data_i[1];
   assign port_ci2_data_o[8] = guts_co_data_i[0];
