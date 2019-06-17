@@ -29,7 +29,7 @@
         , .DATA ()                   \
         , .Y    (name``_i_int)       \
         , `RX_MODE                   \
-        , `LOW_DRIVE                 \
+        , `LRG_DRIVE                 \
         , `PD_ENABLE                 \
         , `CONTROL                   \
         , `ND_TREE                   \
@@ -42,7 +42,7 @@
         , .DATA (name``_o_int)       \
         , .Y    ()                   \
         , `TX_MODE                   \
-        , `LOW_DRIVE                 \
+        , `LRG_DRIVE                 \
         , `PD_ENABLE                 \
         , `CONTROL                   \
         , `ND_TREE                   \
@@ -57,7 +57,7 @@
         , .DATA (name``_o_int)       \
         , .Y    (name``_i_int)       \
         , `RX_NOT_TX(name``_oen_int) \
-        , `LOW_DRIVE                 \
+        , `LRG_DRIVE                 \
         , `PD_ENABLE                 \
         , `CONTROL                   \
         , `ND_TREE                   \
