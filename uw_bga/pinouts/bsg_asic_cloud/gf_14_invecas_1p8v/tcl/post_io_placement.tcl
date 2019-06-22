@@ -148,5 +148,9 @@ foreach_in_collection io $all_bottom_drivers {
 
 } ;# if {0}
 
+set_attribute [get_nets    retc_lo*] physical_status locked
+set_attribute [get_nets   pwrok_lo*] physical_status locked
+set_attribute [get_nets iopwrok_lo*] physical_status locked
+
 puts "BSG-info: Completed script [info script]\n"
 
