@@ -14,53 +14,57 @@
 `define PD_ENABLE     .PUEN(1'b0),.PDEN(1'b1)
 `define PU_PD_DISABLE .PUEN(1'b0),.PDEN(1'b0)  
 
-`define CONTROL .PWROK(pwrok_lo),.IOPWROK(iopwrok_lo),.RETC(retc_lo)
-
 `define ND_TREE .NDIN(1'b0),.NDOUT()
 
 //
 // **********************************************************************
 //
 
-`define BSG_IO_IN(name,padtype)      \
-    wire name``_i_int;               \
-    padtype name``_i                 \
-        ( .PAD  (p_``name``_i)       \
-        , .DATA ()                   \
-        , .Y    (name``_i_int)       \
-        , `RX_MODE                   \
-        , `XLRG_DRIVE                \
-        , `PD_ENABLE                 \
-        , `CONTROL                   \
-        , `ND_TREE                   \
+`define BSG_IO_IN(name,padtype,ctrl)  \
+    wire name``_i_int;                \
+    padtype name``_i                  \
+        ( .PAD  (p_``name``_i)        \
+        , .DATA ()                    \
+        , .Y    (name``_i_int)        \
+        , .PWROK(pwrok_lo[ctrl])      \
+        , .IOPWROK(iopwrok_lo[ctrl])  \
+        , .RETC(retc_lo[ctrl])        \
+        , `RX_MODE                    \
+        , `XLRG_DRIVE                 \
+        , `PD_ENABLE                  \
+        , `ND_TREE                    \
         );
 
-`define BSG_IO_OUT(name,padtype)     \
-    wire name``_o_int;               \
-    padtype name``_o                 \
-        ( .PAD  (p_``name``_o)       \
-        , .DATA (name``_o_int)       \
-        , .Y    ()                   \
-        , `TX_MODE                   \
-        , `XLRG_DRIVE                \
-        , `PD_ENABLE                 \
-        , `CONTROL                   \
-        , `ND_TREE                   \
+`define BSG_IO_OUT(name,padtype,ctrl) \
+    wire name``_o_int;                \
+    padtype name``_o                  \
+        ( .PAD  (p_``name``_o)        \
+        , .DATA (name``_o_int)        \
+        , .Y    ()                    \
+        , .PWROK(pwrok_lo[ctrl])      \
+        , .IOPWROK(iopwrok_lo[ctrl])  \
+        , .RETC(retc_lo[ctrl])        \
+        , `TX_MODE                    \
+        , `XLRG_DRIVE                 \
+        , `PD_ENABLE                  \
+        , `ND_TREE                    \
         );
 
-`define BSG_IO_INOUT(name,padtype)   \
-    wire name``_i_int;               \
-    wire name``_o_int;               \
-    wire name``_oen_int;             \
-    padtype name``_io                \
-        ( .PAD  (p_``name``_io)      \
-        , .DATA (name``_o_int)       \
-        , .Y    (name``_i_int)       \
-        , `RX_NOT_TX(name``_oen_int) \
-        , `XLRG_DRIVE                \
-        , `PD_ENABLE                 \
-        , `CONTROL                   \
-        , `ND_TREE                   \
+`define BSG_IO_INOUT(name,padtype,ctrl) \
+    wire name``_i_int;                  \
+    wire name``_o_int;                  \
+    wire name``_oen_int;                \
+    padtype name``_io                   \
+        ( .PAD  (p_``name``_io)         \
+        , .DATA (name``_o_int)          \
+        , .Y    (name``_i_int)          \
+        , .PWROK(pwrok_lo[ctrl])        \
+        , .IOPWROK(iopwrok_lo[ctrl])    \
+        , .RETC(retc_lo[ctrl])          \
+        , `RX_NOT_TX(name``_oen_int)    \
+        , `XLRG_DRIVE                   \
+        , `PD_ENABLE                    \
+        , `ND_TREE                      \
         );
 
 // shared macros

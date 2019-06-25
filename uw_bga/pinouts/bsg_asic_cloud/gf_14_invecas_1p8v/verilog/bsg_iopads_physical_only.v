@@ -1,181 +1,226 @@
 
-IN12LP_GPIO18_13M9S30P_CORNER corner_ll (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_CORNER corner_lr (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_CORNER corner_ul (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_CORNER corner_ur (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+`define CTRL(i) .RETC(retc_lo[i]),.PWROK(pwrok_lo[i]),.IOPWROK(iopwrok_lo[i])
 
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_l_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_l_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_l_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_l_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_l_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_l_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_l_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_l_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+`define CTRL_PWRDET(i) .RETCOUT(retc_lo[i]),.PWROKOUT(pwrok_lo[i]),.IOPWROKOUT(iopwrok_lo[i]),.RETCIN(1'b0)
 
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_l_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_l_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_l_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_l_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_l_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_l_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_l_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_l_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+`define CTRL_BRK(i,j) .RETCB(retc_lo[i]),.PWROKB(pwrok_lo[i]),.IOPWROKB(iopwrok_lo[i]),.RETCA(retc_lo[j]),.PWROKA(pwrok_lo[j]),.IOPWROKA(iopwrok_lo[j])
 
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
 
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+// LEFT PHYS ONLY IO CELLS
 
-IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_l_0 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_l_1 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_l_2 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_l_3 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_l_0 (`CTRL_BRK(20,0));
 
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_t_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_t_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_t_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_t_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_t_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_t_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_t_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_t_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_l_0     (`CTRL(0));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_l_0     (`CTRL(0));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_0     (`CTRL(0));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_0     (`CTRL(0));
+IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_l_0 (`CTRL_PWRDET(0));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_l_1     (`CTRL(0));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_l_1     (`CTRL(0));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_1     (`CTRL(0));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_1     (`CTRL(0));
 
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_t_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_t_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_t_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_t_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_t_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_t_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_t_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_t_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_l_1 (`CTRL_BRK(0,1));
 
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_l_2     (`CTRL(1));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_l_2     (`CTRL(1));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_2     (`CTRL(1));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_2     (`CTRL(1));
+IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_l_1 (`CTRL_PWRDET(1));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_l_3     (`CTRL(1));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_l_3     (`CTRL(1));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_3     (`CTRL(1));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_3     (`CTRL(1));
 
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_l_2 (`CTRL_BRK(1,2));
 
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_t_0 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_t_1 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_t_2 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_t_3 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_t_4 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_l_4     (`CTRL(2));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_l_4     (`CTRL(2));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_4     (`CTRL(2));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_4     (`CTRL(2));
+IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_l_2 (`CTRL_PWRDET(2));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_l_5     (`CTRL(2));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_l_5     (`CTRL(2));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_5     (`CTRL(2));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_5     (`CTRL(2));
 
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_pll (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_pll (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_BRK_V breaker_t_0 (.RETCA(retc_lo),.PWROKA(pwrok_lo),.IOPWROKA(iopwrok_lo),.RETCB(retc_lo),.PWROKB(pwrok_lo),.IOPWROKB(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_BRK_V breaker_t_1 (.RETCA(retc_lo),.PWROKA(pwrok_lo),.IOPWROKA(iopwrok_lo),.RETCB(retc_lo),.PWROKB(pwrok_lo),.IOPWROKB(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_l_3 (`CTRL_BRK(2,3));
 
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_r_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_r_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_r_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_r_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_r_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_r_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_r_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_r_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_H vss_r_8 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_l_6     (`CTRL(3));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_l_6     (`CTRL(3));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_6     (`CTRL(3));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_6     (`CTRL(3));
+IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_l_3 (`CTRL_PWRDET(3));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_l_7     (`CTRL(3));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_l_7     (`CTRL(3));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_l_7     (`CTRL(3));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_l_7     (`CTRL(3));
 
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_r_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_r_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_r_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_r_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_r_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_r_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_r_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_r_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_H vdd_r_8 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_l_4 (`CTRL_BRK(3,4));
 
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+// TOP PHYS ONLY IO CELLS
 
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_V ctrl_brk_t_0 (`CTRL_BRK(4,5));
 
-IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_r_0 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_r_1 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_r_2 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_r_3 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_t_0     (`CTRL(5));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_t_0     (`CTRL(5));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_0     (`CTRL(5));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_0     (`CTRL(5));
+IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_t_0 (`CTRL_PWRDET(5));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_t_1     (`CTRL(5));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_t_1     (`CTRL(5));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_1     (`CTRL(5));
+                                           
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_V ctrl_brk_t_1 (`CTRL_BRK(5,6));
 
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_b_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_b_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_b_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_b_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_b_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_b_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_b_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSC_V vss_b_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_1     (`CTRL(6));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_t_2     (`CTRL(6));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_t_2     (`CTRL(6));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_2     (`CTRL(6));
+IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_t_1 (`CTRL_PWRDET(6));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_2     (`CTRL(6));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_t_3     (`CTRL(6));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_t_3     (`CTRL(6));
+                                           
+IN12LP_GPIO18_13M9S30P_BRK_V brk_t_0 (`CTRL_BRK(6,7));
 
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_b_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_b_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_b_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_b_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_b_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_b_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_b_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDC_V vdd_b_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_3       (`CTRL(7));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_3       (`CTRL(7));
+IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_pll_0 (`CTRL_PWRDET(7));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_pll       (`CTRL(7));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_pll       (`CTRL(7));
 
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_8 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_BRK_V brk_t_1 (`CTRL_BRK(7,8));
 
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_0 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_1 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_2 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_3 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_4 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_5 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_6 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_7 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_8 (.RETC(retc_lo),.PWROK(pwrok_lo),.IOPWROK(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_t_4     (`CTRL(8));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_t_4     (`CTRL(8));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_4     (`CTRL(8));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_4     (`CTRL(8));
+IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_t_2 (`CTRL_PWRDET(8));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_t_5     (`CTRL(8));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_t_5     (`CTRL(8));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_5     (`CTRL(8));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_5     (`CTRL(8));
 
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_b_0 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_b_1 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_b_2 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_b_3 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
-IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_b_4 (.RETCIN(1'b0),.RETCOUT(retc_lo),.PWROKOUT(pwrok_lo),.IOPWROKOUT(iopwrok_lo));
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_V ctrl_brk_t_2 (`CTRL_BRK(8,9));
+
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_t_6     (`CTRL(9));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_t_6     (`CTRL(9));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_6     (`CTRL(9));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_6     (`CTRL(9));
+IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_t_3 (`CTRL_PWRDET(9));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_t_7     (`CTRL(9));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_t_7     (`CTRL(9));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_t_7     (`CTRL(9));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_t_7     (`CTRL(9));
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_V ctrl_brk_t_3 (`CTRL_BRK(9,10));
+
+// RIGHT PHYS ONLY IO CELLS
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_r_0 (`CTRL_BRK(10,11));
+
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_r_0     (`CTRL(11));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_r_0     (`CTRL(11));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_0     (`CTRL(11));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_0     (`CTRL(11));
+IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_r_0 (`CTRL_PWRDET(11));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_r_1     (`CTRL(11));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_r_1     (`CTRL(11));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_1     (`CTRL(11));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_1     (`CTRL(11));
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_r_1 (`CTRL_BRK(11,12));
+
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_r_2     (`CTRL(12));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_r_2     (`CTRL(12));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_2     (`CTRL(12));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_2     (`CTRL(12));
+IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_r_1 (`CTRL_PWRDET(12));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_r_3     (`CTRL(12));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_r_3     (`CTRL(12));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_3     (`CTRL(12));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_3     (`CTRL(12));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_r_4     (`CTRL(12));
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_r_2 (`CTRL_BRK(12,13));
+
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_r_4     (`CTRL(13));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_4     (`CTRL(13));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_4     (`CTRL(13));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_r_5     (`CTRL(13));
+IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_r_2 (`CTRL_PWRDET(13));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_r_5     (`CTRL(13));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_5     (`CTRL(13));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_5     (`CTRL(13));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_r_6     (`CTRL(13));
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_r_3 (`CTRL_BRK(13,14));
+
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_r_6     (`CTRL(14));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_6     (`CTRL(14));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_6     (`CTRL(14));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_r_7     (`CTRL(14));
+IN12LP_GPIO18_13M9S30P_PWRDET_H pwrdet_r_3 (`CTRL_PWRDET(14));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_r_7     (`CTRL(14));
+IN12LP_GPIO18_13M9S30P_VDDIO_H v18_r_7     (`CTRL(14));
+IN12LP_GPIO18_13M9S30P_VSSIO_H vzz_r_7     (`CTRL(14));
+IN12LP_GPIO18_13M9S30P_VDDC_H  vdd_r_8     (`CTRL(14));
+IN12LP_GPIO18_13M9S30P_VSSC_H  vss_r_8     (`CTRL(14));
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_H ctrl_brk_r_4 (`CTRL_BRK(14,15));
+
+// BOTTOM PHYS ONLY IO CELLS
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_V ctrl_brk_b_0 (`CTRL_BRK(15,16));
+
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_0     (`CTRL(16));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_0     (`CTRL(16));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_b_0     (`CTRL(16));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_b_0     (`CTRL(16));
+IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_b_0 (`CTRL_PWRDET(16));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_1     (`CTRL(16));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_1     (`CTRL(16));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_b_1     (`CTRL(16));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_b_1     (`CTRL(16));
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_V ctrl_brk_b_1 (`CTRL_BRK(16,17));
+
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_2     (`CTRL(17));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_2     (`CTRL(17));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_b_2     (`CTRL(17));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_b_2     (`CTRL(17));
+IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_b_1 (`CTRL_PWRDET(17));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_3     (`CTRL(17));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_3     (`CTRL(17));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_b_3     (`CTRL(17));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_b_3     (`CTRL(17));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_4     (`CTRL(17));
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_V ctrl_brk_b_2 (`CTRL_BRK(17,18));
+
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_4     (`CTRL(18));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_b_4     (`CTRL(18));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_b_4     (`CTRL(18));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_5     (`CTRL(18));
+IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_b_2 (`CTRL_PWRDET(18));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_5     (`CTRL(18));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_b_5     (`CTRL(18));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_b_5     (`CTRL(18));
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_V ctrl_brk_b_3 (`CTRL_BRK(18,19));
+
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_6     (`CTRL(19));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_6     (`CTRL(19));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_b_6     (`CTRL(19));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_b_6     (`CTRL(19));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_7     (`CTRL(19));
+IN12LP_GPIO18_13M9S30P_PWRDET_V pwrdet_b_3 (`CTRL_PWRDET(19));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_7     (`CTRL(19));
+IN12LP_GPIO18_13M9S30P_VDDC_V  vdd_b_7     (`CTRL(19));
+IN12LP_GPIO18_13M9S30P_VSSC_V  vss_b_7     (`CTRL(19));
+IN12LP_GPIO18_13M9S30P_VDDIO_V v18_b_8     (`CTRL(19));
+IN12LP_GPIO18_13M9S30P_VSSIO_V vzz_b_8     (`CTRL(19));
+
+IN12LP_GPIO18_13M9S30P_CTRL_BRK_V ctrl_brk_b_4 (`CTRL_BRK(19,20));
 

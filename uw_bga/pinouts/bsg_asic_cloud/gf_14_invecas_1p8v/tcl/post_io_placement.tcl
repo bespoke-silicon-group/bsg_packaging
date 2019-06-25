@@ -13,141 +13,105 @@ puts "BSG-info: Running script [info script]\n"
 # Create IO fillers
 #===============================================================================
 
-create_io_filler -io_guide io_ring.left \
+### PLL REGION (do this first so top side fillers do over run this)
+
+set pll_tl_corner [lindex [get_attribute [get_cell brk_t_0] boundary_bbox] 1]
+set pll_br_corner [lindex [get_attribute [get_cell brk_t_1] boundary_bbox] 0]
+create_io_filler -io_guide top_guide \
+                 -reference_cells { IN12LP_GPIO18_13M9S30P_FILL20_V IN12LP_GPIO18_13M9S30P_FILL10_V IN12LP_GPIO18_13M9S30P_FILL5_V  IN12LP_GPIO18_13M9S30P_FILL1_V } \
+                 -extension_bbox [list $pll_tl_corner $pll_br_corner] \
+                 -prefix "pll_io_filler"
+
+### ALl other sides
+
+set left_io_filler_cells [create_io_filler -io_guide left_guide \
                  -reference_cells { IN12LP_GPIO18_13M9S30P_FILL20_H IN12LP_GPIO18_13M9S30P_FILL10_H IN12LP_GPIO18_13M9S30P_FILL5_H IN12LP_GPIO18_13M9S30P_FILL1_H } \
-                 -overlap_cells IN12LP_GPIO18_13M9S30P_FILL1_H \
-                 -prefix "io_filler"
+                 -prefix "left_io_filler"]
 
-create_io_filler -io_guide io_ring.top \
+set top_io_filler_cells [create_io_filler -io_guide top_guide \
                  -reference_cells { IN12LP_GPIO18_13M9S30P_FILL20_V IN12LP_GPIO18_13M9S30P_FILL10_V IN12LP_GPIO18_13M9S30P_FILL5_V  IN12LP_GPIO18_13M9S30P_FILL1_V } \
-                 -overlap_cells IN12LP_GPIO18_13M9S30P_FILL1_V \
-                 -prefix "io_filler"
+                 -prefix "top_io_filler"]
 
-create_io_filler -io_guide io_ring.right \
+set right_io_filler_cells [create_io_filler -io_guide right_guide \
                  -reference_cells { IN12LP_GPIO18_13M9S30P_FILL20_H IN12LP_GPIO18_13M9S30P_FILL10_H IN12LP_GPIO18_13M9S30P_FILL5_H  IN12LP_GPIO18_13M9S30P_FILL1_H } \
-                 -overlap_cells IN12LP_GPIO18_13M9S30P_FILL1_H \
-                 -prefix "io_filler"
+                 -prefix "right_io_filler"]
 
-create_io_filler -io_guide io_ring.bottom \
+set bottom_io_filler_cells [create_io_filler -io_guide bottom_guide \
                  -reference_cells { IN12LP_GPIO18_13M9S30P_FILL20_V IN12LP_GPIO18_13M9S30P_FILL10_V IN12LP_GPIO18_13M9S30P_FILL5_V  IN12LP_GPIO18_13M9S30P_FILL1_V } \
-                 -overlap_cells IN12LP_GPIO18_13M9S30P_FILL1_V \
-                 -prefix "io_filler"
+                 -prefix "bottom_io_filler"]
 
-set io_filler_cells [get_cells -filter "name=~io_filler*"]
+#===============================================================================
+# Connect up control signals (retc_lo, iopwrok_lo and pwrok_lo)
+#===============================================================================
 
-connect_supply_net VDD   -port [get_pins -of $io_filler_cells -filter "name==VDDC"]
-connect_supply_net VSS   -port [get_pins -of $io_filler_cells -filter "name==VSSC"]
-connect_supply_net VDDIO -port [get_pins -of $io_filler_cells -filter "name==VDDIO"]
-connect_supply_net VSSIO -port [get_pins -of $io_filler_cells -filter "name==VSSIO"]
+set all_brk_cells [list]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_0"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_1"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_2"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_3"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_4"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_t_0"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_t_1"]
+append_to_collection all_brk_cells [get_cells      "brk_t_0"]
+append_to_collection all_brk_cells [get_cells      "brk_t_1"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_t_2"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_t_3"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_0"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_1"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_2"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_3"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_4"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_0"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_1"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_2"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_3"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_4"]
 
-connect_net -net retc_lo    [get_pins -of $io_filler_cells -filter "name==RETC"]
-connect_net -net pwrok_lo   [get_pins -of $io_filler_cells -filter "name==PWROK"]
-connect_net -net iopwrok_lo [get_pins -of $io_filler_cells -filter "name==IOPWROK"]
+for {set i 0} {$i < [sizeof $all_brk_cells]} {incr i} {
+
+  puts $i
+  set I1 $i
+  set I2 [expr ($i+1) % [sizeof $all_brk_cells]]
+
+  set I1_bbox [get_attribute [index_collection $all_brk_cells $I1] boundary_bbox]
+  set I1_center_x [expr ([lindex $I1_bbox 0 0]+[lindex $I1_bbox 1 0])/2.0]
+  set I1_center_y [expr ([lindex $I1_bbox 0 1]+[lindex $I1_bbox 1 1])/2.0]
+  set I1_center_pt [list [expr $I1_center_x-0.001] [expr $I1_center_y-0.001]]
+
+  set I2_bbox [get_attribute [index_collection $all_brk_cells $I2] boundary_bbox]
+  set I2_center_x [expr ([lindex $I2_bbox 0 0]+[lindex $I2_bbox 1 0])/2.0]
+  set I2_center_y [expr ([lindex $I2_bbox 0 1]+[lindex $I2_bbox 1 1])/2.0]
+  set I2_center_pt [list [expr $I2_center_x+0.001] [expr $I2_center_y+0.001]]
+
+  puts "$I1_center_pt -- $I2_center_pt"
+  set io_fillers [get_cells -intersect [list $I1_center_pt $I2_center_pt] -filter "name=~*io_filler*"]
+  connect_net -net "retc_lo[$i]" [get_pins -of $io_fillers -filter "name==RETC"]
+  connect_net -net "pwrok_lo[$i]" [get_pins -of $io_fillers -filter "name==PWROK"]
+  connect_net -net "iopwrok_lo[$i]" [get_pins -of $io_fillers -filter "name==IOPWROK"]
+
+}
+
+#===============================================================================
+# Update the power rails
+#===============================================================================
+
+set pll_io_filler_cells [get_cells pll_io_filler*]
+set other_io_filler_cells [remove_from_collection [get_cells *io_filler*] $pll_io_filler_cells]
+
+connect_supply_net PLL_VDD   -port [get_pins -of $pll_io_filler_cells -filter "name==VDDC"]
+connect_supply_net VSS       -port [get_pins -of $pll_io_filler_cells -filter "name==VSSC"]
+connect_supply_net PLL_VDDIO -port [get_pins -of $pll_io_filler_cells -filter "name==VDDIO"]
+connect_supply_net PLL_VSSIO -port [get_pins -of $pll_io_filler_cells -filter "name==VSSIO"]
+
+connect_supply_net VDD   -port [get_pins -of $other_io_filler_cells -filter "name==VDDC"]
+connect_supply_net VSS   -port [get_pins -of $other_io_filler_cells -filter "name==VSSC"]
+connect_supply_net VDDIO -port [get_pins -of $other_io_filler_cells -filter "name==VDDIO"]
+connect_supply_net VSSIO -port [get_pins -of $other_io_filler_cells -filter "name==VSSIO"]
 
 commit_upf
 connect_pg_net -automatic -all_blocks
 
-#===============================================================================
-# Create Bond Pads
-#===============================================================================
-
-if {0} {
-
-# BSG-STD: Disabling bond pad insertion. Currently, there is a routing block
-# issue on the bond pad frame views. Once that is fixed, bond pad insertion
-# will be re-enabled.
-
-set all_left_drivers   [sort_collection [get_cells -filter "design_type==pad && orientation==R0   && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_y}]
-set all_top_drivers    [sort_collection [get_cells -filter "design_type==pad && orientation==R180 && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_x}]
-set all_right_drivers  [sort_collection [get_cells -filter "design_type==pad && orientation==R180 && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_y}]
-set all_bottom_drivers [sort_collection [get_cells -filter "design_type==pad && orientation==R0   && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*BIAS*"] {boundary_bounding_box.ll_x}]
-
-#=======================================
-# Left Side
-#=======================================
-
-set counter 0
-foreach_in_collection io $all_left_drivers {
-  set name     [get_attribute $io name]
-  set origin   [get_attribute $io origin]
-  set origin_x [lindex $origin 0]
-  set origin_y [lindex $origin 1]
-  set pad [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
-  if { $counter % 2 == 0 } {
-    set_attribute $pad orientation MXR90
-    move_objects $pad -to "[expr $origin_x-13.707] [expr $origin_y-9]"
-  } else {
-    set_attribute $pad orientation R90
-    move_objects $pad -to "[expr $origin_x+72.893] [expr $origin_y-9]"
-  }
-  incr counter
-}
-
-#=======================================
-# Top Side
-#=======================================
-
-set counter 0
-foreach_in_collection io $all_top_drivers {
-  set name     [get_attribute $io name]
-  set origin   [get_attribute $io origin]
-  set origin_x [lindex $origin 0]
-  set origin_y [lindex $origin 1]
-  set pad [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
-  if { $counter % 2 == 0 } {
-    set_attribute $pad orientation MX
-    move_objects $pad -to "[expr $origin_x-39] [expr $origin_y-70.293]"
-  } else {
-    set_attribute $pad orientation R0
-    move_objects $pad -to "[expr $origin_x-39] [expr $origin_y-156.839]"
-  }
-  incr counter
-}
-
-#=======================================
-# Right Side
-#=======================================
-
-set counter 0
-foreach_in_collection io $all_right_drivers {
-  set name     [get_attribute $io name]
-  set origin   [get_attribute $io origin]
-  set origin_x [lindex $origin 0]
-  set origin_y [lindex $origin 1]
-  set pad [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
-  if { $counter % 2 == 0 } {
-    set_attribute $pad orientation MXR90
-    move_objects $pad -to "[expr $origin_x-156.839] [expr $origin_y-39]"
-  } else {
-    set_attribute $pad orientation R90
-    move_objects $pad -to "[expr $origin_x-70.293] [expr $origin_y-39]"
-  }
-  incr counter
-}
-
-#=======================================
-# Bottom Side
-#=======================================
-
-set counter 0
-foreach_in_collection io $all_bottom_drivers {
-  set name     [get_attribute $io name]
-  set origin   [get_attribute $io origin]
-  set origin_x [lindex $origin 0]
-  set origin_y [lindex $origin 1]
-  set pad [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
-  if { $counter % 2 == 0 } {
-    set_attribute $pad orientation MX
-    move_objects $pad -to "[expr $origin_x-9] [expr $origin_y+72.893]"
-  } else {
-    set_attribute $pad orientation R0
-    move_objects $pad -to "[expr $origin_x-9] [expr $origin_y-13.707]"
-  }
-  incr counter
-}
-
-} ;# if {0}
-
+# Do not, under any circumstances, try to route these nets... garunteed DRC errors!
 set_attribute [get_nets    retc_lo*] physical_status locked
 set_attribute [get_nets   pwrok_lo*] physical_status locked
 set_attribute [get_nets iopwrok_lo*] physical_status locked

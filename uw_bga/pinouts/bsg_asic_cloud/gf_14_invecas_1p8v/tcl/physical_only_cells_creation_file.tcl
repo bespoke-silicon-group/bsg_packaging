@@ -11,7 +11,10 @@
 
 puts "BSG-info: Running script [info script]\n"
 
-# Nothing to do, cells instantiated in RTL.
+create_cell corner_io_filler_0 */IN12LP_GPIO18_13M9S30P_CORNER
+create_cell corner_io_filler_1 */IN12LP_GPIO18_13M9S30P_CORNER
+create_cell corner_io_filler_2 */IN12LP_GPIO18_13M9S30P_CORNER
+create_cell corner_io_filler_3 */IN12LP_GPIO18_13M9S30P_CORNER
 
 puts "BSG-info: Completed script [info script]\n"
 
