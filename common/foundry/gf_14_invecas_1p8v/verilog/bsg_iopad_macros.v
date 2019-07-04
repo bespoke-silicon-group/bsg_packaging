@@ -67,6 +67,20 @@
         , `ND_TREE                      \
         );
 
+`define BSG_IO_UNUSED(name,padtype,ctrl) \
+    padtype name``_io                   \
+        ( .PAD  ()         \
+        , .DATA ()          \
+        , .Y    ()          \
+        , .PWROK(pwrok_lo[ctrl])        \
+        , .IOPWROK(iopwrok_lo[ctrl])    \
+        , .RETC(retc_lo[ctrl])          \
+        , `TX_RX_OFF                    \
+        , `XLRG_DRIVE                   \
+        , `PD_ENABLE                    \
+        , `ND_TREE                      \
+        );
+
 // shared macros
 `include "bsg_iopad_meta_macros.v"
 
