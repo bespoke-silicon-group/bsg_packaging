@@ -67,7 +67,35 @@
         , `ND_TREE                      \
         );
 
-`define BSG_IO_UNUSED(name,padtype,ctrl) \
+`define BSG_IO_IN_UNUSED(name,padtype,ctrl) \
+    padtype name``_i                   \
+        ( .PAD  ()         \
+        , .DATA ()          \
+        , .Y    ()          \
+        , .PWROK(pwrok_lo[ctrl])        \
+        , .IOPWROK(iopwrok_lo[ctrl])    \
+        , .RETC(retc_lo[ctrl])          \
+        , `TX_RX_OFF                    \
+        , `XLRG_DRIVE                   \
+        , `PD_ENABLE                    \
+        , `ND_TREE                      \
+        );
+
+`define BSG_IO_OUT_UNUSED(name,padtype,ctrl) \
+    padtype name``_o                   \
+        ( .PAD  ()         \
+        , .DATA ()          \
+        , .Y    ()          \
+        , .PWROK(pwrok_lo[ctrl])        \
+        , .IOPWROK(iopwrok_lo[ctrl])    \
+        , .RETC(retc_lo[ctrl])          \
+        , `TX_RX_OFF                    \
+        , `XLRG_DRIVE                   \
+        , `PD_ENABLE                    \
+        , `ND_TREE                      \
+        );
+
+`define BSG_IO_INOUT_UNUSED(name,padtype,ctrl) \
     padtype name``_io                   \
         ( .PAD  ()         \
         , .DATA ()          \
