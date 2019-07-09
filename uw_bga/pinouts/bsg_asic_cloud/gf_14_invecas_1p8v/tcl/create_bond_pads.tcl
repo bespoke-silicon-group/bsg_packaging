@@ -36,6 +36,14 @@ foreach_in_collection io $all_left_drivers {
   set pad_center_x [expr ([lindex $pad_bbox 0 0]+[lindex $pad_bbox 1 0])/2.0]
   set pad_center_y [expr ([lindex $pad_bbox 0 1]+[lindex $pad_bbox 1 1])/2.0]
   create_shape -origin "$pad_center_x $pad_center_y" -text $esd_label_text -layer LBESD -shape_type text -height 5
+  foreach_in_collection pin [get_pins -of $io] {
+    if {[sizeof [get_terminals -quiet -of $pin -filter "layer.name==G2"]]} {
+      if {[sizeof [get_net -quiet -of $pin]]} {
+        create_shape -origin "$pad_center_x $pad_center_y" -text [get_attribute [get_net -of $pin] name] -layer LB -shape_type text -height 5
+        break
+      }
+    }
+  }
 }
 
 #=======================================
@@ -68,6 +76,14 @@ foreach_in_collection io $all_top_drivers {
   set pad_center_x [expr ([lindex $pad_bbox 0 0]+[lindex $pad_bbox 1 0])/2.0]
   set pad_center_y [expr ([lindex $pad_bbox 0 1]+[lindex $pad_bbox 1 1])/2.0]
   create_shape -origin "$pad_center_x $pad_center_y" -text $esd_label_text -layer LBESD -shape_type text -height 5
+  foreach_in_collection pin [get_pins -of $io] {
+    if {[sizeof [get_terminals -quiet -of $pin -filter "layer.name==G2"]]} {
+      if {[sizeof [get_net -quiet -of $pin]]} {
+        create_shape -origin "$pad_center_x $pad_center_y" -text [get_attribute [get_net -of $pin] name] -layer LB -shape_type text -height 5
+        break
+      }
+    }
+  }
 }
 
 #=======================================
@@ -100,6 +116,14 @@ foreach_in_collection io $all_right_drivers {
   set pad_center_x [expr ([lindex $pad_bbox 0 0]+[lindex $pad_bbox 1 0])/2.0]
   set pad_center_y [expr ([lindex $pad_bbox 0 1]+[lindex $pad_bbox 1 1])/2.0]
   create_shape -origin "$pad_center_x $pad_center_y" -text $esd_label_text -layer LBESD -shape_type text -height 5
+  foreach_in_collection pin [get_pins -of $io] {
+    if {[sizeof [get_terminals -quiet -of $pin -filter "layer.name==G2"]]} {
+      if {[sizeof [get_net -quiet -of $pin]]} {
+        create_shape -origin "$pad_center_x $pad_center_y" -text [get_attribute [get_net -of $pin] name] -layer LB -shape_type text -height 5
+        break
+      }
+    }
+  }
 }
 
 #=======================================
@@ -132,6 +156,14 @@ foreach_in_collection io $all_bottom_drivers {
   set pad_center_x [expr ([lindex $pad_bbox 0 0]+[lindex $pad_bbox 1 0])/2.0]
   set pad_center_y [expr ([lindex $pad_bbox 0 1]+[lindex $pad_bbox 1 1])/2.0]
   create_shape -origin "$pad_center_x $pad_center_y" -text $esd_label_text -layer LBESD -shape_type text -height 5
+  foreach_in_collection pin [get_pins -of $io] {
+    if {[sizeof [get_terminals -quiet -of $pin -filter "layer.name==G2"]]} {
+      if {[sizeof [get_net -quiet -of $pin]]} {
+        create_shape -origin "$pad_center_x $pad_center_y" -text [get_attribute [get_net -of $pin] name] -layer LB -shape_type text -height 5
+        break
+      }
+    }
+  }
 }
 
 puts "BSG-info: Completed script [info script]\n"
