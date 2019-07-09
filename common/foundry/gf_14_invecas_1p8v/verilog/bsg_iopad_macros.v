@@ -67,39 +67,44 @@
         , `ND_TREE                      \
         );
 
-`define BSG_IO_IN_UNUSED(name,padtype,ctrl) \
-    padtype name``_i                   \
-        ( .PAD  ()         \
-        , .DATA ()          \
-        , .Y    ()          \
-        , .PWROK(pwrok_lo[ctrl])        \
-        , .IOPWROK(iopwrok_lo[ctrl])    \
-        , .RETC(retc_lo[ctrl])          \
+`define BSG_IO_IN_UNUSED(name,padtype,ctrl)  \
+    wire name``_i_int;                \
+    padtype name``_i                  \
+        ( .PAD  (p_``name``_i)        \
+        , .DATA ()                    \
+        , .Y    (name``_i_int)        \
+        , .PWROK(pwrok_lo[ctrl])      \
+        , .IOPWROK(iopwrok_lo[ctrl])  \
+        , .RETC(retc_lo[ctrl])        \
         , `TX_RX_OFF                    \
-        , `XLRG_DRIVE                   \
-        , `PD_ENABLE                    \
-        , `ND_TREE                      \
+        , `XLRG_DRIVE                 \
+        , `PD_ENABLE                  \
+        , `ND_TREE                    \
         );
 
 `define BSG_IO_OUT_UNUSED(name,padtype,ctrl) \
-    padtype name``_o                   \
-        ( .PAD  ()         \
-        , .DATA ()          \
-        , .Y    ()          \
-        , .PWROK(pwrok_lo[ctrl])        \
-        , .IOPWROK(iopwrok_lo[ctrl])    \
-        , .RETC(retc_lo[ctrl])          \
+    wire name``_o_int;                \
+    padtype name``_o                  \
+        ( .PAD  (p_``name``_o)        \
+        , .DATA (name``_o_int)        \
+        , .Y    ()                    \
+        , .PWROK(pwrok_lo[ctrl])      \
+        , .IOPWROK(iopwrok_lo[ctrl])  \
+        , .RETC(retc_lo[ctrl])        \
         , `TX_RX_OFF                    \
-        , `XLRG_DRIVE                   \
-        , `PD_ENABLE                    \
-        , `ND_TREE                      \
+        , `XLRG_DRIVE                 \
+        , `PD_ENABLE                  \
+        , `ND_TREE                    \
         );
 
 `define BSG_IO_INOUT_UNUSED(name,padtype,ctrl) \
+    wire name``_i_int;                  \
+    wire name``_o_int;                  \
+    wire name``_oen_int;                \
     padtype name``_io                   \
-        ( .PAD  ()         \
-        , .DATA ()          \
-        , .Y    ()          \
+        ( .PAD  (p_``name``_io)         \
+        , .DATA (name``_o_int)          \
+        , .Y    (name``_i_int)          \
         , .PWROK(pwrok_lo[ctrl])        \
         , .IOPWROK(iopwrok_lo[ctrl])    \
         , .RETC(retc_lo[ctrl])          \
