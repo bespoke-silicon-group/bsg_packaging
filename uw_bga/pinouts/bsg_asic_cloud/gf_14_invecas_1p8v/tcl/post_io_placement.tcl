@@ -98,10 +98,17 @@ for {set i 0} {$i < [sizeof $all_brk_cells]} {incr i} {
 set pll_io_filler_cells [get_cells pll_io_filler*]
 set other_io_filler_cells [remove_from_collection [get_cells *io_filler*] $pll_io_filler_cells]
 
-connect_supply_net PLL_VDD   -port [get_pins -of $pll_io_filler_cells -filter "name==VDDC"]
-connect_supply_net VSS       -port [get_pins -of $pll_io_filler_cells -filter "name==VSSC"]
-connect_supply_net PLL_VDDIO -port [get_pins -of $pll_io_filler_cells -filter "name==VDDIO"]
-connect_supply_net PLL_VSSIO -port [get_pins -of $pll_io_filler_cells -filter "name==VSSIO"]
+if { $POWER_INTENT == "mv_standard_pll" } {
+  connect_supply_net PLL_VDD   -port [get_pins -of $pll_io_filler_cells -filter "name==VDDC"]
+  connect_supply_net VSS       -port [get_pins -of $pll_io_filler_cells -filter "name==VSSC"]
+  connect_supply_net PLL_VDDIO -port [get_pins -of $pll_io_filler_cells -filter "name==VDDIO"]
+  connect_supply_net PLL_VSSIO -port [get_pins -of $pll_io_filler_cells -filter "name==VSSIO"]
+} else {
+  connect_supply_net VDD   -port [get_pins -of $pll_io_filler_cells -filter "name==VDDC"]
+  connect_supply_net VSS   -port [get_pins -of $pll_io_filler_cells -filter "name==VSSC"]
+  connect_supply_net VDDIO -port [get_pins -of $pll_io_filler_cells -filter "name==VDDIO"]
+  connect_supply_net VSSIO -port [get_pins -of $pll_io_filler_cells -filter "name==VSSIO"]
+}
 
 connect_supply_net VDD   -port [get_pins -of $other_io_filler_cells -filter "name==VDDC"]
 connect_supply_net VSS   -port [get_pins -of $other_io_filler_cells -filter "name==VSSC"]
