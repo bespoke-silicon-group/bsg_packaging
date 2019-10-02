@@ -12,7 +12,7 @@
 `define BSG_OUTPUT_ENABLE(name)  ,.OEN(name)
 `define BSG_OUTPUT_ENABLE_WIRE(name) wire name;
 `else
-error BSG_OUTPUT_NEEDS_ENABLES not defined
+error "BSG_OUTPUT_NEED_ENABLES not defined"
 `define BSG_OUTPUT_ENABLE(name)
 `define BSG_OUTPUT_ENABLE_WIRE(name)
 `endif
