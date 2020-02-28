@@ -36,13 +36,15 @@ VSS_WIRE_PS      = $(OUT_DIR)/uw_bga_gf12_vss.ps
 VSS_WIRE_IMG     = $(OUT_DIR)/uw_bga_gf12_vss.png
 VSS_FINAL_IMG    = $(OUT_DIR)/uw_bga_gf12_vss_final.png
 
-ALL_COMBINED_IMG = $(OUT_DIR)/uw_bga_gf12_all_combined.png
+INNER_COMBINED_IMG = $(OUT_DIR)/uw_bga_gf12_inner_combined.png
+ALL_COMBINED_IMG   = $(OUT_DIR)/uw_bga_gf12_all_combined.png
 
 all:
 	$(MAKE) $(SIGNAL_FINAL_IMG)
 	$(MAKE) $(VDD_FINAL_IMG)
 	$(MAKE) $(V18_FINAL_IMG)
 	$(MAKE) $(VSS_FINAL_IMG)
+	$(MAKE) $(INNER_COMBINED_IMG)
 	$(MAKE) $(ALL_COMBINED_IMG)
 
 $(CHIP_DIE_PS): $(ALL_CSV) $(SCRIPT_DIR)/draw_die.py
@@ -108,12 +110,14 @@ $(VSS_FINAL_IMG): $(VSS_WIRE_IMG)
 
 
 
-$(ALL_COMBINED_IMG): $(CHIP_DIE_IMG) $(PACKAGING_IMG) $(SIGNAL_WIRE_IMG) $(VDD_WIRE_IMG) $(V18_WIRE_IMG) $(VSS_WIRE_IMG)
+$(INNER_COMBINED_IMG): $(CHIP_DIE_IMG) $(PACKAGING_IMG) $(VDD_WIRE_IMG) $(V18_WIRE_IMG) $(VSS_WIRE_IMG)
 	composite $(CHIP_DIE_IMG) $(PACKAGING_IMG) -gravity center $@
-	composite $(SIGNAL_WIRE_IMG) $@ $@
 	composite $(VDD_WIRE_IMG) $@ $@
 	composite $(V18_WIRE_IMG) $@ $@
 	composite $(VSS_WIRE_IMG) $@ $@
+
+$(ALL_COMBINED_IMG): $(SIGNAL_FINAL_IMG) $(INNER_COMBINED_IMG)
+	composite $(SIGNAL_FINAL_IMG) $(INNER_COMBINED_IMG) $@
 
 
 
