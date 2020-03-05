@@ -116,8 +116,12 @@ $(INNER_COMBINED_IMG): $(CHIP_DIE_IMG) $(PACKAGING_IMG) $(VDD_WIRE_IMG) $(V18_WI
 	composite $(V18_WIRE_IMG) $@ $@
 	composite $(VSS_WIRE_IMG) $@ $@
 
-$(ALL_COMBINED_IMG): $(SIGNAL_FINAL_IMG) $(INNER_COMBINED_IMG)
-	composite $(SIGNAL_FINAL_IMG) $(INNER_COMBINED_IMG) $@
+$(ALL_COMBINED_IMG): $(CHIP_DIE_IMG) $(PACKAGING_IMG) $(SIGNAL_FINAL_IMG) $(VDD_WIRE_IMG) $(V18_WIRE_IMG) $(VSS_WIRE_IMG)
+	composite $(CHIP_DIE_IMG) $(PACKAGING_IMG) -gravity center $@
+	composite $(SIGNAL_FINAL_IMG) $@ $@
+	composite $(VDD_WIRE_IMG) $@ $@
+	composite $(V18_WIRE_IMG) $@ $@
+	composite $(VSS_WIRE_IMG) $@ $@
 
 
 
