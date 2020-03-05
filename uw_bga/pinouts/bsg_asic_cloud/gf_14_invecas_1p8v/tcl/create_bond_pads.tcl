@@ -1,3 +1,21 @@
+#
+# ***** DO NOT USE THIS TCL IN YOUR DESIGN *****
+#
+# WARNING: This tcl script is NOT FINISHED yet.
+# Contact prof.taylor@gmail.com if you have more question.
+#
+puts "ERROR: DO NOT USE THIS TCL SCRIPT, it is NOT FINISHED yet\n"
+#
+# TODOs:
+#
+# Better to sort pads in clockwise order. left and top sort_collection 
+# in ascending order, right and bottom sort_collection in descending order.
+#
+# For top, ($counter % 2 == 0) pads are outer, rests are inner.
+# For all other sides, ($counter % 2 == 0) pads are inner, rests are outer.
+#
+# When finished, all lines above should be removed.
+#
 
 puts "BSG-info: Running script [info script]\n"
 
