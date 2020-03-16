@@ -207,13 +207,13 @@ BSG_PAD_INOUT should be defined!
   `BSG_IO_TIELO(ddr_addr_15_oen_int)
 
   `BSG_IO_OUT  (ddr_dm_0,   `BSG_PAD_OUTPUT_SLOW)
-  `BSG_IO_TIELO(ddr_dm_0_oen_int)
+  //`BSG_IO_TIELO(ddr_dm_0_oen_int)
   `BSG_IO_OUT  (ddr_dm_1,   `BSG_PAD_OUTPUT_SLOW)
-  `BSG_IO_TIELO(ddr_dm_1_oen_int)
+  //`BSG_IO_TIELO(ddr_dm_1_oen_int)
   `BSG_IO_OUT  (ddr_dm_2,   `BSG_PAD_OUTPUT_SLOW)
-  `BSG_IO_TIELO(ddr_dm_2_oen_int)
+  //`BSG_IO_TIELO(ddr_dm_2_oen_int)
   `BSG_IO_OUT  (ddr_dm_3,   `BSG_PAD_OUTPUT_SLOW)
-  `BSG_IO_TIELO(ddr_dm_3_oen_int)
+  //`BSG_IO_TIELO(ddr_dm_3_oen_int)
 
   `BSG_IO_INOUT(ddr_dqs_p_0,   `BSG_PAD_INOUT)
   `BSG_IO_INOUT(ddr_dqs_n_0,   `BSG_PAD_INOUT)

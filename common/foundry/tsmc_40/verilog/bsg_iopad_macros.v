@@ -124,12 +124,12 @@ end
 // PDT12DGZ foo_io (.PAD(p_foo_o), .OEN(foo_oen_int), .I(foo_o_int), .C(foo_i_int))
 `define BSG_IO_INOUT(name,padtype)           \
                                              \
-  wire name``_o_int;                      \
-  wire name``_i_int;                      \
+  wire name``_o_io_int;                      \
+  wire name``_i_io_int;                      \
                                              \
   `BSG_OUTPUT_ENABLE_WIRE(name``_oen_int) \
                                              \
-  padtype name``_io (.PAD(p_``name``_io) `BSG_OUTPUT_ENABLE(name``_oen_int), .I(name``_o_int), .C(name``_i_int));
+  padtype name``_io (.PAD(p_``name``_io) `BSG_OUTPUT_ENABLE(name``_oen_int), .I(name``_o_io_int), .C(name``_i_io_int));
 
 
 

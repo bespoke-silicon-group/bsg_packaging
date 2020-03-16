@@ -19,8 +19,8 @@
     wire name``_i_io_int;                                        \
     wire name``_o_io_int;                                        \
     wire name``_oen_int;                                         \
-    assign p_``name``_io = name``_oen_int ? name``_o_io_int : 1'bz; \
-    assign name``_i_io_int  = name``_oen_int ? 1'bz : p_``name``_io;
+    assign p_``name``_io = name``_oen_int ? 1'bz: name``_o_io_int; \
+    assign name``_i_io_int  = name``_oen_int ? p_``name``_io: 1'bz;
 
 //  name_i_io_int :  input data from pad
 //  name_o_io_int :  output data to pad
