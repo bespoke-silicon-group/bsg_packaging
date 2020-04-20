@@ -13,6 +13,6 @@ Special note for bug fix:
     - Note that not all wires are bonded in this version. uw_bga_gf12_all_combined.csv is different from uw_bga_gf12.csv, former one should be sent to assemply house. If bug fix is not needed, uw_bga_gf12_all_combined.csv should be removed and use uw_bga_gf12.csv directly.
 
 Port to new process node checklist:
-    - Update "Die X" and "Die y" coordinates for new bond-pad location on die in uw_bga_<process>.csv. Note that the ordering of pads in this csv file is clockwise, E->S->W->N.
+    - Update "Width", "Height", "Die X" and "Die y" coordinates for new bond-pad on die in uw_bga_<process>.csv. Note that the ordering of pads in this csv file is clockwise, in the order of E->S->W->N.
     - Copy and paste newly updated rows into uw_bga_<process>_signal.csv, uw_bga_<process>_vdd.csv, uw_bga_<process>_v18.csv and uw_bga_<process>_vss.csv
     - Update PDF build sheet and orientation image accordingly
