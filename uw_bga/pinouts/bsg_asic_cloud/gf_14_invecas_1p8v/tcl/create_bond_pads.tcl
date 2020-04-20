@@ -1,21 +1,3 @@
-#
-# ***** DO NOT USE THIS TCL IN YOUR DESIGN *****
-#
-# WARNING: This tcl script is NOT FINISHED yet.
-# Contact prof.taylor@gmail.com if you have more question.
-#
-puts "ERROR: DO NOT USE THIS TCL SCRIPT, it is NOT FINISHED yet\n"
-#
-# TODOs:
-#
-# Better to sort pads in clockwise order. left and top sort_collection 
-# in ascending order, right and bottom sort_collection in descending order.
-#
-# For top, ($counter % 2 == 0) pads are outer, rests are inner.
-# For all other sides, ($counter % 2 == 0) pads are inner, rests are outer.
-#
-# When finished, all lines above should be removed.
-#
 
 puts "BSG-info: Running script [info script]\n"
 
@@ -28,29 +10,23 @@ set all_bottom_drivers [sort_collection [get_cells -filter "design_type==pad && 
 # Left Side
 #=======================================
 
-set counter 0
 foreach_in_collection io $all_left_drivers {
   set name     [get_attribute $io name]
   set origin   [get_attribute $io origin]
   set origin_x [lindex $origin 0]
   set origin_y [lindex $origin 1]
-  set pad [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
-  if { $counter % 2 == 0 } {
-    set_attribute $pad orientation MXR90
-    move_objects $pad -to "[expr $origin_x-13.707] [expr $origin_y-9]"
-  } else {
-    set_attribute $pad orientation R90
-    move_objects $pad -to "[expr $origin_x+72.893] [expr $origin_y-9]"
-  }
-  incr counter
-
   set ref_cell [get_attribute $io ref_name]
+  set pad_cell [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
   if { [string match IN12LP_GPIO18_13M9S30P_IO_* $ref_cell] } {
     set esd_label_text "FULL_ESD"
+    set_attribute $pad_cell orientation R90
+    move_objects $pad_cell -to "[expr $origin_x+72.893] [expr $origin_y-9]"
   } else {
     set esd_label_text "LC_POWER_ESD"
+    set_attribute $pad_cell orientation MXR90
+    move_objects $pad_cell -to "[expr $origin_x-13.707] [expr $origin_y-9]"
   }
-  set pad_bbox [get_attribute $pad bbox]
+  set pad_bbox [get_attribute $pad_cell bbox]
   set pad_center_x [expr ([lindex $pad_bbox 0 0]+[lindex $pad_bbox 1 0])/2.0]
   set pad_center_y [expr ([lindex $pad_bbox 0 1]+[lindex $pad_bbox 1 1])/2.0]
   create_shape -origin "$pad_center_x $pad_center_y" -text $esd_label_text -layer LBESD -shape_type text -height 5
@@ -68,29 +44,23 @@ foreach_in_collection io $all_left_drivers {
 # Top Side
 #=======================================
 
-set counter 0
 foreach_in_collection io $all_top_drivers {
   set name     [get_attribute $io name]
   set origin   [get_attribute $io origin]
   set origin_x [lindex $origin 0]
   set origin_y [lindex $origin 1]
-  set pad [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
-  if { $counter % 2 == 0 } {
-    set_attribute $pad orientation MX
-    move_objects $pad -to "[expr $origin_x-39] [expr $origin_y-70.293]"
-  } else {
-    set_attribute $pad orientation R0
-    move_objects $pad -to "[expr $origin_x-39] [expr $origin_y-156.839]"
-  }
-  incr counter
-
   set ref_cell [get_attribute $io ref_name]
+  set pad_cell [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
   if { [string match IN12LP_GPIO18_13M9S30P_IO_* $ref_cell] } {
     set esd_label_text "FULL_ESD"
+    set_attribute $pad_cell orientation R0
+    move_objects $pad_cell -to "[expr $origin_x-39] [expr $origin_y-156.839]"
   } else {
     set esd_label_text "LC_POWER_ESD"
+    set_attribute $pad_cell orientation MX
+    move_objects $pad_cell -to "[expr $origin_x-39] [expr $origin_y-70.293]"
   }
-  set pad_bbox [get_attribute $pad bbox]
+  set pad_bbox [get_attribute $pad_cell bbox]
   set pad_center_x [expr ([lindex $pad_bbox 0 0]+[lindex $pad_bbox 1 0])/2.0]
   set pad_center_y [expr ([lindex $pad_bbox 0 1]+[lindex $pad_bbox 1 1])/2.0]
   create_shape -origin "$pad_center_x $pad_center_y" -text $esd_label_text -layer LBESD -shape_type text -height 5
@@ -108,29 +78,23 @@ foreach_in_collection io $all_top_drivers {
 # Right Side
 #=======================================
 
-set counter 0
 foreach_in_collection io $all_right_drivers {
   set name     [get_attribute $io name]
   set origin   [get_attribute $io origin]
   set origin_x [lindex $origin 0]
   set origin_y [lindex $origin 1]
-  set pad [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
-  if { $counter % 2 == 0 } {
-    set_attribute $pad orientation MXR90
-    move_objects $pad -to "[expr $origin_x-156.839] [expr $origin_y-39]"
-  } else {
-    set_attribute $pad orientation R90
-    move_objects $pad -to "[expr $origin_x-70.293] [expr $origin_y-39]"
-  }
-  incr counter
-
   set ref_cell [get_attribute $io ref_name]
+  set pad_cell [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
   if { [string match IN12LP_GPIO18_13M9S30P_IO_* $ref_cell] } {
     set esd_label_text "FULL_ESD"
+    set_attribute $pad_cell orientation MXR90
+    move_objects $pad_cell -to "[expr $origin_x-156.839] [expr $origin_y-39]"
   } else {
     set esd_label_text "LC_POWER_ESD"
+    set_attribute $pad_cell orientation R90
+    move_objects $pad_cell -to "[expr $origin_x-70.293] [expr $origin_y-39]"
   }
-  set pad_bbox [get_attribute $pad bbox]
+  set pad_bbox [get_attribute $pad_cell bbox]
   set pad_center_x [expr ([lindex $pad_bbox 0 0]+[lindex $pad_bbox 1 0])/2.0]
   set pad_center_y [expr ([lindex $pad_bbox 0 1]+[lindex $pad_bbox 1 1])/2.0]
   create_shape -origin "$pad_center_x $pad_center_y" -text $esd_label_text -layer LBESD -shape_type text -height 5
@@ -148,29 +112,23 @@ foreach_in_collection io $all_right_drivers {
 # Bottom Side
 #=======================================
 
-set counter 0
 foreach_in_collection io $all_bottom_drivers {
   set name     [get_attribute $io name]
   set origin   [get_attribute $io origin]
   set origin_x [lindex $origin 0]
   set origin_y [lindex $origin 1]
-  set pad [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
-  if { $counter % 2 == 0 } {
-    set_attribute $pad orientation MX
-    move_objects $pad -to "[expr $origin_x-9] [expr $origin_y+72.893]"
-  } else {
-    set_attribute $pad orientation R0
-    move_objects $pad -to "[expr $origin_x-9] [expr $origin_y-13.707]"
-  }
-  incr counter
-
   set ref_cell [get_attribute $io ref_name]
+  set pad_cell [create_cell ${name}_PAD */IN12LP_GPIO18_13M9S30P_48X84_LB_STAG]
   if { [string match IN12LP_GPIO18_13M9S30P_IO_* $ref_cell] } {
     set esd_label_text "FULL_ESD"
+    set_attribute $pad_cell orientation MX
+    move_objects $pad_cell -to "[expr $origin_x-9] [expr $origin_y+72.893]"
   } else {
     set esd_label_text "LC_POWER_ESD"
+    set_attribute $pad_cell orientation R0
+    move_objects $pad_cell -to "[expr $origin_x-9] [expr $origin_y-13.707]"
   }
-  set pad_bbox [get_attribute $pad bbox]
+  set pad_bbox [get_attribute $pad_cell bbox]
   set pad_center_x [expr ([lindex $pad_bbox 0 0]+[lindex $pad_bbox 1 0])/2.0]
   set pad_center_y [expr ([lindex $pad_bbox 0 1]+[lindex $pad_bbox 1 1])/2.0]
   create_shape -origin "$pad_center_x $pad_center_y" -text $esd_label_text -layer LBESD -shape_type text -height 5
@@ -185,3 +143,4 @@ foreach_in_collection io $all_bottom_drivers {
 }
 
 puts "BSG-info: Completed script [info script]\n"
+
