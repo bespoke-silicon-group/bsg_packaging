@@ -12,7 +12,7 @@
 
 `define PU_ENABLE     .PUEN(1'b1),.PDEN(1'b0)
 `define PD_ENABLE     .PUEN(1'b0),.PDEN(1'b1)
-`define PU_PD_DISABLE .PUEN(1'b0),.PDEN(1'b0)  
+`define PU_PD_DISABLE .PUEN(1'b0),.PDEN(1'b0)
 
 `define ND_TREE .NDIN(1'b0),.NDOUT()
 
@@ -67,7 +67,7 @@
         , `ND_TREE                      \
         );
 
-`define BSG_IO_IN_UNUSED(name,padtype,ctrl)  \
+`define BSG_IO_IN_DISABLE(name,padtype,ctrl)  \
     wire name``_i_int;                \
     padtype name``_i                  \
         ( .PAD  (p_``name``_i)        \
@@ -82,7 +82,7 @@
         , `ND_TREE                    \
         );
 
-`define BSG_IO_OUT_UNUSED(name,padtype,ctrl) \
+`define BSG_IO_OUT_DISABLE(name,padtype,ctrl) \
     wire name``_o_int;                \
     padtype name``_o                  \
         ( .PAD  (p_``name``_o)        \
@@ -97,7 +97,7 @@
         , `ND_TREE                    \
         );
 
-`define BSG_IO_INOUT_UNUSED(name,padtype,ctrl) \
+`define BSG_IO_INOUT_DISABLE(name,padtype,ctrl) \
     wire name``_i_int;                  \
     wire name``_o_int;                  \
     wire name``_oen_int;                \
