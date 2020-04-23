@@ -1,10 +1,10 @@
 
 puts "BSG-info: Running script [info script]\n"
 
-set all_left_drivers   [sort_collection [get_cells -filter "design_type==pad && orientation==R0   && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*PWRDET*"] {boundary_bounding_box.ll_y}]
-set all_top_drivers    [sort_collection [get_cells -filter "design_type==pad && orientation==R180 && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*PWRDET*"] {boundary_bounding_box.ll_x}]
-set all_right_drivers  [sort_collection [get_cells -filter "design_type==pad && orientation==R180 && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*PWRDET*"] {boundary_bounding_box.ll_y}]
-set all_bottom_drivers [sort_collection [get_cells -filter "design_type==pad && orientation==R0   && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*PWRDET*"] {boundary_bounding_box.ll_x}]
+set all_left_drivers   [sort_collection [get_cells -hier -filter "design_type==pad && orientation==R0   && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*PWRDET*"] {boundary_bounding_box.ll_y}]
+set all_top_drivers    [sort_collection [get_cells -hier -filter "design_type==pad && orientation==R180 && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*PWRDET*"] {boundary_bounding_box.ll_x}]
+set all_right_drivers  [sort_collection [get_cells -hier -filter "design_type==pad && orientation==R180 && ref_name=~*_H && ref_name!~*BRK* && ref_name!~*PWRDET*"] {boundary_bounding_box.ll_y}]
+set all_bottom_drivers [sort_collection [get_cells -hier -filter "design_type==pad && orientation==R0   && ref_name=~*_V && ref_name!~*BRK* && ref_name!~*PWRDET*"] {boundary_bounding_box.ll_x}]
 
 #=======================================
 # Left Side

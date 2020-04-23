@@ -9,14 +9,20 @@
 
 puts "BSG-info: Running script [info script]\n"
 
+# If the cells are inside a module, they will need a prefix.
+set prefix_ref_cell           [index_collection [get_cells -hier -filter "is_io && design_type==pad"] 0]
+set prefix_ref_cell_full_name [get_attribute $prefix_ref_cell full_name]
+set prefix_ref_cell_base_name [get_attribute $prefix_ref_cell base_name]
+set prefix                    [regsub -all $prefix_ref_cell_base_name $prefix_ref_cell_full_name {}]
+
 #===============================================================================
 # Create IO fillers
 #===============================================================================
 
 ### PLL REGION (do this first so top side fillers do over run this)
 
-set pll_tl_corner [lindex [get_attribute [get_cell brk_t_0] boundary_bbox] 1]
-set pll_br_corner [lindex [get_attribute [get_cell brk_t_1] boundary_bbox] 0]
+set pll_tl_corner [lindex [get_attribute [get_cell ${prefix}brk_t_0] boundary_bbox] 1]
+set pll_br_corner [lindex [get_attribute [get_cell ${prefix}brk_t_1] boundary_bbox] 0]
 create_io_filler -io_guide top_guide \
                  -reference_cells { IN12LP_GPIO18_13M9S30P_FILL20_V IN12LP_GPIO18_13M9S30P_FILL10_V IN12LP_GPIO18_13M9S30P_FILL5_V  IN12LP_GPIO18_13M9S30P_FILL1_V } \
                  -extension_bbox [list $pll_tl_corner $pll_br_corner] \
@@ -45,27 +51,27 @@ set bottom_io_filler_cells [create_io_filler -io_guide bottom_guide \
 #===============================================================================
 
 set all_brk_cells [list]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_0"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_1"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_2"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_3"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_4"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_t_0"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_t_1"]
-append_to_collection all_brk_cells [get_cells      "brk_t_0"]
-append_to_collection all_brk_cells [get_cells      "brk_t_1"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_t_2"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_t_3"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_0"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_1"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_2"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_3"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_4"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_0"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_1"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_2"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_3"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_4"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_l_0"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_l_1"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_l_2"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_l_3"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_l_4"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_t_0"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_t_1"]
+append_to_collection all_brk_cells [get_cells      "${prefix}brk_t_0"]
+append_to_collection all_brk_cells [get_cells      "${prefix}brk_t_1"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_t_2"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_t_3"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_r_0"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_r_1"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_r_2"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_r_3"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_r_4"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_b_0"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_b_1"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_b_2"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_b_3"]
+append_to_collection all_brk_cells [get_cells "${prefix}ctrl_brk_b_4"]
 
 for {set i 0} {$i < [sizeof $all_brk_cells]} {incr i} {
 
@@ -85,9 +91,9 @@ for {set i 0} {$i < [sizeof $all_brk_cells]} {incr i} {
 
   puts "$I1_center_pt -- $I2_center_pt"
   set io_fillers [get_cells -intersect [list $I1_center_pt $I2_center_pt] -filter "name=~*io_filler*"]
-  connect_net -net "retc_lo[$i]" [get_pins -of $io_fillers -filter "name==RETC"]
-  connect_net -net "pwrok_lo[$i]" [get_pins -of $io_fillers -filter "name==PWROK"]
-  connect_net -net "iopwrok_lo[$i]" [get_pins -of $io_fillers -filter "name==IOPWROK"]
+  connect_net -net "${prefix}retc_lo[$i]"    [get_pins -of $io_fillers -filter "name==RETC"]
+  connect_net -net "${prefix}pwrok_lo[$i]"   [get_pins -of $io_fillers -filter "name==PWROK"]
+  connect_net -net "${prefix}iopwrok_lo[$i]" [get_pins -of $io_fillers -filter "name==IOPWROK"]
 
 }
 
@@ -97,6 +103,8 @@ for {set i 0} {$i < [sizeof $all_brk_cells]} {incr i} {
 
 set pll_io_filler_cells [get_cells pll_io_filler*]
 set other_io_filler_cells [remove_from_collection [get_cells *io_filler*] $pll_io_filler_cells]
+
+if { ![info exists POWER_INTENT] } { set POWER_INTENT "" }
 
 if { $POWER_INTENT == "mv_standard_pll" } {
   connect_supply_net PLL_VDD   -port [get_pins -of $pll_io_filler_cells -filter "name==VDDC"]
@@ -119,9 +127,9 @@ commit_upf
 connect_pg_net -automatic -all_blocks
 
 # Do not, under any circumstances, try to route these nets... garunteed DRC errors!
-set_attribute [get_nets    retc_lo*] physical_status locked
-set_attribute [get_nets   pwrok_lo*] physical_status locked
-set_attribute [get_nets iopwrok_lo*] physical_status locked
+set_attribute [get_nets ${prefix}retc_lo*]    physical_status locked
+set_attribute [get_nets ${prefix}pwrok_lo*]   physical_status locked
+set_attribute [get_nets ${prefix}iopwrok_lo*] physical_status locked
 
 puts "BSG-info: Completed script [info script]\n"
 
