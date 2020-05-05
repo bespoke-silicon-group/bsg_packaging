@@ -1,10 +1,7 @@
-common: files useful across process nodes;
-        you should look at these first!
+common: files useful across process nodes; you should look at these first!
         
 portable/verilog: simulate padring without access to a particular process node
 
 gf_14_invecas_1p8v: gf_14 invecas 1.8V I/Os (contact us to use; suggested bug fixes)
-
-gf_14_inveas_3p3v: gf_14 invecas 3.3V I/Os (do not use)
 
 tsmc_40: tsmc 40 1.8V I/Os (silicon validated)
