@@ -1,7 +1,5 @@
 genvar i;
 
-  wire [20:0] retc_lo, iopwrok_lo, pwrok_lo;
-
   // WEST SIDE OF THE CHIP
 
 //`BSG_IO_INOUT(ddr_dq_8,    IN12LP_GPIO18_13M9S30P_IO_H)
