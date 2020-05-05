@@ -1,0 +1,8 @@
+This directory contains deprecated files for the uw_bga + bsg_asic_cloud
+pinout:
+
+- to_assembly_house_tapeout_july_2019: This directory contains the files we
+  sent to the assembly house for packaging the ASICs from the July 2019
+  tapeouts. They contain a bug fix for bump locations that has since been fixed
+  therefore these fixes are no longer required and have been deprecated.
+

@@ -6,137 +6,104 @@ export IMAGE_SIZE = 4200
 export DIE_SIZE   = 900
 endif
 
-SCRIPT_DIR = .
-IMG_DIR    = .
-CSV_DIR    = .
-OUT_DIR    = output
+FOUNDRY ?= gf_14_invecas_1p8v
+
+SCRIPT_DIR       = ./py
+IMG_DIR          = ./png
+COMMON_CSV_DIR   = ./csv
+FOUNDRY_CSV_DIR := ../../$(FOUNDRY)/csv
+OUT_DIR         := ./output/$(FOUNDRY)
 
 PACKAGING_IMG    = $(IMG_DIR)/uw_bga_large.png
-ALL_CSV          = $(CSV_DIR)/uw_bga_gf12.csv
-CHIP_DIE_PS      = $(OUT_DIR)/uw_bga_gf12_die.ps
-CHIP_DIE_IMG     = $(OUT_DIR)/uw_bga_gf12_die.png
+PACKAGING_CSV    = $(COMMON_CSV_DIR)/uw_bga_substrate.csv
 
-SIGNAL_CSV       = $(CSV_DIR)/uw_bga_gf12_signal.csv
-SIGNAL_WIRE_PS   = $(OUT_DIR)/uw_bga_gf12_signal.ps
-SIGNAL_WIRE_IMG  = $(OUT_DIR)/uw_bga_gf12_signal.png
-SIGNAL_FINAL_IMG = $(OUT_DIR)/uw_bga_gf12_signal_final.png
+CHIP_DIE_PS      = $(OUT_DIR)/uw_bga_die.ps
+CHIP_DIE_IMG     = $(OUT_DIR)/uw_bga_die.png
 
-VDD_CSV          = $(CSV_DIR)/uw_bga_gf12_vdd.csv
-VDD_WIRE_PS      = $(OUT_DIR)/uw_bga_gf12_vdd.ps
-VDD_WIRE_IMG     = $(OUT_DIR)/uw_bga_gf12_vdd.png
-VDD_FINAL_IMG    = $(OUT_DIR)/uw_bga_gf12_vdd_final.png
-                 
-V18_CSV          = $(CSV_DIR)/uw_bga_gf12_v18.csv
-V18_WIRE_PS      = $(OUT_DIR)/uw_bga_gf12_v18.ps
-V18_WIRE_IMG     = $(OUT_DIR)/uw_bga_gf12_v18.png
-V18_FINAL_IMG    = $(OUT_DIR)/uw_bga_gf12_v18_final.png
-                 
-VSS_CSV          = $(CSV_DIR)/uw_bga_gf12_vss.csv
-VSS_WIRE_PS      = $(OUT_DIR)/uw_bga_gf12_vss.ps
-VSS_WIRE_IMG     = $(OUT_DIR)/uw_bga_gf12_vss.png
-VSS_FINAL_IMG    = $(OUT_DIR)/uw_bga_gf12_vss_final.png
+ALL_PADS_CSV       = $(OUT_DIR)/uw_bga_all.csv
+ALL_PADS_WIRE_PS   = $(OUT_DIR)/uw_bga_all_wire.ps
+ALL_PADS_WIRE_IMG  = $(OUT_DIR)/uw_bga_all_wire.png
+ALL_PADS_FINAL_IMG = $(OUT_DIR)/uw_bga_all_final.png
 
-INNER_COMBINED_IMG = $(OUT_DIR)/uw_bga_gf12_inner_combined.png
-ALL_COMBINED_IMG   = $(OUT_DIR)/uw_bga_gf12_all_combined.png
+SIGNAL_PADS_CSV       = $(OUT_DIR)/uw_bga_signal.csv
+SIGNAL_PADS_WIRE_PS   = $(OUT_DIR)/uw_bga_signal_wire.ps
+SIGNAL_PADS_WIRE_IMG  = $(OUT_DIR)/uw_bga_signal_wire.png
+SIGNAL_PADS_FINAL_IMG = $(OUT_DIR)/uw_bga_signal_final.png
 
-all:
-	$(MAKE) $(SIGNAL_FINAL_IMG)
-	$(MAKE) $(VDD_FINAL_IMG)
-	$(MAKE) $(V18_FINAL_IMG)
-	$(MAKE) $(VSS_FINAL_IMG)
-	$(MAKE) $(INNER_COMBINED_IMG)
-	$(MAKE) $(ALL_COMBINED_IMG)
+SUPPLY_PADS_CSV       = $(OUT_DIR)/uw_bga_supply.csv
+SUPPLY_PADS_WIRE_PS   = $(OUT_DIR)/uw_bga_supply_wire.ps
+SUPPLY_PADS_WIRE_IMG  = $(OUT_DIR)/uw_bga_supply_wire.png
+SUPPLY_PADS_FINAL_IMG = $(OUT_DIR)/uw_bga_supply_final.png
 
-$(CHIP_DIE_PS): $(ALL_CSV) $(SCRIPT_DIR)/draw_die.py
-	python3 $(SCRIPT_DIR)/draw_die.py --die_sub_csv_file $(ALL_CSV) --output_file $@
+VDD_PADS_CSV       = $(OUT_DIR)/uw_bga_vdd.csv
+VDD_PADS_WIRE_PS   = $(OUT_DIR)/uw_bga_vdd_wire.ps
+VDD_PADS_WIRE_IMG  = $(OUT_DIR)/uw_bga_vdd_wire.png
+VDD_PADS_FINAL_IMG = $(OUT_DIR)/uw_bga_vdd_final.png
+
+V18_PADS_CSV       = $(OUT_DIR)/uw_bga_v18.csv
+V18_PADS_WIRE_PS   = $(OUT_DIR)/uw_bga_v18_wire.ps
+V18_PADS_WIRE_IMG  = $(OUT_DIR)/uw_bga_v18_wire.png
+V18_PADS_FINAL_IMG = $(OUT_DIR)/uw_bga_v18_final.png
+
+VSS_VZZ_PADS_CSV       = $(OUT_DIR)/uw_bga_vss_vzz.csv
+VSS_VZZ_PADS_WIRE_PS   = $(OUT_DIR)/uw_bga_vss_vzz_wire.ps
+VSS_VZZ_PADS_WIRE_IMG  = $(OUT_DIR)/uw_bga_vss_vzz_wire.png
+VSS_VZZ_PADS_FINAL_IMG = $(OUT_DIR)/uw_bga_vss_vzz_final.png
+
+#DISPLAY_CMD = display
+DISPLAY_CMD = firefox
+
+.SECONDARY:
+
+# can run "$ make -j7" to generate all images in parallel
+all: $(ALL_PADS_FINAL_IMG)    \
+     $(SIGNAL_PADS_FINAL_IMG) \
+     $(SUPPLY_PADS_FINAL_IMG) \
+     $(VDD_PADS_FINAL_IMG)    \
+     $(V18_PADS_FINAL_IMG)    \
+     $(VSS_VZZ_PADS_FINAL_IMG)
+
+display_all_pads: $(ALL_PADS_FINAL_IMG)
+	$(DISPLAY_CMD) $<
+
+display_signal_pads: $(SIGNAL_PADS_FINAL_IMG)
+	$(DISPLAY_CMD) $<
+
+display_supply_pads: $(SUPPLY_PADS_FINAL_IMG)
+	$(DISPLAY_CMD) $<
+
+display_vdd_pads: $(VDD_PADS_FINAL_IMG)
+	$(DISPLAY_CMD) $<
+
+display_vss_vzz_pads: $(VSS_VZZ_PADS_FINAL_IMG)
+	$(DISPLAY_CMD) $<
+
+display_v18_pads: $(V18_PADS_FINAL_IMG)
+	$(DISPLAY_CMD) $<
+
+$(OUT_DIR)/uw_bga_%_final.png: $(OUT_DIR)/uw_bga_%_wire.png $(CHIP_DIE_IMG)
+	composite $(CHIP_DIE_IMG) $(PACKAGING_IMG) -gravity center $@
+	composite $< $@ $@
+
+$(OUT_DIR)/uw_bga_%_wire.png: $(OUT_DIR)/uw_bga_%_wire.ps
+	convert $< $@
+	convert $@ -resize $(IMAGE_SIZE)x$(IMAGE_SIZE) $@
+	convert $@ -transparent black $@
+
+$(OUT_DIR)/uw_bga_%_wire.ps: $(OUT_DIR)/uw_bga_%.csv
+	python3 $(SCRIPT_DIR)/draw_wire_bonds.py --die_sub_csv_file $< --output_file $@
+
+$(OUT_DIR)/uw_bga_%.csv: $(FOUNDRY_CSV_DIR)/%_pads.csv
+	mkdir -p $(@D)
+	python3 $(SCRIPT_DIR)/merge_csv.py $(PACKAGING_CSV) $< > $@
 
 $(CHIP_DIE_IMG): $(CHIP_DIE_PS)
 	convert $(CHIP_DIE_PS) $@
 	convert $@ -resize $(DIE_SIZE)x$(DIE_SIZE) $@
 
-$(SIGNAL_WIRE_PS): $(SCRIPT_DIR)/draw_wire_bonds.py $(SIGNAL_CSV) $(CHIP_DIE_IMG) $(PACKAGING_IMG)
-	python3 $(SCRIPT_DIR)/draw_wire_bonds.py --die_sub_csv_file $(SIGNAL_CSV) --output_file $@
+$(CHIP_DIE_PS): $(ALL_PADS_CSV)
+	python3 $(SCRIPT_DIR)/draw_die.py --die_sub_csv_file $< --output_file $@
 
-$(SIGNAL_WIRE_IMG): $(SIGNAL_WIRE_PS)
-	convert $(SIGNAL_WIRE_PS) $@
-	convert $@ -resize $(IMAGE_SIZE)x$(IMAGE_SIZE) $@
-	convert $@ -transparent black $@
-
-$(SIGNAL_FINAL_IMG): $(SIGNAL_WIRE_IMG)
-	composite $(CHIP_DIE_IMG) $(PACKAGING_IMG) -gravity center $@
-	composite $(SIGNAL_WIRE_IMG) $@ $@
-
-
-
-$(VDD_WIRE_PS): $(SCRIPT_DIR)/draw_wire_bonds.py $(VDD_CSV) $(CHIP_DIE_IMG) $(PACKAGING_IMG)
-	python3 $(SCRIPT_DIR)/draw_wire_bonds.py --die_sub_csv_file $(VDD_CSV) --output_file $@
-
-$(VDD_WIRE_IMG): $(VDD_WIRE_PS)
-	convert $(VDD_WIRE_PS) $@
-	convert $@ -resize $(IMAGE_SIZE)x$(IMAGE_SIZE) $@
-	convert $@ -transparent black $@
-
-$(VDD_FINAL_IMG): $(VDD_WIRE_IMG)
-	composite $(CHIP_DIE_IMG) $(PACKAGING_IMG) -gravity center $@
-	composite $(VDD_WIRE_IMG) $@ $@
-
-
-
-$(V18_WIRE_PS): $(SCRIPT_DIR)/draw_wire_bonds.py $(V18_CSV) $(CHIP_DIE_IMG) $(PACKAGING_IMG)
-	python3 $(SCRIPT_DIR)/draw_wire_bonds.py --die_sub_csv_file $(V18_CSV) --output_file $@
-
-$(V18_WIRE_IMG): $(V18_WIRE_PS)
-	convert $(V18_WIRE_PS) $@
-	convert $@ -resize $(IMAGE_SIZE)x$(IMAGE_SIZE) $@
-	convert $@ -transparent black $@
-
-$(V18_FINAL_IMG): $(V18_WIRE_IMG)
-	composite $(CHIP_DIE_IMG) $(PACKAGING_IMG) -gravity center $@
-	composite $(V18_WIRE_IMG) $@ $@
-
-
-
-$(VSS_WIRE_PS): $(SCRIPT_DIR)/draw_wire_bonds.py $(VSS_CSV) $(CHIP_DIE_IMG) $(PACKAGING_IMG)
-	python3 $(SCRIPT_DIR)/draw_wire_bonds.py --die_sub_csv_file $(VSS_CSV) --output_file $@
-
-$(VSS_WIRE_IMG): $(VSS_WIRE_PS)
-	convert $(VSS_WIRE_PS) $@
-	convert $@ -resize $(IMAGE_SIZE)x$(IMAGE_SIZE) $@
-	convert $@ -transparent black $@
-
-$(VSS_FINAL_IMG): $(VSS_WIRE_IMG)
-	composite $(CHIP_DIE_IMG) $(PACKAGING_IMG) -gravity center $@
-	composite $(VSS_WIRE_IMG) $@ $@
-
-
-
-$(INNER_COMBINED_IMG): $(CHIP_DIE_IMG) $(PACKAGING_IMG) $(VDD_WIRE_IMG) $(V18_WIRE_IMG) $(VSS_WIRE_IMG)
-	composite $(CHIP_DIE_IMG) $(PACKAGING_IMG) -gravity center $@
-	composite $(VDD_WIRE_IMG) $@ $@
-	composite $(V18_WIRE_IMG) $@ $@
-	composite $(VSS_WIRE_IMG) $@ $@
-
-$(ALL_COMBINED_IMG): $(CHIP_DIE_IMG) $(PACKAGING_IMG) $(SIGNAL_FINAL_IMG) $(VDD_WIRE_IMG) $(V18_WIRE_IMG) $(VSS_WIRE_IMG)
-	composite $(CHIP_DIE_IMG) $(PACKAGING_IMG) -gravity center $@
-	composite $(SIGNAL_FINAL_IMG) $@ $@
-	composite $(VDD_WIRE_IMG) $@ $@
-	composite $(V18_WIRE_IMG) $@ $@
-	composite $(VSS_WIRE_IMG) $@ $@
-
-
-
-display_signal: $(SIGNAL_FINAL_IMG)
-	display $(SIGNAL_FINAL_IMG)
-    
-display_vdd: $(VDD_FINAL_IMG)
-	display $(VDD_FINAL_IMG)
-    
-display_v18: $(V18_FINAL_IMG)
-	display $(V18_FINAL_IMG)
-    
-display_vss: $(VSS_FINAL_IMG)
-	display $(VSS_FINAL_IMG)
-	
 clean:
 	rm -rf $(OUT_DIR)
 
