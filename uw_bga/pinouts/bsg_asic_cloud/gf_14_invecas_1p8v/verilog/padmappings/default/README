@@ -1,15 +1,2 @@
-This is an example pad mappings file, however, you probably don't want to use this one.
-
-We used this in the bsg_ten chip to validate what drive strength was ideal for the bsg_comm_link,
-which uses external parallel termination (i.e. two 100 ohm resistors at the end of every line,
-one to ground and one to Vdd), and 3.3V I/O.
-
-We tried { slew rate controlled, non-slew rate controlled } X { 12, 16 mA }.
-
-For that 180nm 3.3V I/O chip, *16 mA, non-slew rate controlled*, ended up being the high performance,
-and achieve 400+ MHz signal rates. SSO noise was not an issue.
-
-(For a separate 16nm 1.8V I/O chip with the same PCB, but with a different package, a flip-chip
-package, we found that 12 mA was able to attain 500+ MHz).
-
-
+There is no padmapping defined for the gf_14_invecas_1p8v pad ring. This file
+is included to satisfy the requirement that a padmapping.v file exists.
