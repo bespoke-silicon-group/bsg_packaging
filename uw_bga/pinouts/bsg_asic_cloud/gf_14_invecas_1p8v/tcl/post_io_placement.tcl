@@ -44,84 +44,78 @@ set bottom_io_filler_cells [create_io_filler -io_guide bottom_guide \
 # Connect up control signals (retc_lo, iopwrok_lo and pwrok_lo)
 #===============================================================================
 
+set all_io_cells [get_flat_cells -filter "is_io"]
+
 set all_brk_cells [list]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_0"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_1"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_2"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_3"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_l_4"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_t_0"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_t_1"]
-append_to_collection all_brk_cells [get_cells      "brk_t_0"]
-append_to_collection all_brk_cells [get_cells      "brk_t_1"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_t_2"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_t_3"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_0"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_1"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_2"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_3"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_r_4"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_0"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_1"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_2"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_3"]
-append_to_collection all_brk_cells [get_cells "ctrl_brk_b_4"]
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_0"] ;# 0
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_1"] ;# 1
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_2"] ;# 2
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_3"] ;# 3
+append_to_collection all_brk_cells [get_cells "ctrl_brk_l_4"] ;# 4
+append_to_collection all_brk_cells [get_cells "ctrl_brk_t_0"] ;# 5
+append_to_collection all_brk_cells [get_cells "ctrl_brk_t_1"] ;# 6
+append_to_collection all_brk_cells [get_cells      "brk_t_0"] ;# 7
+append_to_collection all_brk_cells [get_cells      "brk_t_1"] ;# 8
+append_to_collection all_brk_cells [get_cells "ctrl_brk_t_2"] ;# 9
+append_to_collection all_brk_cells [get_cells "ctrl_brk_t_3"] ;# 10
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_0"] ;# 11
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_1"] ;# 12
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_2"] ;# 13
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_3"] ;# 14
+append_to_collection all_brk_cells [get_cells "ctrl_brk_r_4"] ;# 15
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_0"] ;# 16
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_1"] ;# 17
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_2"] ;# 18
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_3"] ;# 19
+append_to_collection all_brk_cells [get_cells "ctrl_brk_b_4"] ;# 20
+
+disconnect_net [get_pins -of $all_io_cells -filter "name==RETC"]
+disconnect_net [get_pins -of $all_io_cells -filter "name==RETCOUT"]
+disconnect_net [get_pins -of $all_io_cells -filter "name==RETCIN"]
+disconnect_net [get_pins -of $all_io_cells -filter "name==PWROK"]
+disconnect_net [get_pins -of $all_io_cells -filter "name==PWROKOUT"]
+disconnect_net [get_pins -of $all_io_cells -filter "name==IOPWROK"]
+disconnect_net [get_pins -of $all_io_cells -filter "name==IOPWROKOUT"]
+
+connect_net -net VSS [get_pins -of $all_io_cells -filter "name==RETCIN"]
 
 for {set i 0} {$i < [sizeof $all_brk_cells]} {incr i} {
 
-  puts $i
   set I1 $i
-  set I2 [expr ($i+1) % [sizeof $all_brk_cells]]
-
   set I1_bbox [get_attribute [index_collection $all_brk_cells $I1] boundary_bbox]
   set I1_center_x [expr ([lindex $I1_bbox 0 0]+[lindex $I1_bbox 1 0])/2.0]
   set I1_center_y [expr ([lindex $I1_bbox 0 1]+[lindex $I1_bbox 1 1])/2.0]
   set I1_center_pt [list [expr $I1_center_x-0.001] [expr $I1_center_y-0.001]]
 
+  set I2 [expr ($i+1) % [sizeof $all_brk_cells]]
   set I2_bbox [get_attribute [index_collection $all_brk_cells $I2] boundary_bbox]
   set I2_center_x [expr ([lindex $I2_bbox 0 0]+[lindex $I2_bbox 1 0])/2.0]
   set I2_center_y [expr ([lindex $I2_bbox 0 1]+[lindex $I2_bbox 1 1])/2.0]
   set I2_center_pt [list [expr $I2_center_x+0.001] [expr $I2_center_y+0.001]]
 
-  puts "$I1_center_pt -- $I2_center_pt"
-  set io_fillers [get_cells -intersect [list $I1_center_pt $I2_center_pt] -filter "name=~*io_filler*"]
-  connect_net -net "retc_lo[$i]" [get_pins -of $io_fillers -filter "name==RETC"]
-  connect_net -net "pwrok_lo[$i]" [get_pins -of $io_fillers -filter "name==PWROK"]
-  connect_net -net "iopwrok_lo[$i]" [get_pins -of $io_fillers -filter "name==IOPWROK"]
+  set io_cells [get_cells -intersect [list $I1_center_pt $I2_center_pt]]
 
+  create_net    retc_lo_$i
+  create_net   pwrok_lo_$i
+  create_net iopwrok_lo_$i
+
+  connect_net -net    retc_lo_$i [get_pins -of [index_collection $all_brk_cells $I1] -filter "name==RETCA"]
+  connect_net -net   pwrok_lo_$i [get_pins -of [index_collection $all_brk_cells $I1] -filter "name==PWROKA"]
+  connect_net -net iopwrok_lo_$i [get_pins -of [index_collection $all_brk_cells $I1] -filter "name==IOPWROKA"]
+
+  connect_net -net    retc_lo_$i [get_pins -of [index_collection $all_brk_cells $I2] -filter "name==RETCB"]
+  connect_net -net   pwrok_lo_$i [get_pins -of [index_collection $all_brk_cells $I2] -filter "name==PWROKB"]
+  connect_net -net iopwrok_lo_$i [get_pins -of [index_collection $all_brk_cells $I2] -filter "name==IOPWROKB"]
+
+  connect_net -net    retc_lo_$i [get_pins -of $io_cells -filter "name==RETC    || name==RETCOUT"]
+  connect_net -net   pwrok_lo_$i [get_pins -of $io_cells -filter "name==PWROK   || name==PWROKOUT"]
+  connect_net -net iopwrok_lo_$i [get_pins -of $io_cells -filter "name==IOPWROK || name==IOPWROKOUT"]
 }
-
-#===============================================================================
-# Update the power rails
-#===============================================================================
-
-set pll_io_filler_cells [get_cells pll_io_filler*]
-set other_io_filler_cells [remove_from_collection [get_cells *io_filler*] $pll_io_filler_cells]
-
-if { $POWER_INTENT == "mv_standard_pll" } {
-  connect_supply_net PLL_VDD   -port [get_pins -of $pll_io_filler_cells -filter "name==VDDC"]
-  connect_supply_net VSS       -port [get_pins -of $pll_io_filler_cells -filter "name==VSSC"]
-  connect_supply_net PLL_VDDIO -port [get_pins -of $pll_io_filler_cells -filter "name==VDDIO"]
-  connect_supply_net PLL_VSSIO -port [get_pins -of $pll_io_filler_cells -filter "name==VSSIO"]
-} else {
-  connect_supply_net VDD   -port [get_pins -of $pll_io_filler_cells -filter "name==VDDC"]
-  connect_supply_net VSS   -port [get_pins -of $pll_io_filler_cells -filter "name==VSSC"]
-  connect_supply_net VDDIO -port [get_pins -of $pll_io_filler_cells -filter "name==VDDIO"]
-  connect_supply_net VSSIO -port [get_pins -of $pll_io_filler_cells -filter "name==VSSIO"]
-}
-
-connect_supply_net VDD   -port [get_pins -of $other_io_filler_cells -filter "name==VDDC"]
-connect_supply_net VSS   -port [get_pins -of $other_io_filler_cells -filter "name==VSSC"]
-connect_supply_net VDDIO -port [get_pins -of $other_io_filler_cells -filter "name==VDDIO"]
-connect_supply_net VSSIO -port [get_pins -of $other_io_filler_cells -filter "name==VSSIO"]
-
-commit_upf
-connect_pg_net -automatic -all_blocks
 
 # Do not, under any circumstances, try to route these nets... garunteed DRC errors!
-set_attribute [get_nets    retc_lo*] physical_status locked
-set_attribute [get_nets   pwrok_lo*] physical_status locked
-set_attribute [get_nets iopwrok_lo*] physical_status locked
+set_attribute [get_nets    retc_lo_*] physical_status locked
+set_attribute [get_nets   pwrok_lo_*] physical_status locked
+set_attribute [get_nets iopwrok_lo_*] physical_status locked
 
 puts "BSG-info: Completed script [info script]\n"
 
