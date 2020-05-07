@@ -1,0 +1,5 @@
+This pinout has 4 intentionally unbonded pads (a VSS, VDD, V33 and VZZ pad
+found in the PLL cutout region on the south side of the padring). The file
+ucsd_bga_332_substrate.full.csv has the infromation for every single pad while
+ucsd_bga_332_substrate.csv has just the pad we intent on bonding. The bond
+diagram generator will use ucsd_bga_332_substrate.csv to generate the diagrams.
