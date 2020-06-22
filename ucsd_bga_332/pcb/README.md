@@ -24,9 +24,9 @@ for_us/
 
    UCSD001-BGA_5mm_2014-05-21/             unzipped Gerber files
 
-   UCSD001-Bonding_2014-03-19.dwg.pdf*      (DO NOT USE) .pdf of .dwg file in the for_assembly_Corwil directory
-   UCSD001-Bonding_2014-03-19.zip*          (DO NOT USE) .dxf file for above (autocad)
-   * Original files provided by designer, which have already been replaced. New files are located in: [bsg_packaging/ucsd_bga_332/pinouts/bsg_two/common/to_assembly_house](../pinouts/bsg_two/common/to_assembly_house)
+   UCSD001-Bonding_2014-03-19.dwg.pdf      **(DO NOT USE)** .pdf of .dwg file in the for_assembly_Corwil directory
+   UCSD001-Bonding_2014-03-19.zip          **(DO NOT USE)** .dxf file for above (autocad)
+   **Original files provided by designer, which have already been replaced. New files are located in: [bsg_packaging/ucsd_bga_332/pinouts/bsg_two/common/to_assembly_house](../pinouts/bsg_two/common/to_assembly_house)**
 
    old for reference/                       intermediate files; not the final ones
       UCSD001-BGA_5mm_2014-04-22.pcb	    penultimate design, with final stackup notes by Darren
