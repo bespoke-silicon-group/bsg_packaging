@@ -3,6 +3,8 @@
 // **********************************************************************
 // UW BSG ASIC Cloud Pinout (Based on UW BGA)
 //
+// 135 signal pins in total
+//
 // This file defines all of the pads that are used for a given pinout of
 // a package. It would change if we reversed the direction of a pad. It
 // is recommended not to change the name of the pin (except the _i or _o)
