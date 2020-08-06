@@ -1,6 +1,6 @@
 Porting the Padring to your process / chip design
 ------------------------------------------------------------
-
+<pre>
 When you resize your chip, or use different pads, which will have different sizes, you will
 need to generate a modified pad ring.  Here are some helpful tips:
 
@@ -47,6 +47,7 @@ package. In many cases, the top metal layer of a process has thicker metal and m
 resistance. So it is preferable to align the top metal layer with the left/right side of 
 the package, which might require rotating the chip in the package,
 depending on whether top metal runs horizontally or vertically.
+</pre>
 
 
 Files
