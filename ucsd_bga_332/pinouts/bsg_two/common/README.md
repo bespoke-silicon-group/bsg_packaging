@@ -31,7 +31,7 @@ need to generate a modified pad ring.  Here are some helpful tips:
   but you would need pretty narrow wires to meet the 40 um effective pitch (P).
 
 - If your die size is smaller than 4 by 4, you will have to eliminate pads starting from the edges.
-  See https://bitbucket.org/taylor-bsg/bsg_packaging/src/master/ucsd_bga_332/pinouts/bsg_two/common/padring.pdf for guidance.
+  See https://github.com/bespoke-silicon-group/bsg_packaging/src/master/ucsd_bga_332/pinouts/bsg_two/common/padring.pdf for guidance.
   The approximate range of I/Os for 5, 4, and 3mm dies is shown.
 
 Alignment of top metal layer and left/right side of padring.
