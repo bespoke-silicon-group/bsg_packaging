@@ -4,6 +4,10 @@ Porting the Padring to your process / chip design
 When you resize your chip, or use different pads, which will have different sizes, you will
 need to generate a modified pad ring.  Here are some helpful tips:
 
+- The safest thing is to generate a padring diagram and then have your assembly house (bondhouse)
+  approve your padring before you tapeout. Below are some general rules to help you replicate what we did
+  but they are not hard and fast. If the bondhouse approves what you did, it's good to go. 
+  
 - In your modified ring, the center of each bondpad should have roughly the same distance (D) 
   to the middle (M) of the side of the chip it is on as in the original padrid.
   
@@ -32,7 +36,8 @@ need to generate a modified pad ring.  Here are some helpful tips:
 
 - If your die size is smaller than 4 by 4, you will have to eliminate pads starting from the edges.
   See https://github.com/bespoke-silicon-group/bsg_packaging/blob/master/ucsd_bga_332/pinouts/bsg_two/common/padring.pdf for guidance.
-  The approximate range of I/Os for 5, 4, and 3mm dies is shown.
+  The approximate range of I/Os for 5, 4, and 3mm dies is shown. What is shown is conservative. In our 40nm tapeout, we actually were
+  able to do 3x3 mm^2 die and not eliminate very many signal wires.
 
 Alignment of top metal layer and left/right side of padring.
 ------------------------------------------------------------
