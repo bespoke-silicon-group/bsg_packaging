@@ -21,6 +21,9 @@
 // it is customary to include a macro file ahead of this one;
 // for example bsg_one_iopad_macros_verilog.v
 
+// there are 144 signal pins in total; but not all of them are 
+// high performance
+
 //module
 // bsg_two
 (
@@ -28,17 +31,18 @@
  // all "100-ohm impedance-controlled-in-package" differential pairs
  //
 
- // unused differential inputs
+ // unused differential inputs (4 pins)
  // we give these as outputs, and then go high-impedance
    output p_clk_0_p_i    , output  p_clk_0_n_i
  , output  p_clk_1_p_i    , output  p_clk_1_n_i
 
- // unused differential inputs
+ // unused differential inputs (4 pins)
  // we give these as outputs, and then go high-impedance
  , output  p_SMA_in_p_i   , output p_SMA_in_n_i
 
  , output p_SMA_out_p_o  , output p_SMA_out_n_o
 
+ // 1 pin
  // *******************************************************************
  // ultra-shielded "50-ohm impedance-controlled-in-package" clock for PLL
  , input   p_PLL_CLK_i
@@ -48,6 +52,7 @@
  // these are length matched within 1.55 mm length and
  // .76 mm bond wire length.
 
+ // channel pins: 4 x 26 pins per channel + 2 extra = 106 pins
  // input clocks for input channels D,C,B,A
  , input  [3:0] p_sdi_sclk_i
 
@@ -85,6 +90,7 @@
  , output [3:0] p_sdi_tkn_ex_o
  , input  [3:0] p_sdo_tkn_ex_i
 
+ // 29 miscellaneous pins
  // *******************************************************************
  // all "50-ohm impedance-controlled-in-package", starting here
  // but are next to clock or token signals
