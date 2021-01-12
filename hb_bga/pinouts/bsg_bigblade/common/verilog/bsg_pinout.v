@@ -1,77 +1,135 @@
+// **********************************************************************
+// Begin HB BGA PAD Definitions
+//
 
-  (
+(
 
-`define BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(i) \
-     input  p_bsg_link_in``i``_clk_i         \
-    ,input  p_bsg_link_in``i``_v_i           \
-    ,output p_bsg_link_in``i``_tkn_o         \
-    ,input  p_bsg_link_in``i``_d0_i          \
-    ,input  p_bsg_link_in``i``_d1_i          \
-    ,input  p_bsg_link_in``i``_d2_i          \
-    ,input  p_bsg_link_in``i``_d3_i          \
-    ,input  p_bsg_link_in``i``_d4_i          \
-    ,input  p_bsg_link_in``i``_d5_i          \
-    ,input  p_bsg_link_in``i``_d6_i          \
-    ,input  p_bsg_link_in``i``_d7_i          \
-    ,input  p_bsg_link_in``i``_d8_i          \
-                                             \
-    ,output p_bsg_link_out``i``_clk_o        \
-    ,output p_bsg_link_out``i``_v_o          \
-    ,input  p_bsg_link_out``i``_tkn_i        \
-    ,output p_bsg_link_out``i``_d0_o         \
-    ,output p_bsg_link_out``i``_d1_o         \
-    ,output p_bsg_link_out``i``_d2_o         \
-    ,output p_bsg_link_out``i``_d3_o         \
-    ,output p_bsg_link_out``i``_d4_o         \
-    ,output p_bsg_link_out``i``_d5_o         \
-    ,output p_bsg_link_out``i``_d6_o         \
-    ,output p_bsg_link_out``i``_d7_o         \
-    ,output p_bsg_link_out``i``_d8_o
+  `define BSG_PINOUT_16B_CHANNEL_PORTS(ch_name) \
+      input   p_``ch_name``_clk1_i  \
+     ,input   p_``ch_name``_clk2_i  \
+     ,input   p_``ch_name``_v_i     \
+     ,output  p_``ch_name``_tkn_o   \
+     ,input   p_``ch_name``_0_i     \
+     ,input   p_``ch_name``_1_i     \
+     ,input   p_``ch_name``_2_i     \
+     ,input   p_``ch_name``_3_i     \
+     ,input   p_``ch_name``_4_i     \
+     ,input   p_``ch_name``_5_i     \
+     ,input   p_``ch_name``_6_i     \
+     ,input   p_``ch_name``_7_i     \
+     ,input   p_``ch_name``_8_i     \
+     ,input   p_``ch_name``_9_i     \
+     ,input   p_``ch_name``_10_i    \
+     ,input   p_``ch_name``_11_i    \
+     ,input   p_``ch_name``_12_i    \
+     ,input   p_``ch_name``_13_i    \
+     ,input   p_``ch_name``_14_i    \
+     ,input   p_``ch_name``_15_i    \
+     ,output  p_``ch_name``_clk_o   \
+     ,output  p_``ch_name``_v_o     \
+     ,input   p_``ch_name``_tkn_i   \
+     ,output  p_``ch_name``_0_o     \
+     ,output  p_``ch_name``_1_o     \
+     ,output  p_``ch_name``_2_o     \
+     ,output  p_``ch_name``_3_o     \
+     ,output  p_``ch_name``_4_o     \
+     ,output  p_``ch_name``_5_o     \
+     ,output  p_``ch_name``_6_o     \
+     ,output  p_``ch_name``_7_o     \
+     ,output  p_``ch_name``_8_o     \
+     ,output  p_``ch_name``_9_o     \
+     ,output  p_``ch_name``_10_o    \
+     ,output  p_``ch_name``_11_o    \
+     ,output  p_``ch_name``_12_o    \
+     ,output  p_``ch_name``_13_o    \
+     ,output  p_``ch_name``_14_o    \
+     ,output  p_``ch_name``_15_o    \
+     ,output  p_``ch_name``_extra_o
 
-  // 20 full-duplex bsg_link interfaces, 480 pins
-   `BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 0)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 1)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 2)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 3)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 4)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 5)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 6)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 7)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 8)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS( 9)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(10)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(11)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(12)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(13)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(14)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(15)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(16)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(17)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(18)
-  ,`BSG_PINOUT_FULL_DUPLEX_LINK_PORTS(19)
-  
+  `define BSG_PINOUT_8B_CHANNEL_PORTS(ch_name) \
+      input   p_``ch_name``_clk_i   \
+     ,input   p_``ch_name``_v_i     \
+     ,output  p_``ch_name``_tkn_o   \
+     ,input   p_``ch_name``_0_i     \
+     ,input   p_``ch_name``_1_i     \
+     ,input   p_``ch_name``_2_i     \
+     ,input   p_``ch_name``_3_i     \
+     ,input   p_``ch_name``_4_i     \
+     ,input   p_``ch_name``_5_i     \
+     ,input   p_``ch_name``_6_i     \
+     ,input   p_``ch_name``_7_i     \
+     ,output  p_``ch_name``_clk_o   \
+     ,output  p_``ch_name``_v_o     \
+     ,input   p_``ch_name``_tkn_i   \
+     ,output  p_``ch_name``_0_o     \
+     ,output  p_``ch_name``_1_o     \
+     ,output  p_``ch_name``_2_o     \
+     ,output  p_``ch_name``_3_o     \
+     ,output  p_``ch_name``_4_o     \
+     ,output  p_``ch_name``_5_o     \
+     ,output  p_``ch_name``_6_o     \
+     ,output  p_``ch_name``_7_o
 
-  // bsg tag interface, 5 pins
-  ,input  p_bsg_tag_clk_i
-  ,input  p_bsg_tag_en_i
-  ,input  p_bsg_tag_data_i
-  ,output p_bsg_tag_clk_o
-  ,output p_bsg_tag_data_o
-  // clock and reset interface, 9 pins
-  // clock input signals
-  ,input  p_clk_A_i
-  ,input  p_clk_B_i
-  ,input  p_clk_C_i
-  // clock output signal
-  ,output p_clk_o
-  // 3-bit clock selection signals
-  ,input  p_sel_0_i
-  ,input  p_sel_1_i
-  ,input  p_sel_2_i
-  // asynchronous reset signals
-  ,input  p_clk_async_reset_i
-  ,input  p_core_async_reset_i
-  // miscellaneous signal, 1 pin
-  ,output p_misc_o);
-// End HB BGA PAD Definitions
+
+  // DRAM L CHANNELS
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_l0)
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_l1),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_l2),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_l3),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_l4),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_l5),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_l6),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_l7),
+
+  // DRAM R CHANNELS
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_r0),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_r1),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_r2),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_r3),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_r4),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_r5),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_r6),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(dram_ch_r7),
+
+  // IO T CHANNELS
+  `BSG_PINOUT_16B_CHANNEL_PORTS(io_ch_t0),
+  `BSG_PINOUT_16B_CHANNEL_PORTS(io_ch_t1),
+
+  // CTRL T/B CHANNELS
+  `BSG_PINOUT_8B_CHANNEL_PORTS(ctrl_ch_t0),
+  `BSG_PINOUT_8B_CHANNEL_PORTS(ctrl_ch_b0),
+
+  // MISC L0
+  input p_misc_l0_0_i,
+  input p_misc_l0_1_i,
+  input p_misc_l0_2_i,
+  input p_misc_l0_3_i,
+  input p_misc_l0_4_i,
+  input p_misc_l0_5_i,
+  input p_misc_l0_6_i,
+
+  // MISC L1
+  input p_misc_l1_0_i,
+  input p_misc_l1_1_i,
+  input p_misc_l1_2_i,
+
+  // MISC R0
+  input p_misc_r0_0_i,
+  input p_misc_r0_1_i,
+  input p_misc_r0_2_i,
+
+  // MISC R1
+  input p_misc_r1_0_i,
+  input p_misc_r1_1_i,
+  input p_misc_r1_2_i,
+  input p_misc_r1_3_i,
+  input p_misc_r1_4_i,
+  input p_misc_r1_5_i,
+  input p_misc_r1_6_i,
+  input p_misc_r1_7_i
+
+);
+
+//
+// END HB BGA PAD Definitions
 // **********************************************************************
