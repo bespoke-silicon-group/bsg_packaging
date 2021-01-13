@@ -28,6 +28,8 @@
 
 `define ND_TREE .NDIN(1'b0),.NDOUT()
 
+`define PWR_MGMT .PWROK(1'b1),.IOPWROK(1'b1),.RETC(1'b1)
+
 //
 // **********************************************************************
 //
@@ -36,43 +38,37 @@
     wire name``_i_int;           \
     padtype name``_i             \
         ( .PAD  (p_``name``_i)   \
-        , .DATA ()               \
+        , .DATA (1'b0)           \
         , .Y    (name``_i_int)   \
-        , .PWROK(1'b1)           \
-        , .IOPWROK(1'b1)         \
-        , .RETC(1'b1)            \
         , `RX_MODE               \
         , `XLRG_DRIVE            \
         , `PD_ENABLE             \
         , `ND_TREE               \
+        , `PWR_MGMT              \
         );
 
 `define BSG_IO_IN_A(pre,suffix,letter,index,padtype) \
     padtype pre``_``letter``_``suffix``_i            \
         ( .PAD  (p_``pre``_``suffix``_i[index])      \
-        , .DATA ()                                   \
+        , .DATA (1'b0)                               \
         , .Y    (pre``_``suffix``_i_int[index])      \
-        , .PWROK(1'b1)                               \
-        , .IOPWROK(1'b1)                             \
-        , .RETC(1'b1)                                \
         , `RX_MODE                                   \
         , `XLRG_DRIVE                                \
         , `PD_ENABLE                                 \
         , `ND_TREE                                   \
+        , `PWR_MGMT                                  \
         );
 
 `define BSG_IO_IN_V(name,index,padtype) \
   padtype name``_``index``_i            \
         ( .PAD  (p_``name``_i[index])   \
-        , .DATA ()                      \
+        , .DATA (1'b0)                  \
         , .Y    (name``_i_int[index])   \
-        , .PWROK(1'b1)                  \
-        , .IOPWROK(1'b1)                \
-        , .RETC(1'b1)                   \
         , `RX_MODE                      \
         , `XLRG_DRIVE                   \
         , `PD_ENABLE                    \
         , `ND_TREE                      \
+        , `PWR_MGMT                     \
         );
 
 `define BSG_IO_OUT(name,padtype)             \
@@ -82,13 +78,11 @@
         ( .PAD  (p_``name``_o)               \
         , .DATA (name``_o_int)               \
         , .Y    ()                           \
-        , .PWROK(1'b1)                       \
-        , .IOPWROK(1'b1)                     \
-        , .RETC(1'b1)                        \
         , `BSG_OUTPUT_ENABLE(name``_oen_int) \
         , `XLRG_DRIVE                        \
         , `PD_ENABLE                         \
         , `ND_TREE                           \
+        , `PWR_MGMT                          \
         );
 
 `define BSG_IO_OUT_A(pre,suffix,letter,num,padtype)         \
@@ -96,13 +90,11 @@
         ( .PAD  (p_``pre``_``suffix``_o[num])               \
         , .DATA (pre``_``suffix``_o_int[num])               \
         , .Y    ()                                          \
-        , .PWROK(1'b1)                                      \
-        , .IOPWROK(1'b1)                                    \
-        , .RETC(1'b1)                                       \
         , `BSG_OUTPUT_ENABLE(pre``_``suffix``_oen_int[num]) \
         , `XLRG_DRIVE                                       \
         , `PD_ENABLE                                        \
         , `ND_TREE                                          \
+        , `PWR_MGMT                                         \
         );
 
 `define BSG_IO_OUT_V(name,index,padtype)              \
@@ -110,13 +102,11 @@
         ( .PAD  (p_``name``_o[index])                 \
         , .DATA (name``_o_int[``index])               \
         , .Y    ()                                    \
-        , .PWROK(1'b1)                                \
-        , .IOPWROK(1'b1)                              \
-        , .RETC(1'b1)                                 \
         , `BSG_OUTPUT_ENABLE(name``_oen_int[``index]) \
         , `XLRG_DRIVE                                 \
         , `PD_ENABLE                                  \
         , `ND_TREE                                    \
+        , `PWR_MGMT                                   \
         );
 
 `define BSG_IO_INOUT(name,padtype)   \
@@ -127,28 +117,24 @@
         ( .PAD  (p_``name``_io)      \
         , .DATA (name``_o_int)       \
         , .Y    (name``_i_int)       \
-        , .PWROK(1'b1)               \
-        , .IOPWROK(1'b1)             \
-        , .RETC(1'b1)                \
         , `RX_NOT_TX(name``_oen_int) \
         , `XLRG_DRIVE                \
         , `PD_ENABLE                 \
         , `ND_TREE                   \
+        , `PWR_MGMT                  \
         );
 
 `define BSG_IO_IN_DISABLE(name,padtype) \
     wire name``_i_int;                  \
     padtype name``_i                    \
         ( .PAD  (p_``name``_i)          \
-        , .DATA ()                      \
+        , .DATA (1'b0)                  \
         , .Y    (name``_i_int)          \
-        , .PWROK(1'b1)                  \
-        , .IOPWROK(1'b1)                \
-        , .RETC(1'b1)                   \
         , `TX_RX_OFF                    \
         , `XLRG_DRIVE                   \
         , `PD_ENABLE                    \
         , `ND_TREE                      \
+        , `PWR_MGMT                     \
         );
 
 `define BSG_IO_OUT_DISABLE(name,padtype) \
@@ -157,13 +143,11 @@
         ( .PAD  (p_``name``_o)           \
         , .DATA (name``_o_int)           \
         , .Y    ()                       \
-        , .PWROK(1'b1)                   \
-        , .IOPWROK(1'b1)                 \
-        , .RETC(1'b1)                    \
         , `TX_RX_OFF                     \
         , `XLRG_DRIVE                    \
         , `PD_ENABLE                     \
         , `ND_TREE                       \
+        , `PWR_MGMT                      \
         );
 
 `define BSG_IO_INOUT_DISABLE(name,padtype) \
@@ -174,13 +158,11 @@
         ( .PAD  (p_``name``_io)            \
         , .DATA (name``_o_int)             \
         , .Y    (name``_i_int)             \
-        , .PWROK(1'b1)                     \
-        , .IOPWROK(1'b1)                   \
-        , .RETC(1'b1)                      \
         , `TX_RX_OFF                       \
         , `XLRG_DRIVE                      \
         , `PD_ENABLE                       \
         , `ND_TREE                         \
+        , `PWR_MGMT                        \
         );
 
 `define BSG_IO_TIEHI(name) \
