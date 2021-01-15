@@ -70,4 +70,4 @@ genvar i;
   `BSG_IO_IN_DISABLE   (clk_async_reset,  IN12LP_GPIO18_13M9S30P_IO_H)
   `BSG_IO_IN_DISABLE   (core_async_reset, IN12LP_GPIO18_13M9S30P_IO_H)
 
-  `BSG_IO_OUT_DISABLE  (misc,             IN12LP_GPIO18_13M9S30P_IO_H)
+  `BSG_IO_OUT  (misc,    IN12LP_GPIO18_13M9S30P_IO_H)
