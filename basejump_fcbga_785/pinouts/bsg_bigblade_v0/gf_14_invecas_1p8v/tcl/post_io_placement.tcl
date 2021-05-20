@@ -46,6 +46,7 @@ bsg_rdl_route_guide $io_guide_map MR1
 
 optimize_rdl_routes -layer LB
 bsg_rdl_remove_blockages
+report_rdl_routes -open_nets true
 
 puts "BSG-info: Completed script [info script]\n"
 

@@ -78,6 +78,9 @@ dict for {k v} [dict get $io_guide_map guides] {
     set guide_start_y [expr $die_edge_offset]
   }
 
+  set guide_start_x [round_down_to_nearest $guide_start_x 1.0]
+  set guide_start_y [round_down_to_nearest $guide_start_y 1.0]
+
   puts "BSG-info: creating io guide $k on side $side start: ($guide_start_x,$guide_start_y) len: $guide_length"
   create_io_guide -name $k -side $side -line "{$guide_start_x $guide_start_y} $guide_length"
   add_to_io_guide $k [get_cells $sorted_pads]
