@@ -218,27 +218,27 @@
         );
 
 `define BSG_IO_TIEHI(name) \
-    bsg_tiehi #(.width_p(1)) name``tiehi (.o(name));
+    bsg_tiehi #(.width_p(1), .harden_p(1)) name``tiehi_BSG_UNGROUP (.o(name));
 
 `define BSG_IO_TIELO(name) \
-    bsg_tielo #(.width_p(1)) name``tielo (.o(name));
+    bsg_tielo #(.width_p(1), .harden_p(1)) name``tielo_BSG_UNGROUP (.o(name));
 
 `define BSG_IO_TIELO_VEC_ONE(name,item) \
-    bsg_tielo #(.width_p(1)) name``_``_item``tielo (.o(name[item]));
+    bsg_tielo #(.width_p(1), .harden_p(1)) name``_``_item``tielo_BSG_UNGROUP (.o(name[item]));
 
 `define BSG_IO_TIEHI_VEC_ONE(name,item) \
-    bsg_tiehi #(.width_p(1)) name``_``_item``tiehi (.o(name[item]));
+    bsg_tiehi #(.width_p(1), .harden_p(1)) name``_``_item``tiehi_BSG_UNGROUP (.o(name[item]));
 
 `define BSG_IO_TIEHI_VEC(name,width)               \
     for (i=0; i < width; i=i+1)                    \
       begin: tiehi_``name                          \
-        bsg_tiehi #(.width_p(1)) hi (.o(name[i])); \
+        bsg_tiehi #(.width_p(1), .harden_p(1)) hi_BSG_UNGROUP (.o(name[i])); \
       end
 
 `define BSG_IO_TIELO_VEC(name,width)               \
     for (i=0; i < width; i=i+1)                    \
       begin: tielo_``name                          \
-        bsg_tielo #(.width_p(1)) lo (.o(name[i])); \
+        bsg_tielo #(.width_p(1), .harden_p(1)) lo_BSG_UNGROUP (.o(name[i])); \
       end
 
 // shared macros
