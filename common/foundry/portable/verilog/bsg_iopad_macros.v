@@ -50,19 +50,25 @@
 `define XTC_OUT_A(pre,suffix,letter,num)        assign p_``pre``_``suffix``_o[num] = pre``_``suffix``_o_int[num];
 `define XTC_OENOUT_A(pre,suffix,letter,num)     assign p_``pre``_``suffix``_o[num] = pre``_``suffix``_oen_int[num]? 1'bz : pre``_``suffix``_o_int[num];
 
+`ifdef BSG_USE_TIE_NETS
+  `define BSG_TIE_NETS(pre) wire pre``_thi, pre``_tlo;
+`else
+  `define BSG_TIE_NETS(pre)
+`endif
+
 `define BSG_IO_IN_DISABLE(name,padtype) wire name``_i_int = 0 & p_``name``_i;
 `define BSG_IO_IN_DIFF_DISABLE(name,padtype) \
 `BSG_IO_IN_DISABLE(name``_p,padtype)    \
 `BSG_IO_IN_DISABLE(name``_n,padtype)
 
-`define BSG_IO_IN(name,padtype)    `XTC_IN(name)
-`define BSG_IO_INOUT(name,padtype) `XTC_INOUT(name)
+`define BSG_IO_IN(name,padtype) `BSG_TIE_NETS(name``_i) `XTC_IN(name)
+`define BSG_IO_INOUT(name,padtype) `BSG_TIE_NETS(name``_io) `XTC_INOUT(name)
 `define BSG_IO_IN_A(pre,suffix,letter,index,padtype) `XTC_IN_A   (pre,suffix,letter,index)
 `define BSG_IO_INOUT_A(pre,suffix,letter,index,padtype) `XTC_INOUT_A(pre,suffix,letter,index)
 `define BSG_IO_IN_V(name,index,padtype) `XTC_IN_V(name,index)
 `define BSG_IO_INOUT_V(name,index,padtype) `XTC_INOUT_V(name,index)
 
-`define BSG_IO_OUT(name,padtype) `XTC_OUT(name)
+`define BSG_IO_OUT(name,padtype) `BSG_TIE_NETS(name``_o) `XTC_OUT(name)
 `define BSG_IO_OUT_V(name,index,padtype) `XTC_OUT_V(name,index)
 `define BSG_IO_OUT_A(pre,suffix,letter,num,padtype) `XTC_OUT_A(pre,suffix,letter,num)
 `define BSG_IO_OENOUT_A(pre,suffix,letter,num,padtype) `XTC_OENOUT_A(pre,suffix,letter,num)
