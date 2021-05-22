@@ -1,7 +1,6 @@
 `ifdef BSG_USE_TIE_NETS
 
 `define BSG_TIE_CELL_PAIR(n) \
-  wire n``_thi, n``_tlo; \
   `BSG_IO_TIEHI(n``_thi); \
   `BSG_IO_TIELO(n``_tlo);
 
