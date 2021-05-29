@@ -62,7 +62,18 @@ dict for {k v} [dict get $io_guide_map guides] {
   }
 
   set center_bump_loc [expr ($min_bump_loc + $max_bump_loc) / 2.0]
-  set guide_length [expr [llength $pads] * $gpio_cell_width]
+
+  if {![string match "M*" $k]} {
+    set guide_length [expr [llength $pads] * $gpio_cell_width + 5.0]
+    set sorted_pads [linsert $sorted_pads [expr int([llength $sorted_pads]/2.0)] "${k}_ctrl_brk"]
+  } else {
+    set guide_length [expr [llength $pads] * $gpio_cell_width + 30.0]
+    if { ($min_bump_loc > 5500 && $side == "bottom") || ($min_bump_loc < 5500 && $side == "top") } {
+      set sorted_pads [linsert $sorted_pads 0   "${k}_pwrdet_tie"] ;# prepend
+    } else {
+      set sorted_pads [linsert $sorted_pads end "${k}_pwrdet_tie"] ;# append
+    }
+  }
 
   if { $side == "left" } {
     set guide_start_x [expr $die_edge_offset]
@@ -77,6 +88,9 @@ dict for {k v} [dict get $io_guide_map guides] {
     set guide_start_x [expr $center_bump_loc + $guide_length / 2.0]
     set guide_start_y [expr $die_edge_offset]
   }
+
+  set guide_start_x [round_down_to_nearest $guide_start_x 1.0]
+  set guide_start_y [round_down_to_nearest $guide_start_y 1.0]
 
   puts "BSG-info: creating io guide $k on side $side start: ($guide_start_x,$guide_start_y) len: $guide_length"
   create_io_guide -name $k -side $side -line "{$guide_start_x $guide_start_y} $guide_length"

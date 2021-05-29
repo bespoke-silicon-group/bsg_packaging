@@ -56,6 +56,18 @@ dict for {k v} [dict get $io_guide_map guides] {
     puts "BSG-info: creating gpio cell (pad:$pad_name, side:$side, ref_name:$ref_name)"
     create_cell $pad_name */$ref_name
   }
+
+  if {![string match "M*" $k]} {
+    set pad_name "${k}_ctrl_brk"
+    set ref_name "IN12LP_GPIO18_13M9S30P_CTRL_BRK_[string map $side_cell_suffix_map $side]"
+    puts "BSG-info: creating ctrl break cell (pad:$pad_name, side:$side, ref_name:$ref_name)"
+    create_cell $pad_name */$ref_name
+  } else {
+    set pad_name "${k}_pwrdet_tie"
+    set ref_name "IN12LP_GPIO18_13M9S30P_PWRDET_TIE_[string map $side_cell_suffix_map $side]"
+    puts "BSG-info: creating ctrl break cell (pad:$pad_name, side:$side, ref_name:$ref_name)"
+    create_cell $pad_name */$ref_name
+  }
 }
 
 puts "BSG-info: Completed script [info script]\n"
