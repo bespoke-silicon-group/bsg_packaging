@@ -14,8 +14,10 @@ remove_matching_types -all
 set die_edge_offset  14
 set gpio_cell_width  30
 
+# create an io guide map from the main bump map csv file
 set io_guide_map [bsg_rdl_create_io_guide_map "$::env(BSG_PACKAGING_PINOUT_SPEC_DIR)/bsg_padring_bump_map.csv"]
 
+# Mapping for cell to RDL pin name
 set pad_pin_map {
   "IN12LP_GPIO18_13M9S30P_VDDC_H"     "VDDC"    "IN12LP_GPIO18_13M9S30P_VDDC_V"     "VDDC"
   "IN12LP_GPIO18_13M9S30P_VSSC_H"     "VSSC"    "IN12LP_GPIO18_13M9S30P_VSSC_V"     "VSSC"
@@ -41,6 +43,7 @@ dict for {k v} [dict get $io_guide_map guides] {
 ### CREATE IO GUIDES AND ASSIGN PAD ORDER TO GUIDES ############################
 
 dict for {k v} [dict get $io_guide_map guides] {
+
   set side  [dict get $v side]
   set pads  [dict get $v pads]
 
@@ -63,16 +66,41 @@ dict for {k v} [dict get $io_guide_map guides] {
 
   set center_bump_loc [expr ($min_bump_loc + $max_bump_loc) / 2.0]
 
-  if {![string match "M*" $k]} {
-    set guide_length [expr [llength $pads] * $gpio_cell_width + 5.0]
-    set sorted_pads [linsert $sorted_pads [expr int([llength $sorted_pads]/2.0)] "${k}_ctrl_brk"]
-  } else {
+  # Each bank has a pwrdet brk. We want to make sure that no bank has more than
+  # 20 cells. By default we insert the breaker in the middle of all the pads
+  # but for many banks we need to offset that from the center to get the right
+  # number of IO cells in the bank. The M* banks are the exception -- they
+  # don't have a brk cell but a dedicated pwrdet_tie cell.
+
+  # misc banks -- place the pwrdet tie cell
+  if {[string match "M*" $k]} {
     set guide_length [expr [llength $pads] * $gpio_cell_width + 30.0]
     if { ($min_bump_loc > 5500 && $side == "bottom") || ($min_bump_loc < 5500 && $side == "top") } {
       set sorted_pads [linsert $sorted_pads 0   "${k}_pwrdet_tie"] ;# prepend
     } else {
       set sorted_pads [linsert $sorted_pads end "${k}_pwrdet_tie"] ;# append
     }
+
+  # dram banks (left and top) -- place ctrl brk
+  } elseif {[string match "D*" $k] && ($side == "left" || $side == "top") } {
+    set guide_length [expr [llength $pads] * $gpio_cell_width + 5.0]
+    set sorted_pads [linsert $sorted_pads [expr int([llength $sorted_pads]/2.0)-2] "${k}_ctrl_brk"]
+
+  # dram banks (right and bottom) -- place ctrl brk
+  } elseif {[string match "D*" $k] && ($side == "right" || $side == "bottom") } {
+    set guide_length [expr [llength $pads] * $gpio_cell_width + 5.0]
+    set sorted_pads [linsert $sorted_pads [expr int([llength $sorted_pads]/2.0)+2] "${k}_ctrl_brk"]
+
+  # input banks -- place ctrl brk
+  } elseif {[string match "I*" $k]} {
+    set guide_length [expr [llength $pads] * $gpio_cell_width + 5.0]
+    set sorted_pads [linsert $sorted_pads [expr int([llength $sorted_pads]/2.0)-2] "${k}_ctrl_brk"]
+
+  # other banks (ie. CB and CT) -- place ctrl brk
+  } else {
+    set guide_length [expr [llength $pads] * $gpio_cell_width + 5.0]
+    set sorted_pads [linsert $sorted_pads [expr int([llength $sorted_pads]/2.0)] "${k}_ctrl_brk"]
+
   }
 
   if { $side == "left" } {
@@ -93,10 +121,22 @@ dict for {k v} [dict get $io_guide_map guides] {
   set guide_start_y [round_down_to_nearest $guide_start_y 1.0]
 
   puts "BSG-info: creating io guide $k on side $side start: ($guide_start_x,$guide_start_y) len: $guide_length"
+  if { $k == "IT0" || $k == "DL7" } { set guide_start_x [expr $guide_start_x - 1] }
+  if { $k == "IT1" || $k == "DR7" } { set guide_start_x [expr $guide_start_x + 1] }
   create_io_guide -name $k -side $side -line "{$guide_start_x $guide_start_y} $guide_length"
   add_to_io_guide $k [get_cells $sorted_pads]
-  set_signal_io_constraints -io_guide_object $k -constraint "{order_only} $sorted_pads"
+
+  # Note: order only constraints don't seem to work as well as absolute
+  # constraints, particularly when the ctrl brk cell were introduced.
+  set constraint  ""
+  set location    0
+  foreach p $sorted_pads {
+    set w [expr min([get_attr [get_cell $p] height], [get_attr [get_cell $p] width])]
+    append constraint "{{absolute} $p $location} "
+    set location [expr $location + $w]
+  }
+  set_signal_io_constraints -io_guide_object $k -constraint $constraint
+
 }
 
 puts "BSG-info: Completed script [info script]\n"
-

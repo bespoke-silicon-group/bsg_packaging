@@ -11,8 +11,10 @@
 
 puts "BSG-info: Running script [info script]\n"
 
+# create an io guide map from the main bump map csv file
 set io_guide_map [bsg_rdl_create_io_guide_map "$::env(BSG_PACKAGING_PINOUT_SPEC_DIR)/bsg_padring_bump_map.csv"]
 
+# map side string to cell suffix
 set side_cell_suffix_map {
   "left"    "H"
   "top"     "V"
@@ -38,6 +40,7 @@ foreach v [dict get $io_guide_map bumps] {
 ### CREATE SUPPLY PADS ########################################################
 
 dict for {k v} [dict get $io_guide_map guides] {
+
   set side [dict get $v side]
   foreach pad [dict get $v pads] {
     set pad_name [lindex $pad 0]
@@ -57,17 +60,20 @@ dict for {k v} [dict get $io_guide_map guides] {
     create_cell $pad_name */$ref_name
   }
 
-  if {![string match "M*" $k]} {
-    set pad_name "${k}_ctrl_brk"
-    set ref_name "IN12LP_GPIO18_13M9S30P_CTRL_BRK_[string map $side_cell_suffix_map $side]"
-    puts "BSG-info: creating ctrl break cell (pad:$pad_name, side:$side, ref_name:$ref_name)"
-    create_cell $pad_name */$ref_name
-  } else {
+  # For the misc banks, add a pwrdet tie cell, for all other banks add a ctrl
+  # breaker as every bank has 20 < #IO <= 40 therefore we need exactly 1 break.
+  if {[string match "M*" $k]} {
     set pad_name "${k}_pwrdet_tie"
     set ref_name "IN12LP_GPIO18_13M9S30P_PWRDET_TIE_[string map $side_cell_suffix_map $side]"
     puts "BSG-info: creating ctrl break cell (pad:$pad_name, side:$side, ref_name:$ref_name)"
     create_cell $pad_name */$ref_name
+  } else {
+    set pad_name "${k}_ctrl_brk"
+    set ref_name "IN12LP_GPIO18_13M9S30P_CTRL_BRK_[string map $side_cell_suffix_map $side]"
+    puts "BSG-info: creating ctrl break cell (pad:$pad_name, side:$side, ref_name:$ref_name)"
+    create_cell $pad_name */$ref_name
   }
+
 }
 
 puts "BSG-info: Completed script [info script]\n"
