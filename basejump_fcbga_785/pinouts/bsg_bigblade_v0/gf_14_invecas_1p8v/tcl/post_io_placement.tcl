@@ -30,6 +30,8 @@ if {[file exists $PDK_ROOT_DIR/bsg/rdl/basejump_fcbga_785_rdl.$bsg_packaging_com
 
   set io_guide_map [bsg_rdl_create_io_guide_map "$::env(BSG_PACKAGING_PINOUT_SPEC_DIR)/bsg_padring_bump_map.csv"]
 
+  save_block -label rdl_routes_pre_route
+
   bsg_rdl_create_blockages
   bsg_rdl_route_io_supply
 
@@ -70,8 +72,8 @@ if {[file exists $PDK_ROOT_DIR/bsg/rdl/basejump_fcbga_785_rdl.$bsg_packaging_com
 
   save_block -label rdl_routes_optimized
 
-  set rdl_objects [add_to_collection [get_shapes -filter shape_use==rdl] [get_vias -filter shape_use==rdl]]
-  write_def -objects $rdl_objects basejump_fcbga_785_rdl.$bsg_packaging_commit_hash.def
+  #set rdl_objects [add_to_collection [get_shapes -filter shape_use==rdl] [get_vias -filter shape_use==rdl]]
+  #write_def -objects $rdl_objects basejump_fcbga_785_rdl.$bsg_packaging_commit_hash.def
 }
 
 # Begin the processes of filling in the gaps of the IO pad ring and insertint ctrl brks between IO banks
