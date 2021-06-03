@@ -408,6 +408,14 @@ for {set i 0} {$i < [sizeof $all_brk_cells]} {incr i} {
 
 }
 
+# lock the rdl nets
+set_attribute [get_nets p_*] physical_status locked
+set_attribute [get_shapes -filter layer.name==LB] physical_status locked
+set_attribute [get_vias -filter cut_layer_names==VV] physical_status locked
+
+set_attribute [get_shapes -filter layer.name==LB] shape_use rdl
+set_attribute [get_vias -filter cut_layer_names==VV] shape_use rdl
+
 # For the misc banks, tie the retension mode pins low using the tlo net of the
 # neighboring cell.
 connect_net -net pad_ML0_0_i_tlo [get_pins ML0_pwrdet_tie/RETCIN]
