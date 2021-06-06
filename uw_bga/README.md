@@ -8,6 +8,9 @@ This is the subdirectory for the 355-ball UW wirebond BGA package, which support
 Quick links:
 
    [Verilog interface to the package](https://github.com/bespoke-silicon-group/bsg_packaging/blob/master/uw_bga/pinouts/bsg_asic_cloud/common/verilog/bsg_pinout.v)
-   
+      
    [Picture of the package](https://github.com/bespoke-silicon-group/bsg_packaging/blob/master/uw_bga/UW_BGA.png)
 
+   <img src="UW_BGA.png">
+   
+   
