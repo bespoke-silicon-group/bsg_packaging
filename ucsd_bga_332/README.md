@@ -3,3 +3,5 @@
 
 - **pinouts**: this is what most chip designers will spend most of their time looking at
 
+
+<img src="http://bjump.org/pics/DSC02197.JPG">
