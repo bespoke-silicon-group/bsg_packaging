@@ -8,3 +8,8 @@
 
 
 See this <a href="https://www.youtube.com/watch?v=pumrNqkXjfI&list=PLD1QnhK1caR3IrAtVAd1-leMkus7dVy6a&index=17">YouTube video</a> of the OpenFPGA FROG Testchip, which uses this package!
+
+See the first  <a href="http://bjump.org/manycore/">ten-core RISC-V chip</a>, BSG-X, which used this package!
+
+
+See the first  <a href="http://bjump.org/manycore/">511-core RISC-V chip</a>, Celerity, which used this package!
