@@ -11,3 +11,5 @@ Currently there are three packages:
 
 There is also the common directory, which contains files for constructing padrings, 
 including portability files for each process (e.g. tsmc 250) being targeted.
+
+<img src="http://bjump.org/manycore/pics/BSG_Ten_Sun.jpg">
