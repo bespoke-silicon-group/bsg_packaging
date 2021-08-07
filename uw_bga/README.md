@@ -3,7 +3,7 @@ This is the subdirectory for the 355-ball UW wirebond BGA package, which support
 **pcb**:  What you need to physically make the package and use it. Design collatoral to send to substrate fab and assembly
           files for modelling the package, clarifications, or modifying the substrate.
 
-**pinouts**: This is what most chip designers will spend most of their time looking at.
+**pinouts**: This is what most chip designers will spend most of their time looking at to design their chip to use the package.
 
 Quick links:
 
