@@ -9,7 +9,9 @@ We call a package combined with this information a "pinout". This
 directory is for holding pinout-specific files.
 
 
-This is the <a href="http://bjump.org/pdf/padring_bsg_two.pdf">canonical padring for this package.</a>
+This is the canonical padring for this package:
+
+<a href="http://bjump.org/pdf/padring_bsg_two.pdf"><img src="http://bjump.org/pics/332_io_names_small.png"></a>
 
 The two current pinouts are:
 
