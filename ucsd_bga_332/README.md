@@ -16,5 +16,4 @@ See the first  <a href="http://bjump.org/manycore/">511-core RISC-V chip</a> in 
 
 See the  <a href="http://bjump.org/pics/outerspace_package_photo.png">Outerspace chip,</a>,  3x3mm 40nm TSMC OuterSpace, which used this package!
 
-This is the canonical pad ring for this package <iframe src="http://bjump.org/pdf/padring_bsg_two.pdf" width="100%" height="500px">.
            
