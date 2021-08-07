@@ -6,5 +6,3 @@ ironwood and just get a single order that is the right thing.
 
 C19342 -- original order
 P22529 -- replacement ball guides
-
-M
