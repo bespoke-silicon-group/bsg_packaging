@@ -12,6 +12,7 @@ UWCS001_BGA_A03_PAUL_MODIFIED_2_bond_detail.pdf - more detailed bonding diagram
 ballout.ascii                                   - ascii file showing ballout of BGA (for PCB)
 pinout_list.csv                                 - csv of pinlist; maps from balls to substrate bond pads for PCB design
 
-See https://github.com/bespoke-silicon-group/bsg_packaging/tree/master/uw_bga/pinouts/bsg_asic_cloud/common/to_assembly_house for the generator that generates the bonding diagram automatically that you see here.
+See https://github.com/bespoke-silicon-group/bsg_packaging/tree/master/uw_bga/pinouts/bsg_asic_cloud/common/to_assembly_house
+for the generator that generates the bonding diagram automatically that you see here.
 
 ```
