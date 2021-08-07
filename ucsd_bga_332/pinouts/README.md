@@ -8,6 +8,9 @@ are inputs or outputs, and it could change based on the use of the package.
 We call a package combined with this information a "pinout". This 
 directory is for holding pinout-specific files.
 
+
+This is the <a href="http://bjump.org/pdf/padring_bsg_two.pdf">canonical padring for this package.</a>
+
 The two current pinouts are:
 
 - bsg_two:   **wirebond** BGA using the BGA_332 socket and final padring for BGA_332 (**use this**)
