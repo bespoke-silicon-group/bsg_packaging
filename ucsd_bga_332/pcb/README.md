@@ -7,7 +7,7 @@ Contents:
   352_bga_pins_top_down_flat.pdf           shows ballout of BGA, top-down (XRAY) view
   UCSD001-DesignInfo-2014-03-15.xlsx       detail design info for BGA
 
-for_assembly_corwil/
+for_assembly_corwil/                       note that we actually used Quickpak
 
    UCSD001-BGA_2014_03-19.dwg              Bonding and balling diagram by Darren for Assembly (Corwil)  
 
