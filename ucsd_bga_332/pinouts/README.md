@@ -8,6 +8,7 @@ are inputs or outputs, and it could change based on the use of the package.
 We call a package combined with this information a "pinout". This 
 directory is for holding pinout-specific files.
 
+See <a href="http://bjump.org/basejump_socket_352.html">this link</a> for lots of useful details on this package.
 
 This is the canonical padring for this package:
 
