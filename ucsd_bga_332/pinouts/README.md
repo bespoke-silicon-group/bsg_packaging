@@ -12,7 +12,7 @@ See <a href="http://bjump.org/basejump_socket_352.html">this link</a> for lots o
 
 This is the canonical padring for this package:
 
-<a href="http://bjump.org/pdf/padring_bsg_two.pdf"><img src="http://bjump.org/pics/332_io_names_small.png"></a>
+<a href="https://github.com/bespoke-silicon-group/bsg_packaging/blob/master/ucsd_bga_332/pinouts/bsg_two/common/padring.pdf"><img src="http://bjump.org/pics/332_io_names_small.png"></a>
 
 The two current pinouts are:
 
