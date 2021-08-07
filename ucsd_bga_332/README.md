@@ -9,7 +9,9 @@
 
 See this <a href="https://www.youtube.com/watch?v=pumrNqkXjfI&list=PLD1QnhK1caR3IrAtVAd1-leMkus7dVy6a&index=17">YouTube video</a> of the OpenFPGA FROG Testchip, which uses this package!
 
-See the first  <a href="http://bjump.org/manycore/">ten-core RISC-V chip</a>, BSG-X, which used this package!
+See the first  <a href="http://bjump.org/manycore/">ten-core RISC-V chip</a> in history, 5x5mm 180nm TSMC BSG-X, which used this package!
 
 
-See the first  <a href="http://bjump.org/manycore/">511-core RISC-V chip</a>, Celerity, which used this package!
+See the first  <a href="http://bjump.org/manycore/">511-core RISC-V chip</a> in history, 5x5mm 16nm TSMC Celerity, which used this pinout!
+
+See the outerspace chip, <a href="http://bjump.org/pics/outerspace_package_photo.png">,  3x3mm 40nm TSMC OuterSpace, which used this package!
