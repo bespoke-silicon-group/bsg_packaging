@@ -37,5 +37,5 @@ for_us/
 
       UCSD001-BGA_5mm_2014-03-20.pcb 	    semi-final design
       UCSD001-BGA_5mm_2014-03-20.zip        zipped gerbers of above .pcb file
-      UCSD001-BGA_5mm_2014-03-20/           actual gerber files for above
+      UCSD001-BGA_5mm_2014-03-20/           actual gerber files for above;
 '''
