@@ -18,6 +18,10 @@ for_fab_sierra_proto_express/
    UCSD001_Gerber_2014-05-21.zip           final gerber files for fab house (Sierra Proto) (fixed clock trace width)}
    UCSD001-BGA-FabDrill-2014-04-22_mod.pdf drill pattern, stackup notes for fab; overrides numbers in Gerber files
                                            I hacked the file to change IS410 to N5000.                
+
+for_socket_maker_ironwood/
+     SO47885.pdf
+
 for_us/
 
    332_io_names.pdf                        labeling of pad ring note use Chrome; not apple preview to view
