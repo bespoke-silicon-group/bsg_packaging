@@ -15,3 +15,6 @@ See the first  <a href="http://bjump.org/manycore/">ten-core RISC-V chip</a> in 
 See the first  <a href="http://bjump.org/manycore/">511-core RISC-V chip</a> in history, 5x5mm 16nm TSMC Celerity, which used this pinout!
 
 See the outerspace chip, <a href="http://bjump.org/pics/outerspace_package_photo.png">,  3x3mm 40nm TSMC OuterSpace, which used this package!
+
+This is the canonical pad ring for this package <img src="http://bjump.org/pdf/padring_bsg_two.pdf">.
+           
