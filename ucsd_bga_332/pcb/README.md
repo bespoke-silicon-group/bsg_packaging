@@ -9,12 +9,15 @@ Contents:
 
 for_assembly_corwil/                       note that we actually used Quickpak
 
-   UCSD001-BGA_2014_03-19.dwg              Bonding and balling diagram by Darren for Assembly (Corwil)  
+   UCSD001-BGA_2014_03-19.dwg              Bonding and balling diagram by Darren for Assembly (Corwil) 
+                                           Note: these were just the substrate design time diagrams; look at the
+                                           pinouts/*/common/to_assembly_house/example_files_for_assembly_house/
+                                           for real examples.
 
 for_fab_sierra_proto_express/
 
    impedance.png                           red marks 100 ohm impedance lines; yellow marks non-impedance controlled
-   Q219234-5.docx 		   	   quote for fabrication by Sierra Proto Express
+   Q219234-5.docx 		   	                 quote for fabrication by Sierra Proto Express
    UCSD001_Gerber_2014-05-21.zip           final gerber files for fab house (Sierra Proto) (fixed clock trace width)}
    UCSD001-BGA-FabDrill-2014-04-22_mod.pdf drill pattern, stackup notes for fab; overrides numbers in Gerber files
                                            I hacked the file to change IS410 to N5000.                
