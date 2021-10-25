@@ -5,6 +5,9 @@ This is the subdirectory for the 352-ball UCSD wirebond BGA package, which is op
 
 - **pinouts**: this is what most chip designers will spend most of their time looking at
 
+  [Verilog interface to the package](https://github.com/bespoke-silicon-group/bsg_packaging/blob/master/ucsd_bga_332/pinouts/bsg_two/common/verilog/bsg_pinout.v)
+  
+
 
 <img src="http://bjump.org/pics/DSC02197.JPG">
 
