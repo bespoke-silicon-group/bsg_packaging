@@ -8,7 +8,7 @@ Currently there are three packages:
 
 * **gf** (obsolete)
 
-If you use these packages in your publications, please acknowledge the use as "We employed the *name of package* from the Open Source BaseJump Project (https://github.com/bespoke-silicon-group/bsg_packaging)."
+If you use these packages in your publications, please acknowledge the use as "We employed the Open Source BaseJump *name of package* from the Bespoke Silicon Group (https://bsg.ai)."
 
 
 There is also the common directory, which contains files for constructing padrings, 
