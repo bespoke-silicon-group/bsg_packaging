@@ -4,7 +4,7 @@ This directory contains the final files for the UCSD BGA design, by Darren Smith
 Contents:
 
   README                                   this file
-  352_bga_pins_top_down_flat.pdf           shows ballout of BGA, top-down (XRAY) view
+  352_bga_pins_top_down_flat.pdf           shows ballout of BGA, top-down (XRAY) view (for PCB designer)
   UCSD001-DesignInfo-2014-03-15.xlsx       detail design info for BGA
 
 for_assembly_corwil/                       note that we actually used Quickpak
