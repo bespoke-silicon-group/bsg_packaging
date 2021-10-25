@@ -8,6 +8,8 @@ Currently there are three packages:
 
 * **gf** (obsolete)
 
+If you use these packages in your publications, please acknowledge the use as "We employed the <name of package> from the Open Source BaseJump Project."
+
 
 There is also the common directory, which contains files for constructing padrings, 
 including portability files for each process (e.g. tsmc 250) being targeted.
