@@ -2,7 +2,7 @@ In this directory are a bunch of subdirectories, one for each unique BGA (ball g
 
 Currently there are three packages:
 
-* **ucsd_bga_332**: 4 full duplex 9 bits channels, verified from 3x3 to 5x5 die size; probably does 6x6mm. 
+* **ucsd_bga**: 4 full duplex 9 bits channels, verified from 3x3 to 5x5 die size; probably does 6x6mm. 
 
 * **uw_bga**:       2 full duplex 9 bit channels, plus 32-bit LPDDR interface, targets 3x3mm; likely can go to 3.7x3.7 mm.
 
