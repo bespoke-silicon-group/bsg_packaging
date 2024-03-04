@@ -1,0 +1,3 @@
+All single-ended wires should have 50 ohm impedance
+Special wires in impedance.png: red marks 100 ohm differential impedance lines; yellow marks non-impedance controlled
+Example stackup in UCSD001-BGA-FabDrill-2014-04-22_mod.pdf
