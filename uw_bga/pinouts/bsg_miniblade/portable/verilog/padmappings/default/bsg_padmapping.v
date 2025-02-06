@@ -8,3 +8,4 @@
 `define BSG_PAD_OUTPUT_FAST
 `define BSG_PAD_DISABLE
 `define BSG_PAD_INOUT
+`define BSG_USE_TIE_NETS

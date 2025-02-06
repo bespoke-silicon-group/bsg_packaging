@@ -1,0 +1,30 @@
+`ifdef BSG_USE_TIE_NETS
+
+`define BSG_TIE_CELL_PAIR(n) \
+  `BSG_IO_TIEHI(n``_thi); \
+  `BSG_IO_TIELO(n``_tlo);
+
+`BSG_TIE_CELL_PAIR( pad_LINK_0   )
+`BSG_TIE_CELL_PAIR( pad_LINK_1   )
+`BSG_TIE_CELL_PAIR( pad_LINK_2   )
+`BSG_TIE_CELL_PAIR( pad_LINK_3   )
+`BSG_TIE_CELL_PAIR( pad_LINK_v   )
+`BSG_TIE_CELL_PAIR( pad_LINK_clk )
+`BSG_TIE_CELL_PAIR( pad_LINK_tkn )
+
+`BSG_TIE_CELL_PAIR( pad_LINK_0   )
+`BSG_TIE_CELL_PAIR( pad_LINK_1   )
+`BSG_TIE_CELL_PAIR( pad_LINK_2   )
+`BSG_TIE_CELL_PAIR( pad_LINK_3   )
+`BSG_TIE_CELL_PAIR( pad_LINK_v   )
+`BSG_TIE_CELL_PAIR( pad_LINK_clk )
+`BSG_TIE_CELL_PAIR( pad_LINK_tkn )
+
+`BSG_TIE_CELL_PAIR( pad_TAG_clk  )
+`BSG_TIE_CELL_PAIR( pad_TAG_data )
+
+`BSG_TIE_CELL_PAIR( pad_EXT_clk  )
+`BSG_TIE_CELL_PAIR( pad_MON_clk  )
+`BSG_TIE_CELL_PAIR( pad_DISABLE  )
+
+`endif
