@@ -102,8 +102,9 @@ while {![eof $fid]} {
 close $fid
 
 # Draw the RDL
-# source -echo -verbose "$::env(BSG_PACKAGING_PINOUT_TCL_DIR)/rdl.tcl"
-source -echo -verbose "$::env(BSG_PACKAGING_PINOUT_TCL_DIR)/rdl2.tcl"
+if { [file exists $::env(BSG_DESIGNS_TARGET_TCL_HARD_DIR)/rdl.tcl] } {
+    source -echo -verbose "$::env(BSG_DESIGNS_TARGET_TCL_HARD_DIR)/rdl.tcl"
+}
 
 ###############################################################################
 #
