@@ -136,7 +136,8 @@ disconnect_net [get_pins -of $all_io_cells -filter "name==PWROKOUT"]
 disconnect_net [get_pins -of $all_io_cells -filter "name==IOPWROK"]
 disconnect_net [get_pins -of $all_io_cells -filter "name==IOPWROKOUT"]
 
-connect_net -net VSS [get_pins -of $all_io_cells -filter "name==RETCIN"]
+#connect_net -net VSS [get_pins -of $all_io_cells -filter "name==RETCIN"]
+connect_net -net pad_LINK_3_o_tlo [get_pins -of v18_1 -filter "name==RETCIN"]
 
 set i 0
 
