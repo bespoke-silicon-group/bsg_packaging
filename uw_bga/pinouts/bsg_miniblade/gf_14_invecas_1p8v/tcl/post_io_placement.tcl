@@ -74,9 +74,9 @@ proc bsg_create_bond_pad { name net side ring center_x center_y } {
     # label the pad
     set net_type [get_attr [get_net $net] net_type]
     if { $net_type == "signal" } {
-        set esd_label "LC_POWER_ESD"
-    } else {
         set esd_label "FULL_ESD"
+    } else {
+        set esd_label "LC_POWER_ESD"
     }
     set pad_bbox [get_attribute $pad_cell boundary_bbox]
     set pad_center_x [expr ([lindex $pad_bbox 0 0]+[lindex $pad_bbox 1 0])/2.0]
